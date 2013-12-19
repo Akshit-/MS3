@@ -2,9 +2,12 @@ package common.messages;
 
 import java.util.List;
 
+import common.messages.KVAdminMessage.Commands;
+
 import metadata.MetaData;
 
 public class KVAdminMessageImpl implements KVAdminMessage {
+	
 	
 	private List<MetaData> metaDatas;
 	private Commands command;
@@ -54,20 +57,42 @@ public class KVAdminMessageImpl implements KVAdminMessage {
 	
 	public void setMetaDatas(List<MetaData> metaDatas) {
 		this.metaDatas = metaDatas;
+		
 	}	
 	
+	
+	
 	public static Commands getCommandType(int command){
-		
+	
 		switch(command){
-			case 0: return Commands.INIT;
-			case 1: return Commands.START;
-			case 2: return Commands.STOP;
-			case 3: return Commands.SHUTDOWN;
-			case 4: return Commands.LOCK_WRITE;
-			case 5: return Commands.UNLOCK_WRITE;
-			case 6: return Commands.MOVE_DATA;
+			
+			case 0: return Commands.INIT;			
+			case 1: return Commands.INIT_SUCCESS;
+			case 2: return Commands.INIT_FAIL;
+			case 3: return Commands.START;
+			case 4: return Commands.START_SUCCESS;
+			case 5: return Commands.START_FAIL;
+			case 6: return Commands.STOP;
+			case 7: return Commands.STOP_SUCCESS;
+			case 8: return Commands.STOP_FAIL;
+			case 9: return Commands.SHUTDOWN;
+			case 10: return Commands.SHUTDOWN_SUCCESS;
+			case 11: return Commands.SHUTDOWN_FAIL;
+			case 12: return Commands.LOCK_WRITE;
+			case 13: return Commands.LOCK_WRITE_SUCCESS;
+			case 14: return Commands.LOCK_WRITE_FAIL;
+			case 15: return Commands.UNLOCK_WRITE;
+			case 16: return Commands.UNLOCK_WRITE_SUCCESS;
+			case 17: return Commands.UNLOCK_WRITE_FAIL;
+			case 18: return Commands.MOVE_DATA;
+			case 19: return Commands.MOVE_DATA_SUCCESS;
+			case 20: return Commands.MOVE_DATA_FAIL;
+			case 21: return Commands.UPDATE;
+			case 22: return Commands.UPDATE_SUCCESS;
+			case 23: return Commands.UPDATE_FAIL;	
+			
 			default:
-				return Commands.UPDATE;
+				return Commands.UNKNOWN;
 		}
 	}
 	

@@ -107,6 +107,8 @@ public class KVClient implements ClientSocketListener{
 									handleNewMessage("PUT_UPDATE : Updated key-value pair on KVServer");
 								} else if(kvMsg.getStatus()==StatusType.PUT_ERROR){
 									handleNewMessage("PUT_ERROR : Unable to add Key-value pair on KVServer");
+								}else{
+									printError("Unable to add Key-value pair on KVServer with status="+kvMsg.getStatus().toString());
 								}
 							} catch (Exception e) {
 								// TODO Auto-generated catch block

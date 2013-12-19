@@ -4,15 +4,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
+import java.math.BigInteger;
 import java.net.Socket;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import metadata.MetaData;
 
 import org.apache.log4j.Logger;
 
-
+import app_kvServer.KVServer;
 import common.messages.JSONSerializer;
 import common.messages.KVMessage;
+import common.messages.KVMessageImpl;
 import common.messages.TextMessage;
 import common.messages.KVMessage.StatusType;
 
@@ -32,6 +39,7 @@ public class KVStore extends Thread implements KVCommInterface {
 	private Socket clientSocket;
 	private OutputStream output;
 	private InputStream input;
+	private List<MetaData> metadata;
 
 	private static final int BUFFER_SIZE = 1024;
 	private static final int DROP_SIZE = 1024 * BUFFER_SIZE;
@@ -52,24 +60,6 @@ public class KVStore extends Thread implements KVCommInterface {
 	}
 
 	/**
-	 * Initializes and starts the client connection. Loops until the connection
-	 * is closed or aborted by the client.
-	 */
-/*	public void run() {
-		try {
-			output = clientSocket.getOutputStream();
-			input = clientSocket.getInputStream();
-		} catch (IOException ioe) {
-			logger.error("Connection could not be established!");
-
-		} finally {
-			// if(isRunning()) {
-			// disconnect();
-			// }
-		}
-	}*/
-
-	/**
 	 * Tries to establish connection to the server on address and port
 	 * initialized in constructor This method must only be called after
 	 * initializing instance with {@link Constructor}
@@ -80,17 +70,16 @@ public class KVStore extends Thread implements KVCommInterface {
 	 */
 	@Override
 	public void connect() throws Exception {
-		// TODO Auto-generated method stub
 		clientSocket = new Socket(mAddress, mPort);
-		if(clientSocket!=null) {
+		if (clientSocket != null) {
 			output = clientSocket.getOutputStream();
 			input = clientSocket.getInputStream();
 			setRunning(true);
 			logger.info("Connection established");
-//			latestMsg = receiveMessage();
-//				for (ClientSocketListener listener : listeners) {
-//				listener.handleNewMessage(latestMsg);
-//			}
+			// latestMsg = receiveMessage();
+			// for (ClientSocketListener listener : listeners) {
+			// listener.handleNewMessage(latestMsg);
+			// }
 		}
 	}
 
@@ -104,9 +93,10 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		try {
 			tearDownConnection();
-			/*for (ClientSocketListener listener : listeners) {
-				listener.handleStatus(SocketStatus.DISCONNECTED);
-			}*/
+			/*
+			 * for (ClientSocketListener listener : listeners) {
+			 * listener.handleStatus(SocketStatus.DISCONNECTED); }
+			 */
 		} catch (IOException ioe) {
 			logger.error("Unable to close connection!");
 		}
@@ -166,7 +156,7 @@ public class KVStore extends Thread implements KVCommInterface {
 
 	@Override
 	public KVMessage put(String key, String value) throws Exception {
-		// TODO Auto-generated method stub
+
 		if (isRunning()) {
 			try {
 				if (value!=null && !value.equalsIgnoreCase("null")){
@@ -175,16 +165,13 @@ public class KVStore extends Thread implements KVCommInterface {
                             StatusType.PUT);
 				    logger.info("Sending : "+txtMsg.getMsg());
 					sendMessage(txtMsg);
-				}else{
-				    TextMessage txtMsg = JSONSerializer.marshal(key, "", StatusType.PUT);
-                    logger.info("Sending : "+txtMsg.getMsg());
+				} else {
+					TextMessage txtMsg = JSONSerializer.marshal(key, "",
+							StatusType.PUT);
+					logger.info("Sending : " + txtMsg.getMsg());
 					sendMessage(txtMsg);
 				}
-				TextMessage replyTxtMsg = receiveMessage();
-				
-				logger.info("Server response: "+replyTxtMsg.getMsg());
-				
-				return JSONSerializer.unMarshal(replyTxtMsg);
+				return processReply(receiveMessage(), StatusType.PUT);
 			} catch (IOException ioe) {
 				tearDownConnection();
 				logger.error("IOException! Unable to put value to KV server");
@@ -196,21 +183,111 @@ public class KVStore extends Thread implements KVCommInterface {
 		}
 	}
 
+	/**
+	 * Processes the servers reply and transparently handles Client's response
+	 * to Storage Service
+	 * 
+	 * @param reply
+	 * @return
+	 */
+	private synchronized KVMessage processReply(TextMessage reply, StatusType reqStatus) {
+		logger.info("Server response: " + reply.getMsg());
+		KVMessageImpl replyMsg = JSONSerializer.unMarshal(reply);
+		String key = replyMsg.getKey();
+		StatusType status = replyMsg.getStatus();
+		/**
+		 * In this case, server sends a message
+		 */
+		if (status.equals(StatusType.SERVER_NOT_RESPONSIBLE)) {
+			// store metadata
+			this.metadata = replyMsg.getMetaData();
+			for (MetaData meta : this.metadata) {
+
+				if ( tupleBelongsToServer(meta, key)) {
+					this.disconnect(); //disconnect from the server
+					KVStore responsibleServerConn = new KVStore(meta.getIP(), //connect to the server responsible for the requested tuple
+							Integer.parseInt(meta.getPort()));
+					if (reqStatus.equals(StatusType.PUT)) {
+						try {
+							return responsibleServerConn.put(replyMsg.getKey(),
+									replyMsg.getValue());
+						} catch (Exception e) {
+							logger.error("Unable to add Key-value pair on KVServer listening on"+meta.getPort());
+						}
+					} else {
+						try {
+							return responsibleServerConn.get(replyMsg.getKey());
+						} catch (Exception e) {
+							logger.error("Unable to get Key-value pair from KVServer listening on"+meta.getPort());
+						}
+					}
+					break;
+				}
+			}
+			// the same with server
+			// TODO client need to decide to which server has to connect and
+			// RE-TRY TO send the request
+		} else if (status.equals(StatusType.SERVER_STOPPED)) {
+			logger.info("server is stopped, the request was rejected");
+		} else if (status.equals(StatusType.SERVER_WRITE_LOCK)) {
+			System.out.println("Server locked for out, only get possible");
+			logger.info("Server locked for out, only get possible");
+		}
+		return replyMsg;
+
+	}
+
+
+	/**
+	 *  check whether the pair belongs to server's subset 
+	 * if it doesn't belong return true
+	 * else return false
+	 * 
+	 * @param metadata
+	 * @param key
+	 * @return true if the server is not in charge of the particular request
+	 */
+	private boolean tupleBelongsToServer(MetaData metaData, String key) {
+		//TODO Chryssa check whether the tuple belongs to this server
+
+		BigInteger key_ = new BigInteger(getMD5(key),16);
+		if (key_.compareTo(new BigInteger(metaData.getRangeStart(),16)) >= 0 && 
+				key_.compareTo(new BigInteger(metaData.getRangeEnd(),16)) <= 0) return true;
+		return false;
+	}
+	
+
+	private String getMD5(String msg){
+		MessageDigest messageDigest = null;
+		try {
+			messageDigest = MessageDigest.getInstance("MD5");
+		} catch(NoSuchAlgorithmException ex){
+			logger.debug("not able to cypher key");
+			return null;
+		}
+
+		messageDigest.reset();
+		messageDigest.update(msg.getBytes());
+		byte[] hashValue = messageDigest.digest();
+		BigInteger bigInt = new BigInteger(1,hashValue);
+		String hashHex = bigInt.toString(16);
+		// Now we need to zero pad it if you actually want the full 32 chars.
+		while(hashHex.length() < 32 ){
+			hashHex = "0"+hashHex;
+		}
+		return hashHex;
+	}
 	@Override
 	public KVMessage get(String key) throws Exception {
-		// TODO Auto-generated method stub
 		if (isRunning()) {
 			try {
-			    
-			    TextMessage txtMsg = JSONSerializer.marshal(key, "", StatusType.GET);
-                logger.info("Sending : "+txtMsg.getMsg());
-			    
+
+				TextMessage txtMsg = JSONSerializer.marshal(key, "",
+						StatusType.GET);
+				logger.info("Sending : " + txtMsg.getMsg());
+
 				sendMessage(txtMsg);
-				TextMessage replyTxtMsg = receiveMessage();
-				
-				logger.info("Server response: "+replyTxtMsg.getMsg());
-				
-				return JSONSerializer.unMarshal(replyTxtMsg);
+				return processReply(receiveMessage(), StatusType.GET);
 			} catch (IOException ioe) {
 			    logger.error("Unable to get value from KV server");
 				throw new Exception("Unable to get value from KV server");
@@ -248,8 +325,11 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		/* read first char from stream */
 		byte read = (byte) input.read();
+		
+		logger.info("KVStore::Starting Receive message ="+clientSocket.getLocalPort());
+		
 		boolean reading = true;
-
+		
 		while (read != 13 && reading) {/* carriage return */
 			/* if buffer filled, copy to msg array */
 			if (index == BUFFER_SIZE) {
@@ -296,7 +376,7 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		/* build final String */
 		TextMessage msg = new TextMessage(msgBytes);
-		logger.info("Receive message:\t '" + msg.getMsg() + "'");
+		logger.info("KVStore::Receive message:\t '" + msg.getMsg() + "'"+"="+clientSocket.getLocalPort());
 		return msg;
 	}
 

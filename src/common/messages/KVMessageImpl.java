@@ -1,10 +1,20 @@
 package common.messages;
 
+import java.util.List;
+import metadata.MetaData;
 public class KVMessageImpl implements KVMessage {
 	private String mKey;
 	private String mValue;
 	private StatusType mStatusType;
+	private List<MetaData> metadata;
 	
+	public List<MetaData> getMetaData() {
+		return metadata;
+	}
+
+	public void setMetadata(List<MetaData> metadata) {
+		this.metadata = metadata;
+	}
 	public KVMessageImpl(String key,String value,StatusType statusType) {
 		// TODO Auto-generated constructor stub
 		mKey=key;
@@ -12,6 +22,13 @@ public class KVMessageImpl implements KVMessage {
 		mStatusType=statusType;
 	}
 	
+	public KVMessageImpl(String key,String value,StatusType statusType, List<MetaData> metadata) {
+		// TODO Auto-generated constructor stub
+		mKey=key;
+		mValue=value;
+		mStatusType=statusType;
+		this.metadata = metadata;
+	}
 
 	@Override
 	public String getKey() {
@@ -44,6 +61,11 @@ public class KVMessageImpl implements KVMessage {
 		mStatusType=statusType;
 	}
 	
+	/**
+	 * TODO instead of this function I use an update version of the enum class
+	 * @param status
+	 * @return
+	 */
 	public static StatusType getStatusType(int status){
 		
 		switch(status){
@@ -55,6 +77,9 @@ public class KVMessageImpl implements KVMessage {
 			case 5: return StatusType.PUT_UPDATE;
 			case 6: return StatusType.PUT_ERROR;
 			case 7: return StatusType.DELETE_SUCCESS;
+			case 8: return StatusType.PUT_UPDATE;
+			case 9: return StatusType.PUT_ERROR;
+			case 10: return StatusType.DELETE_SUCCESS;
 			default:
 				return StatusType.DELETE_ERROR;
 		}

@@ -3,6 +3,9 @@
  */
 package server;
 
+import java.io.IOException;
+import java.net.UnknownHostException;
+import java.util.HashMap;
 import java.util.List;
 
 import metadata.MetaData;
@@ -24,7 +27,7 @@ public interface ECServerListener {
      * This starts the KVServer, all client requests and all ECS requests are processed.
      * 
      */
-	public void start();
+	public void startKVServer();
 	
 	
 	/** 
@@ -54,21 +57,29 @@ public interface ECServerListener {
 	public void unlockWrite();
 	
 	/**
-     * This function will Transfer a subset (range) of the KVServer’s data to another.
+     * This function will move a subset (range) of the KVServer’s data to new Server
+	 * @param server KVServer where data is to be moved.
+	 * @return true if successfully moved else false.
      * 
      */
-	public void moveData(String range, String server);
-	
+	public boolean moveData(String range, String server);
 	
 	/**
 	 * This function will Update the meta-data repository of this server.
 	 * 
 	 */
-	public void update(MetaData metadata);
+	public void update(List<MetaData> metadatas);
 
 	/**
 	 * Get KVServer current status for Client connection.
 	 */
 	public boolean isActiveForClients();
+	
+	
+	/**
+	 * Check whether KVServer has been locked by Admin or not.
+	 */
+	public boolean isLockWrite();
+	
 	
 }

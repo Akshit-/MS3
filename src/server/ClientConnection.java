@@ -4,16 +4,17 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
+import java.math.BigInteger;
 import java.net.Socket;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonObjectBuilder;
 
-import javax.json.*;
-import javax.json.stream.JsonParser;
-import javax.json.stream.JsonParserFactory;
+import org.apache.log4j.Logger;
 
-import metadata.MetaData;
-
-import org.apache.log4j.*;
-
+import app_kvServer.KVServer;
 import common.messages.JSONSerializer;
 import common.messages.KVAdminMessage;
 import common.messages.KVAdminMessage.Commands;
@@ -67,16 +68,13 @@ public class ClientConnection implements Runnable {
 			output = clientSocket.getOutputStream();
 			input = clientSocket.getInputStream();
 
-			//			sendMessage(new TextMessage(
-			//					"Connection to MSRG KV server established: "
-			//							+ clientSocket.getLocalAddress() + " / "
-			//							+ clientSocket.getLocalPort()));
 
 			while (isOpen) {
 				try {
 					TextMessage latestMsg = receiveMessage();
-
+					logger.info("ClientConnection:: run()-->latestMsg ="+latestMsg);
 					if (latestMsg == null) {
+						logger.error("ClientConnection:: run()-->latestMsg == null");
 						break;
 					}
 
@@ -86,48 +84,64 @@ public class ClientConnection implements Runnable {
 						jsonObject = Json.createReader(new StringReader(latestMsg.getMsg()))
 								.readObject();
 					} catch (Exception e) {
-						logger.info("handlemsg+" + latestMsg + ">");
+						logger.error("ClientConnection:: Exception while converting txtMsg to jsonObject");
 					}
 
 					if (jsonObject == null) {
 						//return null;
+						logger.error("ClientConnection:: run()-->jsonObject == null");
 						break;
 					}
 
-
-					if(jsonObject.get("adminMsg")!=null){
-						//handleKVAdminMsg
-
-						KVAdminMessage kvAdminMessage = getKVAdminMessage(latestMsg);
-
-						logger.info("AdminMessage Received");
-
-						//marshal the response and send back
-
-					}else if(mECServerListener.isActiveForClients()){
-						//handleKVMsg
-
-						System.out.println("HERE2=");
+					if (jsonObject.get("adminMsg")!=null) {						
+						logger.info("ClientConnection:: AdminMessage Received");
+						KVAdminMessage msg = getKVAdminMessage(latestMsg);
+						if(msg!=null){
+							logger.info("ClientConnection:: Sending Message to Admin with command:"+msg.getCommand().toString());
+							try{
+								TextMessage message = JSONSerializer.marshalKVAdminMsg(msg.getCommand());
+								logger.info("ClientConnection:: Sending from KVServer:"+message.getMsg().toString());
+								sendMessage(message);
+							}catch(Exception e){
+								logger.info("ClientConnection:: Could not send from KVServer:"+e);
+							}
+						}else{
+							break;
+						}
+					}else if(mECServerListener.isActiveForClients()) {
+						logger.info("ClientConnection:: KVClient message Received.");	
 						KVMessage msg = getKVMessage(latestMsg);	
 						if (msg != null) {
-							System.out.println("HERE3="+msg.getKey());
-							JsonObjectBuilder objectBuilder = Json
-									.createObjectBuilder();
-							JsonObject object = objectBuilder
-									.add("key", msg.getKey())
-									.add("value", msg.getValue())
-									.add("status", msg.getStatus().ordinal())
-									.build();
-							sendMessage(new TextMessage(object.toString()));
+							if (msg.getStatus().equals(StatusType.SERVER_NOT_RESPONSIBLE)){
+								logger.info("ClientConnection:: Sending SERVER_NOT_RESPONSIBLE back to KVClient");
+								
+								JSONSerializer.marshal(msg);
+								sendMessage(new TextMessage(JSONSerializer
+										.marshal(msg).toString()));
+							}else{
+								JsonObjectBuilder objectBuilder = Json
+										.createObjectBuilder();
+								JsonObject object = objectBuilder
+										.add("key", msg.getKey())
+										.add("value", msg.getValue())
+										.add("status", msg.getStatus().ordinal())
+										.build();
+								sendMessage(new TextMessage(object.toString()));
+							}
 						} else {
-
+							logger.error("msg = null");
 							break;
-
 						}
 
+
 					}else{
-						//TODO send server_stopped message to KVClient
-						
+						// TODO Chryssa send server_stopped message to KVClient
+						KVMessageImpl kvmessage = JSONSerializer
+								.unMarshal(latestMsg);
+						sendMessage(JSONSerializer
+								.marshal(kvmessage.getKey(),
+										kvmessage.getValue(),
+										StatusType.SERVER_STOPPED));
 					}
 
 					/*
@@ -144,7 +158,7 @@ public class ClientConnection implements Runnable {
 			logger.error("Error! Connection could not be established!", ioe);
 
 		} finally {
-
+			logger.debug("run()-->finally: Closing socket and streams");
 			try {
 				if (clientSocket != null) {
 					input.close();
@@ -155,6 +169,7 @@ public class ClientConnection implements Runnable {
 				logger.error("Error! Unable to tear down connection!", ioe);
 			}
 		}
+
 	}
 
 	/**
@@ -169,8 +184,8 @@ public class ClientConnection implements Runnable {
 		byte[] msgBytes = msg.getMsgBytes();
 		output.write(msgBytes, 0, msgBytes.length);
 		output.flush();
-		logger.info("SEND \t<" + clientSocket.getInetAddress().getHostAddress()
-				+ ":" + clientSocket.getPort() + ">: '" + msg.getMsg() + "'");
+		logger.info("ClientConnection:: SEND \t<" + clientSocket.getInetAddress().getHostAddress()
+				+ ":" + clientSocket.getLocalPort() + ">: '" + msg.getMsg() + "'");
 	}
 
 	private TextMessage receiveMessage() throws IOException {
@@ -178,14 +193,14 @@ public class ClientConnection implements Runnable {
 		int index = 0;
 		byte[] msgBytes = null, tmp = null;
 		byte[] bufferBytes = new byte[BUFFER_SIZE];
-
-		/* read first char from stream */
-		System.out.println("BEFORE");
+		
 		byte read = (byte) input.read();
-		System.out.println("After");
+		
+		logger.info("ClientConnection:: starting to RECEIVE ("+clientSocket.getLocalPort()+")");
 		boolean reading = true;
 
 		while (read != 13 && reading) {/* carriage return */
+			//			logger.info("while-->begin");
 			/* if buffer filled, copy to msg array */
 			if (index == BUFFER_SIZE) {
 				if (msgBytes == null) {
@@ -209,11 +224,13 @@ public class ClientConnection implements Runnable {
 
 			/* stop reading is DROP_SIZE is reached */
 			if (msgBytes != null && msgBytes.length + index >= DROP_SIZE) {
+				logger.info("while-->DROP SIZE REACHED");
 				reading = false;
 			}
 
 			/* read next char from stream */
 			read = (byte) input.read();
+			//			logger.info("while-->end");
 		}
 
 		if (msgBytes == null) {
@@ -229,18 +246,32 @@ public class ClientConnection implements Runnable {
 
 		/* build final String */
 		TextMessage msg = new TextMessage(msgBytes);
-		logger.info("RECEIVE \t<"
+		logger.info("ClientConnection:: RECEIVE \t<"
 				+ clientSocket.getInetAddress().getHostAddress() + ":"
-				+ clientSocket.getPort() + ">: '" + msg.getMsg().trim() + "'"
+				+ clientSocket.getLocalPort() + ">: '" + msg.getMsg().trim() + "'"
 				+ "=" + msgBytes + ",");
 		return msg;
 	}
 
-	public KVMessage getKVMessage(TextMessage replyMsg) {
+	/**
+	 * Processes the client requests and returns the corresponding server's reply
+	 * @param request the client request
+	 * @return server's reply accordingly to client's request
+	 */
+	public KVMessageImpl getKVMessage(TextMessage request) {
 
-		KVMessage kvmessage = JSONSerializer.unMarshal(replyMsg);
+		KVMessageImpl kvmessage = JSONSerializer.unMarshal(request);
+		// TODO Chryssa
 
-		if (kvmessage.getStatus().equals(StatusType.GET)) {
+		logger.info("ClientConnection::getKVMessage()");
+
+		if (serverNotResponsible(kvmessage))
+			return new KVMessageImpl(kvmessage.getKey(),
+					kvmessage.getValue(),
+					StatusType.SERVER_NOT_RESPONSIBLE, KVServer.getServiceMetaData());
+
+
+		if(kvmessage.getStatus().equals(StatusType.GET)){
 
 			String value = mKVServerListener.get(kvmessage.getKey());
 
@@ -248,22 +279,25 @@ public class ClientConnection implements Runnable {
 				// GET_SUCCESS
 				kvmessage = new KVMessageImpl(kvmessage.getKey(), value,
 						StatusType.GET_SUCCESS);
-				logger.info("GET SUCCESS! Found key="+kvmessage.getKey()+" on Server with value="+kvmessage.getValue());
+				logger.info("GET SUCCESS! Found key=" + kvmessage.getKey()
+						+ " on Server with value=" + kvmessage.getValue());
 
 			} else {
 				// GET_ERROR
 				kvmessage = new KVMessageImpl(kvmessage.getKey(), "",
 						StatusType.GET_ERROR);
-				logger.info("GET ERROR! Cannot find key="+kvmessage.getKey()+" on Server");
+				logger.info("GET ERROR! Cannot find key=" + kvmessage.getKey()
+						+ " on Server");
 			}
 
 		}
-
-		if (kvmessage.getStatus().equals(StatusType.PUT)) {
+		//We first check whether this KVServer has been locked for writing by Admin (ECSServer).
+		if (!mECServerListener.isLockWrite() && kvmessage.getStatus().equals(StatusType.PUT)) {
 
 			if (kvmessage.getValue().isEmpty()) {
 
-				String previous_value = mKVServerListener.delete(kvmessage.getKey());
+				String previous_value = mKVServerListener.delete(kvmessage
+						.getKey());
 				if (previous_value != null) {
 					kvmessage = new KVMessageImpl(kvmessage.getKey(),
 							previous_value, StatusType.DELETE_SUCCESS);
@@ -274,22 +308,25 @@ public class ClientConnection implements Runnable {
 
 			} else {
 
-				String previous_value = mKVServerListener.put(kvmessage.getKey(),
-						kvmessage.getValue());
+				String previous_value = mKVServerListener.put(
+						kvmessage.getKey(), kvmessage.getValue());
 
 				logger.info("PUT Success");
 
 				if (previous_value != null) {
 					// PUT_UPDATE
 					// updated previous one
-					logger.info("PUT SUCCESS! Updated key="+kvmessage.getKey()+" with new value="+kvmessage.getValue());
+					logger.info("PUT SUCCESS! Updated key="
+							+ kvmessage.getKey() + " with new value="
+							+ kvmessage.getValue());
 					kvmessage = new KVMessageImpl(kvmessage.getKey(),
 							kvmessage.getValue(), StatusType.PUT_UPDATE);
 
 				} else {
 					// PUT_SUCCESS
 					// inserted new one
-					logger.info("PUT SUCCESS! Inserted new key="+kvmessage.getKey());
+					logger.info("PUT SUCCESS! Inserted new key="
+							+ kvmessage.getKey());
 					kvmessage = new KVMessageImpl(kvmessage.getKey(),
 							kvmessage.getValue(), StatusType.PUT_SUCCESS);
 
@@ -300,34 +337,118 @@ public class ClientConnection implements Runnable {
 		}
 		return kvmessage;
 
-
 	}
 
+
+	/**
+	 * check whether the pair belongs to server's subset 
+	 * if it doesn't belong return true
+	 * else return false
+	 * 
+	 * @param kvmessage
+	 * @return true if the server is not in charge of the particular request
+	 */
+	private boolean serverNotResponsible(KVMessage kvmessage) {
+
+		//Corrected Logic
+
+		BigInteger key = new BigInteger(getMD5(kvmessage.getKey()),16);
+
+		BigInteger startServer = new BigInteger(KVServer.getNodeMetaData().getRangeStart(),16);
+		BigInteger endServer = new BigInteger(KVServer.getNodeMetaData().getRangeEnd(),16);
+
+
+		BigInteger maximum = new BigInteger("ffffffffffffffffffffffffffffffff",16);
+
+		BigInteger minimum = new BigInteger("00000000000000000000000000000000",16);
+
+		logger.info("ClientConnection::serverNotResponsible() + key="+key
+				+", Server's start="+startServer
+				+", Server's end="+endServer
+				+", Maximum ="+maximum
+				+", Minimum ="+minimum);
+
+		if(startServer.compareTo(endServer)<0){
+			if (key.compareTo(startServer) > 0 && 
+					key.compareTo(endServer) <= 0){
+
+				logger.info("ClientConnection::serverNotResponsible(start<end) + return false");
+				return false;
+			}
+		}else{
+			//startServer > endServer
+			//TODO keycheck1 = startServer to Maximum && keycheck2 = 0 to end 
+
+			if((key.compareTo(startServer) > 0 && key.compareTo(maximum) <= 0 )
+					|| (key.compareTo(minimum) >= 0 && key.compareTo(endServer) <= 0 )){
+
+				logger.info("ClientConnection::serverNotResponsible(start > end) + return false");
+				return false;
+			}
+
+		}
+		logger.info("ClientConnection::serverNotResponsible() + return true");
+		return true;
+	}
+
+
+	private String getMD5(String msg){
+		MessageDigest messageDigest = null;
+		try {
+			messageDigest = MessageDigest.getInstance("MD5");
+		} catch(NoSuchAlgorithmException ex){
+			// TODO : Add logs
+			return null;
+		}
+
+		messageDigest.reset();
+		messageDigest.update(msg.getBytes());
+		byte[] hashValue = messageDigest.digest();
+		BigInteger bigInt = new BigInteger(1,hashValue);
+		String hashHex = bigInt.toString(16);
+		// Now we need to zero pad it if you actually want the full 32 chars.
+		while(hashHex.length() < 32 ){
+			hashHex = "0"+hashHex;
+		}
+		return hashHex;
+	}
 	private KVAdminMessageImpl getKVAdminMessage(TextMessage replyMsg) {
-		// TODO Auto-generated method stub
+		logger.info("getKVAdminMessage");
 
-		logger.info("getKVAdminMessage()");
+		KVAdminMessageImpl kvAdminMessage = JSONSerializer
+				.unmarshalKVAdminMsg(replyMsg);
 
-		KVAdminMessageImpl kvAdminMessage = JSONSerializer.unmarshalKVAdminMsg(replyMsg);
-
-		logger.info("Command="+kvAdminMessage.getCommand().ordinal());
+		logger.info("Command=" + kvAdminMessage.getCommand().ordinal());
 		if(kvAdminMessage.getCommand().equals(Commands.INIT)){
-			//TODO get list of MetaData and store them
-			logger.info("INIT Command=");			
+			logger.info("INIT Command for("+clientSocket.getLocalPort()+")");			
 			mECServerListener.initKVServer(kvAdminMessage.getMetaDatas());
 
-		}
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.INIT_SUCCESS);
 
-		if(kvAdminMessage.getCommand().equals(Commands.START)){
-			mECServerListener.start();
-		}
+		}else if(kvAdminMessage.getCommand().equals(Commands.UPDATE)){
+			logger.info("UPDATE Command for("+clientSocket.getLocalPort()+")");			
+			mECServerListener.initKVServer(kvAdminMessage.getMetaDatas());
 
-		if(kvAdminMessage.getCommand().equals(Commands.STOP)){
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.UPDATE_SUCCESS);
+
+		}else if(kvAdminMessage.getCommand().equals(Commands.START)){
+			logger.info("START Command for("+clientSocket.getLocalPort()+")");
+			mECServerListener.startKVServer();
+
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.START_SUCCESS);
+
+		}else if(kvAdminMessage.getCommand().equals(Commands.STOP)){
+			logger.info("STOP Command for("+clientSocket.getLocalPort()+")");
 			mECServerListener.stopKVServer();
-		}
 
-		if(kvAdminMessage.getCommand().equals(Commands.SHUTDOWN)){
-			
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.STOP_SUCCESS);
+
+		}else if(kvAdminMessage.getCommand().equals(Commands.SHUTDOWN)){
+			logger.info("SHUTDOWN Command for("+clientSocket.getLocalPort()+")");
 			if (clientSocket != null) {
 				try {
 					input.close();
@@ -340,24 +461,48 @@ public class ClientConnection implements Runnable {
 
 			}
 			System.exit(1);
-		}
+		}else if(kvAdminMessage.getCommand().equals(Commands.LOCK_WRITE)){
+			logger.info("LOCK_WRITE Command for("+clientSocket.getLocalPort()+")");
+			mECServerListener.lockWrite();
 
-		if(kvAdminMessage.getCommand().equals(Commands.LOCK_WRITE)){
-			//lockWrite()
-		}
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.LOCK_WRITE_SUCCESS);
 
-		if(kvAdminMessage.getCommand().equals(Commands.UNLOCK_WRITE)){
-			//unLockWrite()
-		}
+		}else if(kvAdminMessage.getCommand().equals(Commands.UNLOCK_WRITE)){
+			logger.info("UNLOCK_WRITE Command for("+clientSocket.getLocalPort()+")");
+			try{
+				mECServerListener.unlockWrite();
+			}catch(Exception e){
+				logger.info("Exception in UNLOCK_WRITE Command");
+			}
+			logger.info("UNLOCK_WRITE Command2");
 
-		if(kvAdminMessage.getCommand().equals(Commands.MOVE_DATA)){
-			//moveData()
-		}
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.UNLOCK_WRITE_SUCCESS);
 
-		if(kvAdminMessage.getCommand().equals(Commands.UPDATE)){
-			//update()
-		}
+		}else if(kvAdminMessage.getCommand().equals(Commands.MOVE_DATA)){
 
+			logger.info("MOVE_DATA Command for("+clientSocket.getLocalPort()+")");
+
+			String range = kvAdminMessage.getRange();
+			String server = kvAdminMessage.getDestinationAddress();
+
+
+			if(mECServerListener.moveData(range,server)){
+				//MOVE_DATA_SUCCESS
+				kvAdminMessage = new KVAdminMessageImpl();
+				kvAdminMessage.setCommand(Commands.MOVE_DATA_SUCCESS);
+
+			}else{
+				//MOVE_DATA_FAIL
+				kvAdminMessage = new KVAdminMessageImpl();
+				kvAdminMessage.setCommand(Commands.MOVE_DATA_FAIL);
+			}			
+
+		}else{
+			kvAdminMessage = new KVAdminMessageImpl();
+			kvAdminMessage.setCommand(Commands.UNKNOWN);
+		}
 
 		return kvAdminMessage;
 

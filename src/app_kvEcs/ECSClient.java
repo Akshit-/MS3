@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.UnknownHostException;
+import java.nio.channels.ShutdownChannelGroupException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,95 +27,51 @@ import ecs.ECServer;
 import ecs.ServerNodeData;
 
 public class ECSClient {
-
-	/*public static void main(String[] args){
-		File defaultConfig = new File("ecs.config");
-		File cmdLineConfig = null;
-		if(args!=null){
-			cmdLineConfig = new File(args[0]);
-		} else {
-			cmdLineConfig = defaultConfig;
-		}
-		BufferedReader reader = null;
-		try {
-			reader = new BufferedReader(new FileReader(cmdLineConfig));
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		String line = null;
-		String[] tokens = null;
-		List<ServerNodeData> nodeConfigDataList = new ArrayList<ServerNodeData>();
-		try {
-			while ((line = reader.readLine()) != null) {
-				tokens=line.split(" ");
-				if(tokens.length ==3){
-					ServerNodeData tempNodeConfigData = new ServerNodeData(tokens[0],tokens[1],tokens[2]);
-					nodeConfigDataList.add(tempNodeConfigData);
-				} else {
-					// TODO Log this error
-					System.out.println("Invalid ECS Config file : "+cmdLineConfig.getPath());
-				}
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String script = "";
-		for(ServerNodeData nodeConfigData : nodeConfigDataList) {
-			script+="ssh -n "+nodeConfigData.getIpAddress()+" nohup java -jar ms3-server.jar "+nodeConfigData.getPort()+" ERROR &\n";
-		}
-		Process proc;
-		Runtime run = Runtime.getRuntime();
-		try {
-		   proc = run.exec(script);
-		} catch (IOException e) {
-		   e.printStackTrace();
-		}
-
-
-	}*/
-
+	
+	private int mNodeCount=0;
+	private boolean mStorageServiceRunning = false;
+	private boolean mStorageServiceInitiated = false;
+	
 	private static Logger logger = Logger.getRootLogger();
 	private static final String PROMPT = "ECSClient> ";
 	private BufferedReader stdin;
 	private boolean stop=false;
 	private ECServer mECSServer;
 	public ECSClient(String string) {
-
+		
 		mECSServer = new ECServer(string);
 		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {
-		try {
-			new LogSetup("logs/ecs/ecsclient.log", Level.OFF);
+    	try {
+			new LogSetup("logs/ecs/ecsclient.log", Level.ALL);
 			if(args!=null&&args.length==1){
 				ECSClient app = new ECSClient(args[0]);
 				app.run();
 			} else {
-				System.out.println("Error! Invalid arguments argument size must be 1");
+				System.out.println("Error! Invalid number of parameters. Parameter count should be 1.");
 				System.exit(1);
 			}
-
+			
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");
 			e.printStackTrace();
 			System.exit(1);
 		}
+		
 
-
-
-
-
-
+		
+	
+		
+		
 	}
-
+	
 	public void run() {
 		while(!stop) {
 			stdin = new BufferedReader(new InputStreamReader(System.in));
 			System.out.print(PROMPT);
-
+			
 			try {
 				String cmdLine = stdin.readLine();
 				this.handleCommand(cmdLine);
@@ -124,126 +81,143 @@ public class ECSClient {
 			}
 		}
 	}
-
+	
 	private void handleCommand(String cmdLine) {
 		if(cmdLine != null) {
 			String[] tokens = cmdLine.split("\\s+");
-
+	
 			if(tokens[0].equals("quit")) {	
+				mECSServer.shutDown();
+				mStorageServiceInitiated = false;
+				mStorageServiceRunning = false;
 				stop = true;
-				//disconnect();
+				
+				//TODO: Shutdown KVServers and then exit application
 				System.out.println(PROMPT + "Application exit!");
-
-			}else if(tokens.length==2 && tokens[0].equals("initKVServer")) {	
-
-				System.out.println(PROMPT + "init");
-
-				mECSServer.initService(Integer.parseInt(tokens[1]));
-
-			}
-
-
-
-		}/*else if (tokens[0].equals("connect")){
-				if(tokens.length == 3) {
+			
+			} else if (tokens[0].equals("initService")){
+				if(tokens.length == 2) {
 					try{
-						serverAddress = tokens[1];
-						serverPort = Integer.parseInt(tokens[2]);
-						connect(serverAddress, serverPort);
+					
+						mNodeCount = Integer.parseInt(tokens[1]);
+						if(mECSServer.getMaxAvailableNodeCount() > mNodeCount) {
+							boolean result = mECSServer.initService(mNodeCount);
+							if(result) {
+								printNewMessage("Storage service is initiated.");
+								mStorageServiceInitiated=true;
+							} else {
+								printError("Unable to initialize storage service due to internal error.");
+							}
+							
+						} else {
+							printError("Unable to initialize storage service since given number of nodes : "+mNodeCount+" is more than total available nodes : "+ mECSServer.getMaxAvailableNodeCount());
+						}
 					} catch(NumberFormatException nfe) {
-						printError("No valid address. Port must be a number!");
+						printError("Invalid argument! Number of nodes should be between 1 to 8.");
 						logger.info("Unable to parse argument <port>", nfe);
-					} catch (UnknownHostException e) {
-						printError("Unknown Host!");
-						logger.info("Unknown Host!", e);
-					} catch (IOException e) {
-						printError("Could not establish connection!");
-						logger.warn("Could not establish connection!", e);
-					}
+					} 
 				} else {
 					printError("Invalid number of parameters!");
 				}
-
-			} else  if (tokens[0].equals("send")) {
-				if(tokens.length >= 2) {
-					if(mKVStore != null && mKVStore.isRunning()){
-						StringBuilder msg = new StringBuilder();
-						for(int i = 1; i < tokens.length; i++) {
-							msg.append(tokens[i]);
-							if (i != tokens.length -1 ) {
-								msg.append(" ");
-							}
-						}	
-						sendMessage(msg.toString());
+				
+			} else  if (tokens[0].equals("start")) {
+				if(tokens.length == 1) {
+					if(mStorageServiceInitiated) { 
+						boolean result = mECSServer.start();
+						if(result) {
+							printNewMessage("Storage service is started. Clients can access KVServers now.");
+							mStorageServiceRunning=true;
+						} else {
+							printError("Unable to start storage service due to internal error.");
+						}
+						
 					} else {
-						printError("Not connected!");
+						printError("Illegal Operation! First initialize storage service by \"initService\" command");
 					}
+						
+					
 				} else {
-					printError("No message passed!");
+					printError("Invalid number of parameters!");
 				}
-
-			} else if(tokens[0].equals("put")){
-
-				if(tokens.length==3 && !tokens[1].isEmpty() && tokens[1].length()<=20){
-
-						if(!tokens[2].equalsIgnoreCase("null")) {
-							try {		
-								KVMessage kvMsg=mKVStore.put(tokens[1], tokens[2]);
-								if(kvMsg.getStatus()==StatusType.PUT_SUCCESS){
-									handleNewMessage("PUT_SUCCESS : Added Key-value pair added on KVServer");
-								} else if (kvMsg.getStatus()==StatusType.PUT_UPDATE){
-									handleNewMessage("PUT_UPDATE : Updated key-value pair on KVServer");
-								} else if(kvMsg.getStatus()==StatusType.PUT_ERROR){
-									handleNewMessage("PUT_ERROR : Unable to add Key-value pair on KVServer");
-								}
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								printError("Unable to add Key-value pair on KVServer");
-								e.printStackTrace();
+				
+			} else  if (tokens[0].equals("stop")) {
+				if(tokens.length == 1) {
+					if(mStorageServiceRunning) {
+						boolean result = mECSServer.stop();
+						if(result) {
+							printNewMessage("Storage service is stopped!");
+							mStorageServiceRunning = false;
+						} else {
+							printError("Unable to stop storage service due to internal error.");
+						}
+						
+					} else {
+						printError("Illegal Operation! First start storage service by \"start\" command");
+					}
+					
+				} else {
+					printError("Invalid number of parameters!");
+				}
+				
+			} else  if (tokens[0].equals("shutdown")) {
+				if(tokens.length == 1) {
+					if(mStorageServiceInitiated) {
+						boolean result = mECSServer.shutDown();
+						if(result) {
+							printNewMessage("Storage service is shutdown!");
+							mStorageServiceRunning = false;
+							mStorageServiceInitiated = false;
+						} else {
+							printError("Unable to shutdown storage service due to internal error.");
+						}
+						
+					} else {
+						printError("Illegal Operation! No storage servers are running. First initialize the storage service by \"initService\" command.");	
+					}
+					
+				} else {
+					printError("Invalid number of parameters!");
+				}
+				
+			} else  if (tokens[0].equals("addNode")) {
+				if(tokens.length == 1) {
+					if(mStorageServiceRunning) {
+						if(mECSServer.getActivatedNodeCount() < mECSServer.getMaxAvailableNodeCount()) {
+							boolean result = mECSServer.addNode();
+							if(result) {
+								printNewMessage("Added node successfully!");
+							} else {
+								printError("Unable to add new node due to internal error.");
 							}
 						} else {
-							try {
-								KVMessage kvMsg=mKVStore.put(tokens[1], "");
-								if(kvMsg.getStatus()==StatusType.DELETE_SUCCESS){
-									handleNewMessage("DELETE_SUCCESS : Key deleted from server.");
-								} else if (kvMsg.getStatus()==StatusType.DELETE_ERROR){
-									handleNewMessage("DELETE_ERROR : Key not found on server.");
-								}
-							} catch (Exception e) {
-								// TODO Auto-generated catch block
-								printError("Unable to delete key-value pair on KVServer");
-								e.printStackTrace();
-							}
-						} 
-
-				} else if (tokens.length==3 && !tokens[1].isEmpty() && tokens[1].length()>20){
-					printError("The key size must not exceed 20 characters.");
-				} else {
-					printError("Invalid number of parameters!");
-				}
-			} else if(tokens[0].equals("get")){
-
-				if(tokens.length==2 && !tokens[1].isEmpty() && tokens[1].length()<=20){
-					try {
-						KVMessage kvMsg=mKVStore.get(tokens[1]);
-						if(kvMsg.getStatus()==StatusType.GET_SUCCESS){
-							handleNewMessage("GET_SUCCESS : value = "+kvMsg.getValue());
-						} else if(kvMsg.getStatus()==StatusType.GET_ERROR) {
-							handleNewMessage("GET_ERROR : Key not found on KV server.");
+							printError("Cannot add more nodes; Maximum node count  reached.");
 						}
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						printError("Unable to get value for the given key from KVServer");
-						e.printStackTrace();
+							
+					} else {
+						printError("Illegal operation!  No storage servers are running. First initialize the storage service by \"initService\" command.");
 					}
-				} else if (tokens.length==2 && !tokens[1].isEmpty() && tokens[1].length() > 20){
-					printError("The key size must not exceed 20 characters.");
+					
 				} else {
 					printError("Invalid number of parameters!");
 				}
-			} else if(tokens[0].equals("disconnect")) {
-				disconnect();
+				
+			} else  if (tokens[0].equals("removeNode")) {
+				if(tokens.length == 1) { 
+					if(mECSServer.getActivatedNodeCount() > 0) {
+						boolean result = mECSServer.removeNode();
+						if(result) {
+							printNewMessage("Removed node successfully!");
+						} else {
+							printError("Unable to remove a node due to internal error.");
+						}
+					} else {
+						printError("Cannot remove node; No node is running.");
+					}
 
+				} else {
+					printError("Invalid number of parameters!");
+				}
+				
 			} else if(tokens[0].equals("logLevel")) {
 				if(tokens.length == 2) {
 					String level = setLevel(tokens[1]);
@@ -257,17 +231,17 @@ public class ECSClient {
 				} else {
 					printError("Invalid number of parameters!");
 				}
-
+				
 			} else if(tokens[0].equals("help")) {
 				printHelp();
 			} else {
 				printError("Unknown command");
 				printHelp();
 			}
-		}*/
+		}
 	}
-
-	/*	private void sendMessage(String msg){
+	
+/*	private void sendMessage(String msg){
 		try {
 			mKVStore.sendMessage(new TextMessage(msg));
 		} catch (IOException e) {
@@ -277,11 +251,11 @@ public class ECSClient {
 	}*/
 
 
-
-
+	
+	
 	private void printHelp() {
 		//TODO 2: Define new help for ECSClient
-
+		
 		StringBuilder sb = new StringBuilder();
 		sb.append(PROMPT).append("ECS CLIENT HELP (Usage):\n");
 		sb.append(PROMPT);
@@ -293,17 +267,17 @@ public class ECSClient {
 		sb.append("\t\t sends a text message to the server \n");
 		sb.append(PROMPT).append("disconnect");
 		sb.append("\t\t\t disconnects from the server \n");
-
+		
 		sb.append(PROMPT).append("logLevel");
 		sb.append("\t\t\t changes the logLevel \n");
 		sb.append(PROMPT).append("\t\t\t\t ");
 		sb.append("ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF \n");
-
+		
 		sb.append(PROMPT).append("quit ");
 		sb.append("\t\t\t exits the program");
 		System.out.println(sb.toString());
 	}
-
+	
 	private void printPossibleLogLevels() {
 		System.out.println(PROMPT 
 				+ "Possible log levels are:");
@@ -312,7 +286,7 @@ public class ECSClient {
 	}
 
 	private String setLevel(String levelString) {
-
+		
 		if(levelString.equals(Level.ALL.toString())) {
 			logger.setLevel(Level.ALL);
 			return Level.ALL.toString();
@@ -338,38 +312,17 @@ public class ECSClient {
 			return LogSetup.UNKNOWN_LEVEL;
 		}
 	}
-
-	/*@Override
-	public void handleNewMessage(TextMessage msg) {
-		if(!stop) {
-		    System.out.print(PROMPT);
-			System.out.println(msg.getMsg());
-		}
-	}*/
-
-	/*public void handleNewMessage(String msg) {
+	
+	
+	
+	public void printNewMessage(String msg) {
 		if(!stop) {
 		    System.out.print(PROMPT);
 			System.out.println(msg);
 		}
-	}*/
+	}
+	
 
-	/*	@Override
-	public void handleStatus(SocketStatus status) {
-		if(status == SocketStatus.CONNECTED) {
-
-		} else if (status == SocketStatus.DISCONNECTED) {
-			System.out.print(PROMPT);
-			System.out.println("Connection terminated: " 
-					+ serverAddress + " / " + serverPort);
-
-		} else if (status == SocketStatus.CONNECTION_LOST) {
-		    System.out.print(PROMPT);
-		    System.out.println("Connection lost: " 
-					+ serverAddress + " / " + serverPort);
-		}
-
-	}*/
 
 	private void printError(String error){
 		System.out.println(PROMPT + "Error! " +  error);

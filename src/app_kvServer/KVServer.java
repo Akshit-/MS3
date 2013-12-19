@@ -1,11 +1,17 @@
 package app_kvServer;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.BindException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import logger.LogSetup;
 import metadata.MetaData;
@@ -13,6 +19,10 @@ import metadata.MetaData;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+import common.messages.JSONSerializer;
+import common.messages.KVMessage;
+import common.messages.TextMessage;
+import common.messages.KVMessage.StatusType;
 import server.ECServerListener;
 import server.ClientConnection;
 import server.KVServerListener;
@@ -29,12 +39,16 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 	private boolean isActiveForClients;
 
+	private boolean isLockWrite;
+
 	private Storage storage;
 
-	private List<MetaData> mMetaDatas;
+	private static List<MetaData> mMetaDatas;
 
-	private MetaData mMetaData;
-
+	private static MetaData mMetaData;
+	
+	private static final int BUFFER_SIZE = 1024;
+	private static final int DROP_SIZE = 128 * BUFFER_SIZE;
 
 
 	/**
@@ -67,12 +81,11 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 					connection.addKVServerListener(this);
 					connection.addECServerListener(this);
-
 					new Thread(connection).start();
 
-					logger.info("Connected to " 
+					logger.info("KVServer:"+serverSocket.getInetAddress().getHostAddress()+":"+serverSocket.getLocalPort()+"Connected to " 
 							+ client.getInetAddress().getHostName() 
-							+  " on port " + client.getPort());
+							+  " on port " + client.getLocalPort());
 				} catch (IOException e) {
 					logger.error("Error! " +
 							"Unable to establish connection. \n", e);
@@ -92,7 +105,15 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	public boolean isActiveForClients() {
 		return this.isActiveForClients;
 	}
-	
+
+	/**
+	 * Check whether KVServer has been locked by Admin or not.
+	 */
+	public boolean isLockWrite() {
+		return this.isLockWrite;
+	}
+
+
 	/**
 	 * Stops the server insofar that it won't listen at the given port any more.
 	 */
@@ -127,17 +148,49 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 	/**
 	 * 
+	 * @return
+	 */
+	public static synchronized List<MetaData> getServiceMetaData() {
+		return mMetaDatas;
+	}
+
+	/**
+	 * 
+	 * @param mMetaDatas
+	 */
+	public static synchronized void setServiceMetaData(List<MetaData> mMetaDatas_) {
+		mMetaDatas = mMetaDatas_;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public static synchronized MetaData getNodeMetaData() {
+		return mMetaData;
+	}
+
+	/**
+	 * 
+	 * @param mMetaData
+	 */
+	public static synchronized  void setNodeMetaData(MetaData mMetaData_) {
+		mMetaData = mMetaData_;
+	}
+
+	/**
+	 * 
 	 * @param metadata
 	 * This function Initialize the KVServer with the meta-data and block it for client requests
 	 */
 	public void initKVServer(List<MetaData> metaDatas){
 
-		mMetaDatas = new ArrayList<MetaData>(metaDatas);
+		setServiceMetaData(new ArrayList<MetaData>(metaDatas)); //store service metadata
 
 		logger.info("initKVServer()");
 		for(MetaData meta : mMetaDatas){
 			if(meta.getPort().equals(Integer.toString(port))){
-				mMetaData = meta;
+				setNodeMetaData(meta);// store node metadata
 			}
 		}
 		logger.info("Storing MetaData corresponding to this Server: "
@@ -177,25 +230,184 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void lockWrite(){
-		//TODO
-
+		this.isLockWrite = true;
 	}
 
 	/**
-	 * This function will Lock the KVServer for write operations.
+	 * This function will unLock the KVServer for write operations.
 	 * 
 	 */
 	public void unlockWrite(){
-		//TODO
-
+		this.isLockWrite = false;
 	}
 
 	/**
-	 * This function will Transfer a subset (range) of the KVServer’s data to another.
-	 * 
+     * This function will move a subset (range) of the KVServer’s data to new Server
+	 * @param server KVServer where data is to be moved.
+	 * @return true if successfully moved else false.
+     * 
+     */
+	public boolean moveData(String range, String server) {
+		
+		String ipPort[] = server.split(":");
+		
+		logger.info("KVServer::moveData() + Starting moveData process to new Server="+ipPort[1]);
+		
+		HashMap<String, String> dataToBeMoved = storage.getDataBetweenRange(range);
+		
+		if(dataToBeMoved.isEmpty()){
+			logger.info("KVServer::moveData() + Nothing to be Moved!");
+			return true;
+		}
+		
+		
+		
+		Socket moveDataServer = null;
+		
+		try {
+			moveDataServer = new Socket(ipPort[0], Integer.parseInt(ipPort[1]));
+			logger.info("KVServer::moveData() + Socket created for KVServer="+ipPort[1]);
+		} catch (IOException e) {
+			logger.error("KVServer::moveData() + Error creating socket for New Server ="+e);
+			return false;
+		}
+		
+		
+		
+		for(Iterator<Entry<String, String>>it=dataToBeMoved.entrySet().iterator();it.hasNext();){
+			
+			Entry<String, String> entry = it.next();
+			
+			TextMessage txtMsg = JSONSerializer.marshal(entry.getKey(), entry.getValue(), 
+					StatusType.PUT);
+			
+			logger.debug("KVServer::moveData() + Sending data to KVserver="+entry.getKey()+","+entry.getValue());
+			
+			try {
+								
+				sendMessageToNewServer(moveDataServer, txtMsg);
+				
+				//Respone has to be PUT_SUCCESS
+				TextMessage responseTxtMsg = receiveMessage(moveDataServer);
+				
+				KVMessage responseKVMsg = JSONSerializer.unMarshal(responseTxtMsg);
+				
+				
+				if(responseKVMsg.getStatus()!=StatusType.PUT_SUCCESS){
+					logger.info("KVServer::moveData() + Couldn't move Data to new Server!");
+					return false;
+					
+				}
+
+				
+			} catch (IOException e) {
+				logger.error("KVServer::moveData() + Error while sending data to new Server : "+e);
+				return false;
+			}
+			
+			
+		}
+		
+		logger.info("KVServer::moveData() + Successfully moved Data to New Server!");
+		
+		return true;
+	}
+	
+	private TextMessage receiveMessage(Socket clientSocket) throws IOException {
+
+		int index = 0;
+		byte[] msgBytes = null, tmp = null;
+		byte[] bufferBytes = new byte[BUFFER_SIZE];
+
+		/* read first char from stream */
+		//		System.out.println("BEFORE");
+		logger.info("receiveMessage() of KVSERVER :"+clientSocket.getLocalPort());
+				
+		InputStream input = clientSocket.getInputStream();
+		
+		byte read = (byte) input.read();
+
+		//		System.out.println("After");
+		boolean reading = true;
+
+		while (read != 13 && reading) {/* carriage return */
+			//			logger.info("while-->begin");
+			/* if buffer filled, copy to msg array */
+			if (index == BUFFER_SIZE) {
+				logger.info("while-->index == BUFFER_SIZE");
+				if (msgBytes == null) {
+					tmp = new byte[BUFFER_SIZE];
+					System.arraycopy(bufferBytes, 0, tmp, 0, BUFFER_SIZE);
+				} else {
+					tmp = new byte[msgBytes.length + BUFFER_SIZE];
+					System.arraycopy(msgBytes, 0, tmp, 0, msgBytes.length);
+					System.arraycopy(bufferBytes, 0, tmp, msgBytes.length,
+							BUFFER_SIZE);
+				}
+
+				msgBytes = tmp;
+				bufferBytes = new byte[BUFFER_SIZE];
+				index = 0;
+			}
+
+			/* only read valid characters, i.e. letters and constants */
+			bufferBytes[index] = read;
+			index++;
+
+			/* stop reading is DROP_SIZE is reached */
+			if (msgBytes != null && msgBytes.length + index >= DROP_SIZE) {
+				logger.info("while-->DROP SIZE REACHED");
+				reading = false;
+			}
+
+			/* read next char from stream */
+			read = (byte) input.read();
+			//			logger.info("while-->end");
+		}
+
+		if (msgBytes == null) {
+			tmp = new byte[index];
+			System.arraycopy(bufferBytes, 0, tmp, 0, index);
+		} else {
+			tmp = new byte[msgBytes.length + index];
+			System.arraycopy(msgBytes, 0, tmp, 0, msgBytes.length);
+			System.arraycopy(bufferBytes, 0, tmp, msgBytes.length, index);
+		}
+
+		msgBytes = tmp;
+
+		/* build final String */
+		TextMessage msg = new TextMessage(msgBytes);
+		logger.info("RECEIVE \t<"
+				+ clientSocket.getInetAddress().getHostAddress() + ":"
+				+ clientSocket.getLocalPort() + ">: '" + msg.getMsg().trim() + "'"
+				+ "=" + msgBytes + ",");
+		return msg;
+	}
+
+	
+	
+	/**
+	 * This function deletes all the tuples that have been moved to new server.
+	 * @param movedData data that was moved to new Server.
+	 * @return true if successful else false
 	 */
-	public void moveData(String range, String server) {
-		// TODO Auto-generated method stub
+	public boolean deleteMovedData(HashMap<String, String> movedData) {
+		
+		return storage.deleteDataBetweenRange(movedData);
+	}
+
+
+
+	private void sendMessageToNewServer(Socket clientSocket, TextMessage msg) throws IOException {
+		
+		byte[] msgBytes = msg.getMsgBytes();
+		OutputStream output = clientSocket.getOutputStream();
+
+		output.write(msgBytes, 0, msgBytes.length);
+		output.flush();
+		logger.info("KVServer::sendMessageToNewServer() + SEND KeyValue pairs to new Server \t<" + clientSocket.getInetAddress().getHostAddress()
+				+ ":" + clientSocket.getLocalPort() + ">: '" + msg.getMsg() + "'");
 
 	}
 
@@ -203,8 +415,8 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * This function will Update the meta-data repository of this server.
 	 * 
 	 */
-	public void update(MetaData metadata) {
-		// TODO Auto-generated method stub
+	public void update(List<MetaData> metadatas) {
+		initKVServer(metadatas);
 
 	}
 
@@ -215,9 +427,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * @return The previous value stored under that, in case of an update, null otherwise
 	 */
 	public String put(String key, String value){
-		
-		
-		
+
 		return storage.put(key, value);
 	}
 
@@ -282,11 +492,11 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 			} else {
 				if(args.length==1) {
 					port = Integer.parseInt(args[0]);
-					new KVServer(port).start();	
+					new KVServer(port).run();	//removing thread
 				} else if(LogSetup.isValidLevel(args[1])) {
 					port = Integer.parseInt(args[0]);
 					setLevel(args[1]); 
-					new KVServer(port).start();
+					new KVServer(port).run(); // removing thread
 				} else {
 					System.out.println("Error! Invalid logLevel");
 					System.out.println("Possible levels <ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF>");
