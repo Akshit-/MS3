@@ -77,11 +77,12 @@ public class KVMessageImpl implements KVMessage {
 			case 5: return StatusType.PUT_UPDATE;
 			case 6: return StatusType.PUT_ERROR;
 			case 7: return StatusType.DELETE_SUCCESS;
-			case 8: return StatusType.PUT_UPDATE;
-			case 9: return StatusType.PUT_ERROR;
-			case 10: return StatusType.DELETE_SUCCESS;
+			case 8: return StatusType.DELETE_ERROR;
+			case 9: return StatusType.SERVER_STOPPED;
+			case 10: return StatusType.SERVER_WRITE_LOCK;
+			case 11: return StatusType.SERVER_NOT_RESPONSIBLE;
 			default:
-				return StatusType.DELETE_ERROR;
+				return StatusType.UNKNOWN;
 		}
 	}
 

@@ -16,7 +16,6 @@ import metadata.MetaData;
 
 import org.apache.log4j.Logger;
 
-import app_kvServer.KVServer;
 import common.messages.JSONSerializer;
 import common.messages.KVMessage;
 import common.messages.KVMessageImpl;
@@ -40,7 +39,9 @@ public class KVStore extends Thread implements KVCommInterface {
 	private OutputStream output;
 	private InputStream input;
 	private List<MetaData> metadata;
-
+	private MetaData currentMetaData;
+	private boolean firstTime;
+	private KVMessage redirected;
 	private static final int BUFFER_SIZE = 1024;
 	private static final int DROP_SIZE = 1024 * BUFFER_SIZE;
 
@@ -56,7 +57,8 @@ public class KVStore extends Thread implements KVCommInterface {
 		mAddress = address;
 		mPort = port;
 		listeners = new HashSet<ClientSocketListener>();
-
+		this.currentMetaData = new MetaData(mAddress, mPort + "", "", "");
+		firstTime = true;
 	}
 
 	/**
@@ -158,17 +160,18 @@ public class KVStore extends Thread implements KVCommInterface {
 	public KVMessage put(String key, String value) throws Exception {
 
 		if (isRunning()) {
+			if (isResponsible(key, value, StatusType.PUT)) {
 			try {
 				if (value!=null && !value.equalsIgnoreCase("null")){
 				    
 				    TextMessage txtMsg = JSONSerializer.marshal(key, value,//error
                             StatusType.PUT);
-				    logger.info("Sending : "+txtMsg.getMsg());
+						logger.info("Sending : " + txtMsg.getMsg());
 					sendMessage(txtMsg);
 				} else {
 					TextMessage txtMsg = JSONSerializer.marshal(key, "",
 							StatusType.PUT);
-					logger.info("Sending : " + txtMsg.getMsg());
+						logger.info("Sending : " + txtMsg.getMsg());
 					sendMessage(txtMsg);
 				}
 				return processReply(receiveMessage(), StatusType.PUT);
@@ -178,9 +181,81 @@ public class KVStore extends Thread implements KVCommInterface {
 				throw new Exception("Unable to put value to KV server");
 			}
 		} else {
+				return this.redirected;
+			}
+		} else {
 		    logger.error("Not connected to KV Server!");
 			throw new Exception("Not connected to KV Server!");
 		}
+	}
+
+	/**
+	 * Function that re-direct a request to the responsible server
+	 * 
+	 * @param key
+	 * @param value
+	 * @param reqStatus
+	 * @return
+	 */
+	private boolean isResponsible(String key, String value, StatusType reqStatus) {
+		if (this.currentMetaData.getRangeStart().equals(""))
+			return true;// first time
+
+		for (MetaData meta : this.metadata) {
+			if (!serverNotResponsible(meta, key)) {
+				if (meta.equals(this.currentMetaData))
+					return true;
+				else {
+					logger.info("Client redirect: connecting to "
+							+ meta.getIP() + ":"
+							+ Integer.parseInt(meta.getPort()));
+					KVStore responsibleServerConn = new KVStore(meta.getIP(),
+							Integer.parseInt(meta.getPort()));
+
+					/*System.out.print("Client redirect: connecting to "
+							+ meta.getIP() + ":"
+							+ Integer.parseInt(meta.getPort()));*/
+					try {
+						responsibleServerConn.connect();
+						logger.info("Client redirect: connecting to "
+								+ meta.getIP() + ":"
+								+ Integer.parseInt(meta.getPort()));
+						if (reqStatus.equals(StatusType.PUT)) {
+							try {
+
+								redirected = responsibleServerConn.put(key,
+										value);
+							} catch (Exception e) {
+								logger.error("Unable to add Key-value pair on KVServer listening on"
+										+ meta.getPort());
+
+								//System.out.println("err " + e);
+							}
+						} else {
+							try {
+								redirected = responsibleServerConn.get(key);
+							} catch (Exception e) {
+								logger.error("Unable to get Key-value pair from KVServer listening on"
+										+ meta.getPort());
+								//System.out.println("err " + e);
+							}
+						}
+
+						/*System.out.println("Disconnected from " + meta.getIP()
+								+ ":" + Integer.parseInt(meta.getPort()));*/
+						responsibleServerConn.disconnect();
+						return false;
+					} catch (Exception e1) {
+						e1.printStackTrace();
+						logger.error("Client unable to connect to "
+								+ meta.getIP() + ":"
+								+ Integer.parseInt(meta.getPort()));
+					}
+
+				}
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -190,72 +265,151 @@ public class KVStore extends Thread implements KVCommInterface {
 	 * @param reply
 	 * @return
 	 */
-	private synchronized KVMessage processReply(TextMessage reply, StatusType reqStatus) {
-		logger.info("Server response: " + reply.getMsg());
+	private synchronized KVMessage processReply(TextMessage reply,
+			StatusType reqStatus) {
 		KVMessageImpl replyMsg = JSONSerializer.unMarshal(reply);
 		String key = replyMsg.getKey();
 		StatusType status = replyMsg.getStatus();
+		logger.info("KVStore:: Server response: " + reply.getMsg()+", status="+status.toString());
 		/**
 		 * In this case, server sends a message
 		 */
 		if (status.equals(StatusType.SERVER_NOT_RESPONSIBLE)) {
 			// store metadata
 			this.metadata = replyMsg.getMetaData();
+			if (firstTime) {
+				//System.out.print("firsttime:" + firstTime);
+				updateCurrentServerRange();
+				firstTime = false;
+			} else {
+				//System.out.print("firsttime:" + firstTime);
+			}
 			for (MetaData meta : this.metadata) {
 
-				if ( tupleBelongsToServer(meta, key)) {
-					this.disconnect(); //disconnect from the server
-					KVStore responsibleServerConn = new KVStore(meta.getIP(), //connect to the server responsible for the requested tuple
+				if (!serverNotResponsible(meta, key)) { // handles
+														// server_not_responsible
+														// message
+					logger.info("Client redirect: connecting to "
+							+ meta.getIP() + ":"
+							+ Integer.parseInt(meta.getPort()));
+					KVStore responsibleServerConn = new KVStore(meta.getIP(),
 							Integer.parseInt(meta.getPort()));
-					if (reqStatus.equals(StatusType.PUT)) {
-						try {
-							return responsibleServerConn.put(replyMsg.getKey(),
-									replyMsg.getValue());
-						} catch (Exception e) {
-							logger.error("Unable to add Key-value pair on KVServer listening on"+meta.getPort());
+					try {
+						responsibleServerConn.connect();
+						logger.info("Client redirect: connecting to "
+								+ meta.getIP() + ":"
+								+ Integer.parseInt(meta.getPort()));
+
+						/*System.out.print("Client redirect: connecting to "
+								+ meta.getIP() + ":"
+								+ Integer.parseInt(meta.getPort()));*/
+
+						if (reqStatus.equals(StatusType.PUT)) {
+							try {
+
+								replyMsg = (KVMessageImpl) responsibleServerConn
+										.put(replyMsg.getKey(),
+												replyMsg.getValue());
+							} catch (Exception e) {
+								logger.error("Unable to add Key-value pair on KVServer listening on"
+										+ meta.getPort());
+							}
+						} else {
+							try {
+								replyMsg = (KVMessageImpl) responsibleServerConn
+										.get(replyMsg.getKey());
+							} catch (Exception e) {
+								logger.error("Unable to get Key-value pair from KVServer listening on"
+										+ meta.getPort());
+							}
 						}
-					} else {
-						try {
-							return responsibleServerConn.get(replyMsg.getKey());
-						} catch (Exception e) {
-							logger.error("Unable to get Key-value pair from KVServer listening on"+meta.getPort());
-						}
+
+						/*System.out.println("Disconnected from " + meta.getIP()
+								+ ":" + Integer.parseInt(meta.getPort()));*/
+						responsibleServerConn.disconnect();
+						break;
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+						logger.error("Client unable to connect to "
+								+ meta.getIP() + ":"
+								+ Integer.parseInt(meta.getPort()));
 					}
-					break;
+
 				}
 			}
-			// the same with server
-			// TODO client need to decide to which server has to connect and
-			// RE-TRY TO send the request
 		} else if (status.equals(StatusType.SERVER_STOPPED)) {
 			logger.info("server is stopped, the request was rejected");
+			//System.out.print("server is unavailable, the request was rejected");
 		} else if (status.equals(StatusType.SERVER_WRITE_LOCK)) {
-			System.out.println("Server locked for out, only get possible");
+			//System.out.println("Server locked for put, only get possible");
 			logger.info("Server locked for out, only get possible");
 		}
+		
+		logger.info("Server reply to client query:"+replyMsg.getStatus().toString());
 		return replyMsg;
 
 	}
 
+	/**
+	 * Updates connected server metadata
+	 */
+	private void updateCurrentServerRange() {
+		for (MetaData meta : this.metadata) {
+			if (meta.getPort().equals(mPort + "")) {
+				this.currentMetaData = meta;
+				break;
+			}
+		}
+	}
 
 	/**
-	 *  check whether the pair belongs to server's subset 
-	 * if it doesn't belong return true
-	 * else return false
+	 * check whether the pair belongs to server's subset if it doesn't belong
+	 * return true else return false
 	 * 
-	 * @param metadata
-	 * @param key
+	 * @param kvmessage
 	 * @return true if the server is not in charge of the particular request
 	 */
-	private boolean tupleBelongsToServer(MetaData metaData, String key) {
-		//TODO Chryssa check whether the tuple belongs to this server
+	private boolean serverNotResponsible(MetaData node, String key_) {
 
-		BigInteger key_ = new BigInteger(getMD5(key),16);
-		if (key_.compareTo(new BigInteger(metaData.getRangeStart(),16)) >= 0 && 
-				key_.compareTo(new BigInteger(metaData.getRangeEnd(),16)) <= 0) return true;
-		return false;
+		// Corrected Logic
+
+		BigInteger key = new BigInteger(getMD5(key_), 16);
+
+		BigInteger startServer = new BigInteger(node.getRangeStart(), 16);
+		BigInteger endServer = new BigInteger(node.getRangeEnd(), 16);
+
+		BigInteger maximum = new BigInteger("ffffffffffffffffffffffffffffffff",
+				16);
+
+		BigInteger minimum = new BigInteger("00000000000000000000000000000000",
+				16);
+
+		logger.info("ClientConnection::serverNotResponsible() + key=" + key
+				+ ", Server's start=" + startServer + ", Server's end="
+				+ endServer + ", Maximum =" + maximum + ", Minimum =" + minimum);
+
+		if (startServer.compareTo(endServer) < 0) {
+			if (key.compareTo(startServer) > 0 && key.compareTo(endServer) <= 0) {
+
+				logger.info("ClientConnection::serverNotResponsible(start<end) + return false");
+				return false;
+			}
+		} else {
+			// startServer > endServer
+			// TODO keycheck1 = startServer to Maximum && keycheck2 = 0 to end
+
+			if ((key.compareTo(startServer) > 0 && key.compareTo(maximum) <= 0)
+					|| (key.compareTo(minimum) >= 0 && key.compareTo(endServer) <= 0)) {
+
+				logger.info("ClientConnection::serverNotResponsible(start > end) + return false");
+				return false;
+			}
+
+		}
+		logger.info("ClientConnection::serverNotResponsible() + return true");
+		return true;
 	}
-	
 
 	private String getMD5(String msg){
 		MessageDigest messageDigest = null;
@@ -280,18 +434,22 @@ public class KVStore extends Thread implements KVCommInterface {
 	@Override
 	public KVMessage get(String key) throws Exception {
 		if (isRunning()) {
-			try {
+
+			if (isResponsible(key, "", StatusType.GET)) {
+				try {
 
 				TextMessage txtMsg = JSONSerializer.marshal(key, "",
 						StatusType.GET);
 				logger.info("Sending : " + txtMsg.getMsg());
 
-				sendMessage(txtMsg);
-				return processReply(receiveMessage(), StatusType.GET);
-			} catch (IOException ioe) {
-			    logger.error("Unable to get value from KV server");
-				throw new Exception("Unable to get value from KV server");
-			}
+					sendMessage(txtMsg);
+					return processReply(receiveMessage(), StatusType.GET);
+				} catch (IOException ioe) {
+					logger.error("Unable to get value from KV server");
+					throw new Exception("Unable to get value from KV server");
+				}
+			} else
+				return this.redirected;
 		} else {
 		    logger.error("Not connected to KV Server!");
 			throw new Exception("Not connected to KV Server!");
@@ -312,7 +470,7 @@ public class KVStore extends Thread implements KVCommInterface {
 			output.write(msgBytes, 0, msgBytes.length);
 			output.flush();
 		} else {
-			System.out.println("sendMessage-->output==null");
+			//System.out.println("sendMessage-->output==null");
 		}
 		logger.info("Send message:\t '" + msg.getMsg() + "'");
 	}
@@ -325,11 +483,12 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		/* read first char from stream */
 		byte read = (byte) input.read();
-		
-		logger.info("KVStore::Starting Receive message ="+clientSocket.getLocalPort());
-		
+
+		logger.info("KVStore::Starting Receive message ="
+				+ clientSocket.getLocalPort());
+
 		boolean reading = true;
-		
+
 		while (read != 13 && reading) {/* carriage return */
 			/* if buffer filled, copy to msg array */
 			if (index == BUFFER_SIZE) {
@@ -376,7 +535,8 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		/* build final String */
 		TextMessage msg = new TextMessage(msgBytes);
-		logger.info("KVStore::Receive message:\t '" + msg.getMsg() + "'"+"="+clientSocket.getLocalPort());
+		logger.info("KVStore::Receive message:\t '" + msg.getMsg() + "'" + "="
+				+ clientSocket.getLocalPort());
 		return msg;
 	}
 

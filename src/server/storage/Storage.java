@@ -182,11 +182,11 @@ public class Storage {
 	 * @return 	true
 	 */
 	public boolean deleteDataBetweenRange(HashMap<String, String> dataToBeDeleted) {
-
+		logger.info("Storage:: deleteDataBetweenRange()");
 		for(Iterator<Entry<String, String>>it=dataToBeDeleted.entrySet().iterator();it.hasNext();){
 
 			Entry<String, String> entry = it.next();
-
+			logger.info("Storage:: deleteDataBetweenRange() + deleting key,value="+entry.getKey()+","+entry.getValue());
 			data.remove(entry.getKey());
 		}
 

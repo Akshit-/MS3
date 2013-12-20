@@ -9,25 +9,28 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import logger.LogSetup;
 
-
 public class AllTests {
 
 	static {
 		try {
-			new LogSetup("logs/testing/test.log", Level.ERROR);
-			new KVServer(50000);
+			new LogSetup("logs/testing/test.log", Level.ALL);
+//			new KVServer(50000).start();
+//			String [] args = new String[1];
+//			args[0]="50000";
+//			KVServer.main(args);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public static Test suite() {
-		TestSuite clientSuite = new TestSuite("Basic Storage ServerTest-Suite");
+		TestSuite clientSuite = new TestSuite("Basic Storage Server Test-Suite");
 		clientSuite.addTestSuite(ConnectionTest.class);
-		clientSuite.addTestSuite(InteractionTest.class); 
-		clientSuite.addTestSuite(AdditionalTest.class); 
+		clientSuite.addTestSuite(InteractionTest.class);
+//		clientSuite.addTestSuite(StorageTest.class);
+//		clientSuite.addTestSuite(MarshallingTest.class);
+//		clientSuite.addTestSuite(ServerTest.class);
 		return clientSuite;
 	}
-	
+
 }

@@ -39,9 +39,11 @@ public class ECServer {
 	private List<Socket> mEcsClientSockets;
 	private HashMap <String,Socket> mEcsClientSocketMap;
 	JsonObjectBuilder objectBuilder = Json.createObjectBuilder();
-	HashMap<String, BigInteger> hashMap;
-	TreeMap<String ,BigInteger> sorted;
-	
+	private HashMap<String, BigInteger> hashMap;
+	private TreeMap<String, BigInteger> sorted;
+
+
+
 	private static Logger logger = Logger.getRootLogger();
 
 
@@ -88,7 +90,7 @@ public class ECServer {
 		else
 			return 0;
 	}
-	
+
 	public int getActivatedNodeCount() {
 		if(mMetaData!=null)
 			return mMetaData.size();
@@ -99,36 +101,40 @@ public class ECServer {
 
 
 
-	public boolean initService	(int numberOfNodes) {
+	public boolean initService(int numberOfNodes) {
 		boolean result = true;
 		initMetaData(numberOfNodes);
 		mEcsClientSockets = new ArrayList<Socket>();
 		mEcsClientSocketMap = new HashMap<String, Socket>();
 		String cmd= null;
 		for(MetaData metaData: mMetaData ){
-			System.out.println("Now="+new BigInteger(metaData.getRangeStart(),16)+":"+new BigInteger(metaData.getRangeEnd(),16));
+			//			System.out.println("Now="+new BigInteger(metaData.getRangeStart(),16)+":"+new BigInteger(metaData.getRangeEnd(),16));
 			try{
 				execSSH(metaData);
-				Thread.sleep(1000);
+
 				Socket ecsClientSocket = new Socket(metaData.getIP(),Integer.parseInt(metaData.getPort()));
-				mEcsClientSocketMap.put(metaData.getIP()+":"+Integer.parseInt(metaData.getPort()), ecsClientSocket);
+				mEcsClientSocketMap.put(metaData.getIP()+":"+metaData.getPort(), ecsClientSocket);
 				mEcsClientSockets.add(ecsClientSocket);
-				
+
 			} catch (IOException e) {
 				//TODO Log this error
 				result = false;
-				System.out.println("io");
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				result = false;
+				System.out.println("IOException");
 				e.printStackTrace();
 			}
 		}
-		
+
 		System.out.println("KVServers="+mEcsClientSockets.size());
-		
-		result = sendKVServersMetaData();
+		try {
+
+			Thread.sleep(3000);
+			result = sendKVServersMetaData();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			result =false;
+		}
+
 		return result;
 	}
 
@@ -140,7 +146,6 @@ public class ECServer {
 			try {
 				TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.START, "","");
 				sendMessage(socket, txtMsg);
-				
 				TextMessage responseTxtMsg = receiveMessage(socket);
 				KVAdminMessage responseKVAdminMsg = JSONSerializer.unmarshalKVAdminMsgForCommand(responseTxtMsg);
 				if(!responseKVAdminMsg.getCommand().equals(Commands.START_SUCCESS)) {
@@ -152,7 +157,7 @@ public class ECServer {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				result =  false;
-			}
+			} 
 		}
 		return result;
 	}
@@ -160,7 +165,7 @@ public class ECServer {
 	private boolean sendStartCommand(String ip, int port) {
 		Socket socket = mEcsClientSocketMap.get(ip+":"+Integer.toString(port));
 		try {
-			
+
 			TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.START, "","");
 			sendMessage(socket, txtMsg);
 			TextMessage responseTxtMsg = receiveMessage(socket);
@@ -179,18 +184,20 @@ public class ECServer {
 		}
 	}
 
+
+
 	public boolean stop(){
 		boolean result = true;
 		for(Socket socket: mEcsClientSockets){
 			try {
 				TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.STOP, "","");
 				sendMessage(socket, txtMsg);
-				
+
 				TextMessage responseTxtMsg = receiveMessage(socket);
 				KVAdminMessage responseKVAdminMsg = JSONSerializer.unmarshalKVAdminMsgForCommand(responseTxtMsg);
 				if(!responseKVAdminMsg.getCommand().equals(Commands.STOP_SUCCESS)) {
 					logger.error("Received response  !STOP_SUCCESSS from KVServer-"+socket.getInetAddress().getHostAddress()+":"+socket.getPort());
-					
+
 					result = false;
 					break;
 				} 
@@ -211,16 +218,32 @@ public class ECServer {
 			try {
 				TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.SHUTDOWN, "","");
 				sendMessage(socket, txtMsg);
-				
-				
+				Thread.sleep(1000);
+
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				logger.error("Error while Shutting down KVServer:"
+						+ socket.getInetAddress().getHostAddress()
+						+ ":" + socket.getPort());
+				e.printStackTrace();
+
+				result = false;
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				logger.error("InterruptedException while shutting down KVServer:");
 				e.printStackTrace();
 				result = false;
 			}
 
 
 		}	
+
+		mEcsClientSocketMap.clear();
+		mEcsClientSocketMap = null;
+		mEcsClientSockets.clear();
+		mEcsClientSockets=null;
+		mMetaData.clear();
+		mMetaData = null;
 		return result;
 	}
 
@@ -230,8 +253,7 @@ public class ECServer {
 		try {
 			TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.SHUTDOWN, "","");
 			sendMessage(socket, txtMsg);
-			
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			result=false;
@@ -365,7 +387,7 @@ public class ECServer {
 			sendMessage(socket, txtMsg);
 			TextMessage responseTxtMsg = receiveMessage(socket);		
 			KVAdminMessage responseKVAdminMsg = JSONSerializer.unmarshalKVAdminMsgForCommand(responseTxtMsg);
-			
+
 			if(responseKVAdminMsg.getCommand().equals(Commands.UNLOCK_WRITE_SUCCESS)) {
 				return true;
 			} else {
@@ -412,13 +434,13 @@ public class ECServer {
 		MetaData successorNodeMetaData = null;
 		initMetaData(getActivatedNodeCount()+1);
 		int i=0;
-		
+
 		System.out.println("oldMetaData="+oldMetaData);
 		System.out.println("newMetaData="+mMetaData);
-		
-		
-		
-		
+
+
+
+
 		for(MetaData metaData: oldMetaData){			
 			if(!metaData.getIP().equals(mMetaData.get(i).getIP()) || !metaData.getPort().equals(mMetaData.get(i).getPort())){
 				//This is the newly added node
@@ -435,7 +457,7 @@ public class ECServer {
 		}
 		try {
 			execSSH(newNodeMetaData);
-			
+
 			System.out.println("Adding new socket for newly added server-"+newNodeMetaData.getIP()+":"+newNodeMetaData.getPort());
 			Socket ecsClientSocket = new Socket(newNodeMetaData.getIP(),Integer.parseInt(newNodeMetaData.getPort()));
 			mEcsClientSocketMap.put(newNodeMetaData.getIP()+":"+newNodeMetaData.getPort(), ecsClientSocket);
@@ -448,22 +470,22 @@ public class ECServer {
 		result = initNewNodeMetaData(newNodeMetaData.getIP(), Integer.parseInt(newNodeMetaData.getPort()));
 		System.out.println("addNode-1:result="+result);
 		if(result) {
-			
+
 			result = sendStartCommand(newNodeMetaData.getIP(), Integer.parseInt(newNodeMetaData.getPort()));
 			System.out.println("addNode-2:result="+result);
 			if(result) {
-				
+
 				result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 				System.out.println("addNode-3:result="+result);
 				if(result) {
 					result = moveData(successorNodeMetaData, newNodeMetaData);
-					
+
 					System.out.println("addNode-4:result="+result);
 					if(result) {
 						result = updateKVServersMetaData();
 						System.out.println("addNode-5:result="+result);
 						if(result) {
-							
+
 							result = releaseLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 							System.out.println("addNode-6:result="+result);
 						}
@@ -482,46 +504,57 @@ public class ECServer {
 		List<MetaData> oldMetaData = mMetaData;
 		MetaData oldNodeMetaData = null;
 		MetaData successorNodeMetaData = null;
-		initMetaData(getActivatedNodeCount()-1);
-		int i=0;
-		for(MetaData metaData: mMetaData){
-			if(!metaData.getIP().equals(oldMetaData.get(i).getIP()) || !metaData.getPort().equals(oldMetaData.get(i).getPort())){
-				//This is the old removed node
-				oldNodeMetaData = oldMetaData.get(i);
-				successorNodeMetaData = oldMetaData.get(i+1);
-				break;
-			}
-			i++;
-		}
-		if(oldNodeMetaData==null){
-			oldNodeMetaData = oldMetaData.get(oldMetaData.size()-1);
-			successorNodeMetaData = oldMetaData.get(0);
-		}
-
 		boolean result=false;
-		result = setLockWrite(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
-		if(result) {
-			result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
+		if(oldMetaData.size()>1) {
+			initMetaData(oldMetaData.size()-1);
+			int i=0;
+			for(MetaData metaData: mMetaData){
+				if(!metaData.getIP().equals(oldMetaData.get(i).getIP()) || !metaData.getPort().equals(oldMetaData.get(i).getPort())){
+					//This is the old removed node
+					oldNodeMetaData = oldMetaData.get(i);
+					successorNodeMetaData = metaData;
+					//				if(i!=mMetaData.size()-1)
+					//				successorNodeMetaData = oldMetaData.get(i+1);
+					break;
+				}
+				i++;
+			}
+			if(oldNodeMetaData==null){
+				oldNodeMetaData = oldMetaData.get(oldMetaData.size()-1);
+				successorNodeMetaData = oldMetaData.get(0);
+			}
+
+			
+			result = setLockWrite(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
 			if(result) {
-				result = updateKVServerMetaData(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
+				result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 				if(result) {
-					result = moveData(oldNodeMetaData, successorNodeMetaData);
+					result = updateKVServerMetaData(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 					if(result) {
-						result = updateKVServersMetaData();
+						result = moveData(oldNodeMetaData, successorNodeMetaData);
 						if(result) {
 							result = releaseLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
-						} if(result) {
-							result = shutDownOldNode(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
+
+							if(result) {
+								result = shutDownOldNode(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
+
+							} if(result) {
+								mEcsClientSockets.remove(mEcsClientSocketMap.get(oldNodeMetaData.getIP()+":"+oldNodeMetaData.getPort()));
+								mEcsClientSocketMap.remove(oldNodeMetaData.getIP()+":"+oldNodeMetaData.getPort());
+								result = updateKVServersMetaData();	
+							}
 						}
 					}
 				}
+
 			}
 
+			
+		} else {
+			result = shutDown();
+			
 		}
-		mEcsClientSocketMap.remove(oldNodeMetaData.getIP()+":"+oldNodeMetaData.getPort());
-		mEcsClientSockets.remove(mEcsClientSockets.size()-1);
 		return result;
-
 	}
 
 	private String getMD5(String msg){
@@ -549,9 +582,6 @@ public class ECServer {
 		mMetaData = new ArrayList<MetaData>();
 		MetaData tempMetaData = null;
 		hashMap = new HashMap<String, BigInteger>();
-
-
-
 		for(int i=0;i<nodeCount;i++){
 			String ipPort = mServerConfig.get(i).getIPAddress()+":"+mServerConfig.get(i).getPort();
 			BigInteger prevRangeBi = new BigInteger(getMD5(ipPort),16);
@@ -564,44 +594,27 @@ public class ECServer {
 		int i = 1;
 		MetaData previous = new MetaData();
 		for (String key : sorted.keySet()) {
-
 			System.out.println(key + " : " + sorted.get(key)); // why null values here?
-
 			tempMetaData = new MetaData();
 			String tokens[] = key.split(":");
-
 			tempMetaData.setIP(tokens[0]);
 			tempMetaData.setPort(tokens[1]);
-
-			//TODO change range values back to HEX after completion
 			tempMetaData.setRangeEnd(sorted.get(key).toString(16));
-			//				tempMetaData.setRangeEnd(sorted.get(key).toString());//decimal form
-
 			if(i>1){
-
 				BigInteger prevRangeBi = new BigInteger(previous.getRangeEnd(),16);
 				BigInteger nextRangeBi = prevRangeBi.add(new BigInteger("1"));
-				//TODO change range values back to HEX after completion					
 				tempMetaData.setRangeStart(nextRangeBi.toString(16));
-				//					tempMetaData.setRangeStart(nextRangeBi.toString());//decimal form
-
 			}
 			mMetaData.add(tempMetaData);
 			previous = tempMetaData;
 			i++;
 
 		}
-
 		BigInteger prevRangeBi = new BigInteger(mMetaData.get(mMetaData.size()-1).getRangeEnd(),16);
 		BigInteger nextRangeBi = prevRangeBi.add(new BigInteger("1"));
-
-		//TODO change range values back to HEX after completion
 		mMetaData.get(0).setRangeStart(nextRangeBi.toString(16));
-		//			mMetaData.get(0).setRangeStart(nextRangeBi.toString());//decimal form
-
+		logger.debug("New MetaData = "+mMetaData);
 		System.out.println(sorted.values()); // But we do have non-null values here!
-
-
 	}
 
 	/**
@@ -615,11 +628,12 @@ public class ECServer {
 	public void sendMessage(Socket socket, TextMessage msg) throws IOException {
 		OutputStream output = socket.getOutputStream();
 		byte[] msgBytes = msg.getMsgBytes();
-		output.write(msgBytes, 0, msgBytes.length);
-		logger.info("sendMessage() ="+msg.getMsg());
+		output.write(msgBytes);
 		output.flush();
+		logger.info("sendMessage() ="+msg.getMsg());
+
 		logger.info("SEND \t<" + socket.getInetAddress().getHostAddress()
-				+ ":" + socket.getPort() + ">: '" + msg.getMsgBytes().toString() + "'");
+				+ ":" + socket.getPort() + ">: '" + msg.getMsgBytes() + "'");
 	}
 
 	private TextMessage receiveMessage(Socket socket) throws IOException {
@@ -629,12 +643,12 @@ public class ECServer {
 		byte[] bufferBytes = new byte[BUFFER_SIZE];
 
 		/* read first char from stream */
-//		System.out.println("BEFORE");
-		logger.info("receiveMessage() of:"+socket);
-		logger.info("receiveMessage-->before Read");
+		//		System.out.println("BEFORE");
+		logger.info("receiveMessage() for:"+socket);
+		//		logger.info("receiveMessage-->before Read"); 
 		byte read = (byte) input.read();
 		logger.info("receiveMessage-->after Read");
-//		System.out.println("After");
+		//		System.out.println("After");
 		boolean reading = true;
 
 		while (read != 13 && reading) {/* carriage return */
@@ -656,10 +670,11 @@ public class ECServer {
 				index = 0;
 			}
 
-			/* only read valid characters, i.e. letters and constants */
-			bufferBytes[index] = read;
-			index++;
-
+			//TODO need to check this logic
+			if ((read > 31 && read < 127)) {
+				bufferBytes[index] = read;
+				index++;
+			}
 			/* stop reading is DROP_SIZE is reached */
 			if (msgBytes != null && msgBytes.length + index >= DROP_SIZE) {
 				logger.info("receiveMessage-->DROP SIZE reached");
@@ -667,9 +682,9 @@ public class ECServer {
 			}
 
 			/* read next char from stream */
-			logger.info("receiveMessage-->before Read2");
+			//			logger.info("receiveMessage-->before Read2");
 			read = (byte) input.read();
-			logger.info("receiveMessage-->after Read2");
+			//			logger.info("receiveMessage-->after Read2");
 		}
 
 		if (msgBytes == null) {
@@ -687,25 +702,25 @@ public class ECServer {
 		TextMessage msg = new TextMessage(msgBytes);
 		logger.info("RECEIVE \t<"
 				+ socket.getInetAddress().getHostAddress() + ":"
-				+ socket.getPort() + ">: '" + msg.getMsg().trim() + "'"
+				+ socket.getPort() + ">: '" + msg.getMsg()+ "'"
 				+ "=" + msgBytes + ",");
 		return msg;
 	}
 
 	public void execSSH(MetaData metaData) throws IOException{
-		
-		/*String cmd = "java -jar ms3-server.jar "+metaData.getPort();
-//		//cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
+
+		String cmd = "java -jar ms3-server.jar "+metaData.getPort();
+		//		//cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
 		Runtime run = Runtime.getRuntime();
 		run.exec(cmd);
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
-		
-		
+		}
+
+
 	}
 
 

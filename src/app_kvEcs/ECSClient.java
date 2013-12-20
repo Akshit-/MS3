@@ -48,7 +48,7 @@ public class ECSClient {
 			new LogSetup("logs/ecs/ecsclient.log", Level.ALL);
 			if(args!=null&&args.length==1){
 				ECSClient app = new ECSClient(args[0]);
-				app.run();
+				app.readCommandFromConsole();
 			} else {
 				System.out.println("Error! Invalid number of parameters. Parameter count should be 1.");
 				System.exit(1);
@@ -67,14 +67,14 @@ public class ECSClient {
 		
 	}
 	
-	public void run() {
+	public void readCommandFromConsole() {
 		while(!stop) {
 			stdin = new BufferedReader(new InputStreamReader(System.in));
 			System.out.print(PROMPT);
 			
 			try {
 				String cmdLine = stdin.readLine();
-				this.handleCommand(cmdLine);
+				handleCommand(cmdLine);
 			} catch (IOException e) {
 				stop = true;
 				printError("CLI does not respond - Application terminated ");
@@ -87,9 +87,14 @@ public class ECSClient {
 			String[] tokens = cmdLine.split("\\s+");
 	
 			if(tokens[0].equals("quit")) {	
-				mECSServer.shutDown();
-				mStorageServiceInitiated = false;
-				mStorageServiceRunning = false;
+				if(mStorageServiceInitiated) {
+					mECSServer.shutDown();
+					mStorageServiceInitiated = false;
+					mStorageServiceRunning = false;
+					mECSServer = null;
+					
+				}
+					
 				stop = true;
 				
 				//TODO: Shutdown KVServers and then exit application
@@ -100,7 +105,7 @@ public class ECSClient {
 					try{
 					
 						mNodeCount = Integer.parseInt(tokens[1]);
-						if(mECSServer.getMaxAvailableNodeCount() > mNodeCount) {
+						if(mECSServer.getMaxAvailableNodeCount() >= mNodeCount) {
 							boolean result = mECSServer.initService(mNodeCount);
 							if(result) {
 								printNewMessage("Storage service is initiated.");
@@ -206,7 +211,14 @@ public class ECSClient {
 					if(mECSServer.getActivatedNodeCount() > 0) {
 						boolean result = mECSServer.removeNode();
 						if(result) {
-							printNewMessage("Removed node successfully!");
+							if(mECSServer.getActivatedNodeCount()==0) {
+								printNewMessage("Removed the last node successfully, no nodes are running now.");
+								printNewMessage("Initialize service again by initService <nodeCount> before running any other commands.");
+								mStorageServiceRunning =false;
+								mStorageServiceInitiated = false;
+							} else {
+								printNewMessage("Removed node successfully!");
+							}
 						} else {
 							printError("Unable to remove a node due to internal error.");
 						}

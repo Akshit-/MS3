@@ -122,6 +122,8 @@ public class KVClient implements ClientSocketListener{
 									handleNewMessage("DELETE_SUCCESS : Key deleted from server.");
 								} else if (kvMsg.getStatus()==StatusType.DELETE_ERROR){
 									handleNewMessage("DELETE_ERROR : Key not found on server.");
+								}else{
+									printError("Unable to delete Key from KVServer with status="+kvMsg.getStatus().toString());
 								}
 							} catch (Exception e) {
 								// TODO Auto-generated catch block
@@ -149,6 +151,8 @@ public class KVClient implements ClientSocketListener{
 							handleNewMessage("GET_SUCCESS : value = "+kvMsg.getValue());
 						} else if(kvMsg.getStatus()==StatusType.GET_ERROR) {
 							handleNewMessage("GET_ERROR : Key not found on KV server.");
+						}else{
+							printError("Unable to get Key-value pair from KVServer with status="+kvMsg.getStatus().toString());
 						}
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

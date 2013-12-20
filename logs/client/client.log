@@ -1,0 +1,7 @@
+2013-12-20 01:43:55,603 INFO  [main] root: KVStore:: Sending : {"key":"akshit","value":"mal","status":3}
+2013-12-20 01:43:55,606 INFO  [main] root: Send message:	 '{"key":"akshit","value":"mal","status":3}'
+2013-12-20 01:43:55,611 INFO  [main] root: KVStore::Starting Receive message =50974
+2013-12-20 01:43:55,613 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"mal","status":9}
+'=50974
+2013-12-20 01:43:55,619 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"mal","status":9}
+

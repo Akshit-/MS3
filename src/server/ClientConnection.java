@@ -14,7 +14,6 @@ import javax.json.JsonObjectBuilder;
 
 import org.apache.log4j.Logger;
 
-import app_kvServer.KVServer;
 import common.messages.JSONSerializer;
 import common.messages.KVAdminMessage;
 import common.messages.KVAdminMessage.Commands;
@@ -46,7 +45,6 @@ public class ClientConnection implements Runnable {
 	private KVServerListener mKVServerListener;
 
 	private ECServerListener mECServerListener;
-
 
 	/**
 	 * Constructs a new CientConnection object for a given TCP socket.
@@ -115,9 +113,8 @@ public class ClientConnection implements Runnable {
 							if (msg.getStatus().equals(StatusType.SERVER_NOT_RESPONSIBLE)){
 								logger.info("ClientConnection:: Sending SERVER_NOT_RESPONSIBLE back to KVClient");
 								
-								JSONSerializer.marshal(msg);
 								sendMessage(new TextMessage(JSONSerializer
-										.marshal(msg).toString()));
+										.Marshal(msg)));
 							}else{
 								JsonObjectBuilder objectBuilder = Json
 										.createObjectBuilder();
@@ -217,11 +214,12 @@ public class ClientConnection implements Runnable {
 				bufferBytes = new byte[BUFFER_SIZE];
 				index = 0;
 			}
-
-			/* only read valid characters, i.e. letters and constants */
-			bufferBytes[index] = read;
-			index++;
-
+			
+			//TODO Need to check this logic as it may miss some special chars
+			if ((read > 31 && read < 127)) {
+				bufferBytes[index] = read;
+				index++;
+			}
 			/* stop reading is DROP_SIZE is reached */
 			if (msgBytes != null && msgBytes.length + index >= DROP_SIZE) {
 				logger.info("while-->DROP SIZE REACHED");
@@ -268,7 +266,7 @@ public class ClientConnection implements Runnable {
 		if (serverNotResponsible(kvmessage))
 			return new KVMessageImpl(kvmessage.getKey(),
 					kvmessage.getValue(),
-					StatusType.SERVER_NOT_RESPONSIBLE, KVServer.getServiceMetaData());
+					StatusType.SERVER_NOT_RESPONSIBLE, mECServerListener.getServiceMetaData());
 
 
 		if(kvmessage.getStatus().equals(StatusType.GET)){
@@ -354,8 +352,8 @@ public class ClientConnection implements Runnable {
 
 		BigInteger key = new BigInteger(getMD5(kvmessage.getKey()),16);
 
-		BigInteger startServer = new BigInteger(KVServer.getNodeMetaData().getRangeStart(),16);
-		BigInteger endServer = new BigInteger(KVServer.getNodeMetaData().getRangeEnd(),16);
+		BigInteger startServer = new BigInteger(mECServerListener.getNodeMetaData().getRangeStart(),16);
+		BigInteger endServer = new BigInteger(mECServerListener.getNodeMetaData().getRangeEnd(),16);
 
 
 		BigInteger maximum = new BigInteger("ffffffffffffffffffffffffffffffff",16);
@@ -449,14 +447,14 @@ public class ClientConnection implements Runnable {
 
 		}else if(kvAdminMessage.getCommand().equals(Commands.SHUTDOWN)){
 			logger.info("SHUTDOWN Command for("+clientSocket.getLocalPort()+")");
+			
 			if (clientSocket != null) {
 				try {
 					input.close();
 					output.close();
 					clientSocket.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 				}
 
 			}

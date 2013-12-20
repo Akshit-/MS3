@@ -81,5 +81,16 @@ public interface ECServerListener {
 	 */
 	public boolean isLockWrite();
 	
+	/**
+	 * This function will return Server's Meta Data.
+	 * @return metaData corresponding to Server.
+	 */
+	public MetaData getNodeMetaData();
+	
+	/**
+	 * This function return list of all Meta Data's
+	 * @return list of Meta Data's
+	 */
+	public List<MetaData> getServiceMetaData();
 	
 }

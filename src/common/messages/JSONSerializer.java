@@ -56,7 +56,8 @@ public class JSONSerializer {
 			JsonArrayBuilder array = Json.createArrayBuilder();
 			List<MetaData> list = kvmsgimpl.getMetaData();
 			for (MetaData metadataItem : list) {
-				array.add(Json.createObjectBuilder().add("ip", metadataItem.getIP())
+				array.add(Json.createObjectBuilder()
+						.add("ip", metadataItem.getIP())
 						.add("port", metadataItem.getPort())
 						.add("start", metadataItem.getRangeStart())
 						.add("end", metadataItem.getRangeEnd()));
@@ -102,6 +103,34 @@ public class JSONSerializer {
 				metaDatas);
 	}
 
+	/**
+	 * Used to send metadata to the client
+	 * 
+	 * @param
+	 * @return json string
+	 */
+	public static String Marshal(KVMessage kvmsg) {
+		KVMessageImpl kvmsgimpl = (KVMessageImpl) kvmsg;
+		JsonObjectBuilder objectBuilder = Json.createObjectBuilder()
+				.add("key", kvmsgimpl.getKey())
+				.add("value", kvmsgimpl.getValue())
+				.add("status", kvmsgimpl.getStatus().ordinal());
+
+		JsonArrayBuilder array = Json.createArrayBuilder();		
+		if (kvmsgimpl.getMetaData() != null) {
+			List<MetaData> list = kvmsgimpl.getMetaData();
+			for (MetaData metadataItem : list) {
+				array.add(Json.createObjectBuilder().add("ip", metadataItem.getIP())
+						.add("port", metadataItem.getPort())
+						.add("start", metadataItem.getRangeStart())
+						.add("end", metadataItem.getRangeEnd()));
+			}
+
+		}
+
+		objectBuilder.add("metadata", array);
+		return /*new TextMessage(*/objectBuilder.build().toString()/*)*/;
+	}
 	public static TextMessage marshalKVAdminMsg(Commands command){
 
 		JsonObjectBuilder builder = Json.createObjectBuilder()
