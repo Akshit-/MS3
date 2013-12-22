@@ -12,8 +12,6 @@ import javax.json.JsonArrayBuilder;
 import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 
-import org.apache.log4j.Logger;
-
 import metadata.MetaData;
 import common.messages.KVAdminMessage.Commands;
 import common.messages.KVMessage.StatusType;
@@ -22,8 +20,7 @@ import common.messages.KVMessage.StatusType;
  * 
  */
 public class JSONSerializer {
-
-	Logger logger = Logger.getRootLogger();
+	
 	/**
 	 * 
 	 * @param
@@ -145,9 +142,7 @@ public class JSONSerializer {
 
 	public static KVAdminMessageImpl unmarshalKVAdminMsgForCommand(TextMessage txtMsg){
 		
-		String strMsg = txtMsg.getMsg();
-		System.out.println("Response Message : "+strMsg);
-		
+		String strMsg = txtMsg.getMsg();		
 		JsonObject jsonObject = Json.createReader(new StringReader(strMsg))
 				.readObject();
 		
