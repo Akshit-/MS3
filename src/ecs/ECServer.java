@@ -709,8 +709,8 @@ public class ECServer {
 
 	public void execSSH(MetaData metaData) throws IOException{
 
-		String cmd = "java -jar ms3-server.jar "+metaData.getPort();
-		//		//cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
+//		String cmd = "java -jar ms3-server.jar "+metaData.getPort();
+		String cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
 		Runtime run = Runtime.getRuntime();
 		run.exec(cmd);
 		try {
