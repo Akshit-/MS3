@@ -261,7 +261,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 				KVMessage responseKVMsg = JSONSerializer.unMarshal(responseTxtMsg);
 
 
-				if(responseKVMsg.getStatus()!=StatusType.PUT_SUCCESS){
+				if(responseKVMsg.getStatus()!=StatusType.PUT_SUCCESS ){
 					logger.info("KVServer::moveData() + Couldn't move Data to new Server!");
 					return false;
 

@@ -74,7 +74,7 @@ public class Storage {
 
 		//calculate hash of key and store it in keyHash map.
 		String md5 = getMD5(key);
-
+		
 		keyHash.put(md5, key);
 
 		return data.put(key, value);
@@ -106,6 +106,10 @@ public class Storage {
 	public synchronized String delete(String key) {
 
 		String result = data.remove(key);
+		
+		String md5 = getMD5(key);
+		keyHash.remove(md5);
+		
 		logger.debug("Storage::delete() + Removed kvpair:" + key + "," + result);
 		return result;
 	}
@@ -181,7 +185,6 @@ public class Storage {
 	public boolean deleteDataBetweenRange(HashMap<String, String> dataToBeDeleted) {
 		logger.info("Storage:: deleteDataBetweenRange()");
 		for(Iterator<Entry<String, String>>it=dataToBeDeleted.entrySet().iterator();it.hasNext();){
-
 			Entry<String, String> entry = it.next();
 			logger.info("Storage:: deleteDataBetweenRange() + deleting key,value="+entry.getKey()+","+entry.getValue());
 			data.remove(entry.getKey());

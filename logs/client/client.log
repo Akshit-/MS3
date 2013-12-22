@@ -1,0 +1,466 @@
+2013-12-22 21:07:24,885 INFO  [main] root: Connection established
+2013-12-22 21:07:30,361 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:07:30,361 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:07:30,365 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:07:30,366 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"","status":9}
+'=56235
+2013-12-22 21:07:30,389 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"","status":9}
+, status=SERVER_STOPPED
+2013-12-22 21:07:30,389 INFO  [main] root: server is stopped, the request was rejected
+2013-12-22 21:07:30,389 INFO  [main] root: Server reply to client query:SERVER_STOPPED
+2013-12-22 21:07:36,290 INFO  [main] root: Sending : {"key":"aksht","value":"44","status":3}
+2013-12-22 21:07:36,291 INFO  [main] root: Send message:	 '{"key":"aksht","value":"44","status":3}'
+2013-12-22 21:07:36,292 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:07:36,292 INFO  [main] root: KVStore::Receive message:	 '{"key":"aksht","value":"44","status":9}
+'=56235
+2013-12-22 21:07:36,293 INFO  [main] root: KVStore:: Server response: {"key":"aksht","value":"44","status":9}
+, status=SERVER_STOPPED
+2013-12-22 21:07:36,293 INFO  [main] root: server is stopped, the request was rejected
+2013-12-22 21:07:36,293 INFO  [main] root: Server reply to client query:SERVER_STOPPED
+2013-12-22 21:07:54,897 INFO  [main] root: Sending : {"key":"aks","value":"mal","status":3}
+2013-12-22 21:07:54,898 INFO  [main] root: Send message:	 '{"key":"aks","value":"mal","status":3}'
+2013-12-22 21:07:54,913 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:07:54,915 INFO  [main] root: KVStore::Receive message:	 '{"key":"aks","value":"mal","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56235
+2013-12-22 21:07:54,921 INFO  [main] root: KVStore:: Server response: {"key":"aks","value":"mal","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:07:54,932 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:07:54,932 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:07:54,933 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:07:54,933 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:07:54,933 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:07:54,934 INFO  [main] root: Connection established
+2013-12-22 21:07:54,934 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:07:54,935 INFO  [main] root: Sending : {"key":"aks","value":"mal","status":3}
+2013-12-22 21:07:54,935 INFO  [main] root: Send message:	 '{"key":"aks","value":"mal","status":3}'
+2013-12-22 21:07:54,951 INFO  [main] root: KVStore::Starting Receive message =56236
+2013-12-22 21:07:54,951 INFO  [main] root: KVStore::Receive message:	 '{"key":"aks","value":"mal","status":4}
+'=56236
+2013-12-22 21:07:54,952 INFO  [main] root: KVStore:: Server response: {"key":"aks","value":"mal","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:07:54,952 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:07:54,952 INFO  [main] root: try to close connection ...
+2013-12-22 21:07:54,952 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:07:54,952 INFO  [main] root: connection closed!
+2013-12-22 21:07:54,952 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:08:00,791 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:00,791 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:08:00,792 INFO  [main] root: Sending : {"key":"anshul","value":"vi","status":3}
+2013-12-22 21:08:00,792 INFO  [main] root: Send message:	 '{"key":"anshul","value":"vi","status":3}'
+2013-12-22 21:08:00,795 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:08:00,795 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vi","status":4}
+'=56235
+2013-12-22 21:08:00,796 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vi","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:08:00,796 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:08:05,882 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:05,882 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:08:05,882 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:05,883 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:08:05,883 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:05,883 INFO  [main] root: Connection established
+2013-12-22 21:08:05,884 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:05,884 INFO  [main] root: Sending : {"key":"ms3","value":"cloud","status":3}
+2013-12-22 21:08:05,884 INFO  [main] root: Send message:	 '{"key":"ms3","value":"cloud","status":3}'
+2013-12-22 21:08:05,889 INFO  [main] root: KVStore::Starting Receive message =56237
+2013-12-22 21:08:05,889 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"cloud","status":4}
+'=56237
+2013-12-22 21:08:05,890 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"cloud","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:08:05,890 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:08:05,890 INFO  [main] root: try to close connection ...
+2013-12-22 21:08:05,890 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:08:05,891 INFO  [main] root: connection closed!
+2013-12-22 21:08:30,472 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:30,472 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:08:30,473 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:30,473 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:08:30,473 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:30,474 INFO  [main] root: Connection established
+2013-12-22 21:08:30,474 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:30,475 INFO  [main] root: Sending : {"key":"aks","value":"","status":0}
+2013-12-22 21:08:30,475 INFO  [main] root: Send message:	 '{"key":"aks","value":"","status":0}'
+2013-12-22 21:08:30,587 INFO  [main] root: KVStore::Starting Receive message =56240
+2013-12-22 21:08:30,589 INFO  [main] root: KVStore::Receive message:	 '{"key":"aks","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56240
+2013-12-22 21:08:30,591 INFO  [main] root: KVStore:: Server response: {"key":"aks","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:08:30,591 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:30,591 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:08:30,596 INFO  [main] root: ClientConnection::serverNotResponsible() + key=215818676906375503405173424094638097962, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:30,596 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:08:30,596 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:08:30,597 INFO  [main] root: Connection established
+2013-12-22 21:08:30,597 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:08:30,602 INFO  [main] root: Sending : {"key":"aks","value":"","status":0}
+2013-12-22 21:08:30,602 INFO  [main] root: Send message:	 '{"key":"aks","value":"","status":0}'
+2013-12-22 21:08:30,646 INFO  [main] root: KVStore::Starting Receive message =56241
+2013-12-22 21:08:30,646 INFO  [main] root: KVStore::Receive message:	 '{"key":"aks","value":"mal","status":2}
+'=56241
+2013-12-22 21:08:30,649 INFO  [main] root: KVStore:: Server response: {"key":"aks","value":"mal","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:08:30,649 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:08:30,649 INFO  [main] root: try to close connection ...
+2013-12-22 21:08:30,649 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:08:30,649 INFO  [main] root: connection closed!
+2013-12-22 21:08:30,649 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:08:30,649 INFO  [main] root: try to close connection ...
+2013-12-22 21:08:30,650 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:08:30,650 INFO  [main] root: connection closed!
+2013-12-22 21:08:35,000 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:35,000 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:08:35,001 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:35,001 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:08:35,001 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:35,002 INFO  [main] root: Connection established
+2013-12-22 21:08:35,002 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:08:35,003 INFO  [main] root: Sending : {"key":"ms3","value":"","status":0}
+2013-12-22 21:08:35,003 INFO  [main] root: Send message:	 '{"key":"ms3","value":"","status":0}'
+2013-12-22 21:08:35,151 INFO  [main] root: KVStore::Starting Receive message =56242
+2013-12-22 21:08:35,157 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56242
+2013-12-22 21:08:35,160 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:08:35,161 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:35,161 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:08:35,161 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:35,161 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:08:35,161 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:08:35,162 INFO  [main] root: Connection established
+2013-12-22 21:08:35,162 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:08:35,163 INFO  [main] root: Sending : {"key":"ms3","value":"","status":0}
+2013-12-22 21:08:35,163 INFO  [main] root: Send message:	 '{"key":"ms3","value":"","status":0}'
+2013-12-22 21:08:35,271 INFO  [main] root: KVStore::Starting Receive message =56243
+2013-12-22 21:08:35,272 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"cloud","status":2}
+'=56243
+2013-12-22 21:08:35,273 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"cloud","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:08:35,273 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:08:35,273 INFO  [main] root: try to close connection ...
+2013-12-22 21:08:35,273 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:08:35,273 INFO  [main] root: connection closed!
+2013-12-22 21:08:35,273 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:08:35,273 INFO  [main] root: try to close connection ...
+2013-12-22 21:08:35,273 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:08:35,273 INFO  [main] root: connection closed!
+2013-12-22 21:08:41,147 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:08:41,147 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:08:41,148 INFO  [main] root: Sending : {"key":"anshul","value":"","status":0}
+2013-12-22 21:08:41,148 INFO  [main] root: Send message:	 '{"key":"anshul","value":"","status":0}'
+2013-12-22 21:08:41,152 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:08:41,152 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vi","status":2}
+'=56235
+2013-12-22 21:08:41,153 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vi","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:08:41,153 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:09:18,777 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:18,778 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:18,781 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:18,781 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:18,781 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:18,783 INFO  [main] root: Connection established
+2013-12-22 21:09:18,783 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:18,783 INFO  [main] root: Sending : {"key":"akshit","value":"malhotra","status":3}
+2013-12-22 21:09:18,784 INFO  [main] root: Send message:	 '{"key":"akshit","value":"malhotra","status":3}'
+2013-12-22 21:09:19,727 INFO  [main] root: KVStore::Starting Receive message =56244
+2013-12-22 21:09:19,729 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56244
+2013-12-22 21:09:19,733 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:09:19,733 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:19,734 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:19,734 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:19,734 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:19,734 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:19,735 INFO  [main] root: Connection established
+2013-12-22 21:09:19,735 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:19,736 INFO  [main] root: Sending : {"key":"akshit","value":"malhotra","status":3}
+2013-12-22 21:09:19,736 INFO  [main] root: Send message:	 '{"key":"akshit","value":"malhotra","status":3}'
+2013-12-22 21:09:20,005 INFO  [main] root: KVStore::Starting Receive message =56245
+2013-12-22 21:09:20,005 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":4}
+'=56245
+2013-12-22 21:09:20,014 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:09:20,014 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:09:20,014 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:20,014 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:20,015 INFO  [main] root: connection closed!
+2013-12-22 21:09:20,015 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:09:20,015 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:20,015 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:20,015 INFO  [main] root: connection closed!
+2013-12-22 21:09:24,640 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:24,641 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:24,641 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:24,641 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:24,642 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:24,642 INFO  [main] root: Connection established
+2013-12-22 21:09:24,643 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:24,643 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:09:24,643 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:09:24,937 INFO  [main] root: KVStore::Starting Receive message =56246
+2013-12-22 21:09:24,938 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56246
+2013-12-22 21:09:24,940 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:09:24,941 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:24,941 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:24,941 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:24,941 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:24,941 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:24,942 INFO  [main] root: Connection established
+2013-12-22 21:09:24,942 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:24,943 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:09:24,943 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:09:25,220 INFO  [main] root: KVStore::Starting Receive message =56247
+2013-12-22 21:09:25,220 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":2}
+'=56247
+2013-12-22 21:09:25,221 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:09:25,221 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:09:25,221 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:25,221 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:25,221 INFO  [main] root: connection closed!
+2013-12-22 21:09:25,222 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:09:25,222 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:25,222 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:25,222 INFO  [main] root: connection closed!
+2013-12-22 21:09:41,318 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:41,319 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:41,319 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:41,319 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:41,319 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:41,321 INFO  [main] root: Connection established
+2013-12-22 21:09:41,321 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:41,321 INFO  [main] root: Sending : {"key":"akshit","value":"","status":3}
+2013-12-22 21:09:41,322 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":3}'
+2013-12-22 21:09:41,800 INFO  [main] root: KVStore::Starting Receive message =56248
+2013-12-22 21:09:41,802 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56248
+2013-12-22 21:09:41,803 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:09:41,804 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:41,804 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:41,805 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:41,805 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:41,805 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:41,806 INFO  [main] root: Connection established
+2013-12-22 21:09:41,806 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:41,807 INFO  [main] root: Sending : {"key":"akshit","value":"","status":3}
+2013-12-22 21:09:41,807 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":3}'
+2013-12-22 21:09:42,140 INFO  [main] root: KVStore::Starting Receive message =56249
+2013-12-22 21:09:42,140 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":7}
+'=56249
+2013-12-22 21:09:42,141 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":7}
+, status=DELETE_SUCCESS
+2013-12-22 21:09:42,141 INFO  [main] root: Server reply to client query:DELETE_SUCCESS
+2013-12-22 21:09:42,141 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:42,141 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:42,141 INFO  [main] root: connection closed!
+2013-12-22 21:09:42,142 INFO  [main] root: Server reply to client query:DELETE_SUCCESS
+2013-12-22 21:09:42,142 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:42,142 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:42,142 INFO  [main] root: connection closed!
+2013-12-22 21:09:46,078 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:46,078 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:46,079 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:46,079 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:46,079 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:46,080 INFO  [main] root: Connection established
+2013-12-22 21:09:46,080 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:09:46,081 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:09:46,081 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:09:46,522 INFO  [main] root: KVStore::Starting Receive message =56250
+2013-12-22 21:09:46,526 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56250
+2013-12-22 21:09:46,528 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:09:46,530 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:46,531 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:09:46,531 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:46,531 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:09:46,531 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:46,532 INFO  [main] root: Connection established
+2013-12-22 21:09:46,532 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:09:46,533 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:09:46,533 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:09:47,127 INFO  [main] root: KVStore::Starting Receive message =56251
+2013-12-22 21:09:47,128 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"","status":1}
+'=56251
+2013-12-22 21:09:47,129 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"","status":1}
+, status=GET_ERROR
+2013-12-22 21:09:47,129 INFO  [main] root: Server reply to client query:GET_ERROR
+2013-12-22 21:09:47,129 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:47,129 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:47,129 INFO  [main] root: connection closed!
+2013-12-22 21:09:47,129 INFO  [main] root: Server reply to client query:GET_ERROR
+2013-12-22 21:09:47,129 INFO  [main] root: try to close connection ...
+2013-12-22 21:09:47,130 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:09:47,130 INFO  [main] root: connection closed!
+2013-12-22 21:09:53,450 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:09:53,450 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:09:53,451 INFO  [main] root: Sending : {"key":"anshul","value":"","status":0}
+2013-12-22 21:09:53,451 INFO  [main] root: Send message:	 '{"key":"anshul","value":"","status":0}'
+2013-12-22 21:09:53,454 INFO  [main] root: KVStore::Starting Receive message =56235
+2013-12-22 21:09:53,454 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vi","status":2}
+'=56235
+2013-12-22 21:09:53,455 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vi","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:09:53,455 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:10:01,024 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:10:01,025 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:10:01,025 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:10:01,025 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:10:01,025 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:10:01,026 INFO  [main] root: Connection established
+2013-12-22 21:10:01,026 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:10:01,027 INFO  [main] root: Sending : {"key":"ms3","value":"","status":0}
+2013-12-22 21:10:01,027 INFO  [main] root: Send message:	 '{"key":"ms3","value":"","status":0}'
+2013-12-22 21:10:02,027 INFO  [main] root: KVStore::Starting Receive message =56252
+2013-12-22 21:10:02,029 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56252
+2013-12-22 21:10:02,031 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:10:02,032 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:10:02,032 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:10:02,033 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=225309527215752282658527527430926779768, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:10:02,033 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:10:02,033 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:10:02,034 INFO  [main] root: Connection established
+2013-12-22 21:10:02,034 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50003
+2013-12-22 21:10:02,035 INFO  [main] root: Sending : {"key":"ms3","value":"","status":0}
+2013-12-22 21:10:02,035 INFO  [main] root: Send message:	 '{"key":"ms3","value":"","status":0}'
+2013-12-22 21:10:02,954 INFO  [main] root: KVStore::Starting Receive message =56253
+2013-12-22 21:10:02,954 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"cloud","status":2}
+'=56253
+2013-12-22 21:10:02,955 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"cloud","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:10:02,955 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:10:02,955 INFO  [main] root: try to close connection ...
+2013-12-22 21:10:02,955 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:10:02,955 INFO  [main] root: connection closed!
+2013-12-22 21:10:02,955 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:10:02,955 INFO  [main] root: try to close connection ...
+2013-12-22 21:10:02,955 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:10:02,957 INFO  [main] root: connection closed!
+2013-12-22 21:20:27,367 INFO  [main] root: Connection established
+2013-12-22 21:20:31,207 INFO  [main] root: Sending : {"key":"akshit","value":"malhotra","status":3}
+2013-12-22 21:20:31,207 INFO  [main] root: Send message:	 '{"key":"akshit","value":"malhotra","status":3}'
+2013-12-22 21:20:31,222 INFO  [main] root: KVStore::Starting Receive message =56298
+2013-12-22 21:20:31,224 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+'=56298
+2013-12-22 21:20:31,251 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":11,"metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+, status=SERVER_NOT_RESPONSIBLE
+2013-12-22 21:20:31,261 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:31,261 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:20:31,262 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:31,262 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:20:31,262 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:31,263 INFO  [main] root: Connection established
+2013-12-22 21:20:31,263 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:31,264 INFO  [main] root: Sending : {"key":"akshit","value":"malhotra","status":3}
+2013-12-22 21:20:31,264 INFO  [main] root: Send message:	 '{"key":"akshit","value":"malhotra","status":3}'
+2013-12-22 21:20:31,279 INFO  [main] root: KVStore::Starting Receive message =56299
+2013-12-22 21:20:31,279 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":4}
+'=56299
+2013-12-22 21:20:31,280 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:20:31,280 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:20:31,280 INFO  [main] root: try to close connection ...
+2013-12-22 21:20:31,280 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:20:31,281 INFO  [main] root: connection closed!
+2013-12-22 21:20:31,281 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:20:36,849 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:36,850 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:20:36,850 INFO  [main] root: Sending : {"key":"anshul","value":"vij","status":3}
+2013-12-22 21:20:36,851 INFO  [main] root: Send message:	 '{"key":"anshul","value":"vij","status":3}'
+2013-12-22 21:20:36,856 INFO  [main] root: KVStore::Starting Receive message =56298
+2013-12-22 21:20:36,856 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vij","status":4}
+'=56298
+2013-12-22 21:20:36,857 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vij","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:20:36,857 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:20:39,995 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:39,995 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:20:39,996 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:39,996 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:20:39,996 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:39,997 INFO  [main] root: Connection established
+2013-12-22 21:20:39,997 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:39,997 INFO  [main] root: Sending : {"key":"ms3","value":"cloud","status":3}
+2013-12-22 21:20:39,998 INFO  [main] root: Send message:	 '{"key":"ms3","value":"cloud","status":3}'
+2013-12-22 21:20:40,006 INFO  [main] root: KVStore::Starting Receive message =56300
+2013-12-22 21:20:40,006 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"cloud","status":4}
+'=56300
+2013-12-22 21:20:40,007 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"cloud","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:20:40,007 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:20:40,007 INFO  [main] root: try to close connection ...
+2013-12-22 21:20:40,007 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:20:40,007 INFO  [main] root: connection closed!
+2013-12-22 21:20:55,622 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:55,622 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:20:55,623 INFO  [main] root: Sending : {"key":"anshul","value":"","status":0}
+2013-12-22 21:20:55,623 INFO  [main] root: Send message:	 '{"key":"anshul","value":"","status":0}'
+2013-12-22 21:20:55,628 INFO  [main] root: KVStore::Starting Receive message =56298
+2013-12-22 21:20:55,628 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vij","status":2}
+'=56298
+2013-12-22 21:20:55,629 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vij","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:20:55,629 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:20:58,264 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:58,264 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:20:58,265 INFO  [main] root: ClientConnection::serverNotResponsible() + key=193622136606128287330419136671961390637, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:20:58,265 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:20:58,265 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:58,266 INFO  [main] root: Connection established
+2013-12-22 21:20:58,266 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:20:58,267 INFO  [main] root: Sending : {"key":"akshit","value":"","status":0}
+2013-12-22 21:20:58,267 INFO  [main] root: Send message:	 '{"key":"akshit","value":"","status":0}'
+2013-12-22 21:20:58,396 INFO  [main] root: KVStore::Starting Receive message =56301
+2013-12-22 21:20:58,397 INFO  [main] root: KVStore::Receive message:	 '{"key":"akshit","value":"malhotra","status":2}
+'=56301
+2013-12-22 21:20:58,398 INFO  [main] root: KVStore:: Server response: {"key":"akshit","value":"malhotra","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:20:58,398 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:20:58,398 INFO  [main] root: try to close connection ...
+2013-12-22 21:20:58,398 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:20:58,398 INFO  [main] root: connection closed!
+2013-12-22 21:21:05,135 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:21:05,135 INFO  [main] root: ClientConnection::serverNotResponsible() + return true
+2013-12-22 21:21:05,137 INFO  [main] root: ClientConnection::serverNotResponsible() + key=110090479234179962322618485837017190447, Server's start=71130645273907490186283204435894531491, Server's end=238448651628652111871958059464909257854, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:21:05,137 INFO  [main] root: ClientConnection::serverNotResponsible(start<end) + return false
+2013-12-22 21:21:05,137 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:21:05,138 INFO  [main] root: Connection established
+2013-12-22 21:21:05,138 INFO  [main] root: Client redirect: connecting to 127.0.0.1:50002
+2013-12-22 21:21:05,138 INFO  [main] root: Sending : {"key":"ms3","value":"","status":0}
+2013-12-22 21:21:05,138 INFO  [main] root: Send message:	 '{"key":"ms3","value":"","status":0}'
+2013-12-22 21:21:05,208 INFO  [main] root: KVStore::Starting Receive message =56302
+2013-12-22 21:21:05,208 INFO  [main] root: KVStore::Receive message:	 '{"key":"ms3","value":"cloud","status":2}
+'=56302
+2013-12-22 21:21:05,209 INFO  [main] root: KVStore:: Server response: {"key":"ms3","value":"cloud","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:21:05,209 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:21:05,209 INFO  [main] root: try to close connection ...
+2013-12-22 21:21:05,209 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:21:05,209 INFO  [main] root: connection closed!
+2013-12-22 21:21:11,353 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:21:11,353 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:21:11,359 INFO  [main] root: Sending : {"key":"anshul","value":"","status":3}
+2013-12-22 21:21:11,359 INFO  [main] root: Send message:	 '{"key":"anshul","value":"","status":3}'
+2013-12-22 21:21:11,362 INFO  [main] root: KVStore::Starting Receive message =56298
+2013-12-22 21:21:11,362 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"vij","status":7}
+'=56298
+2013-12-22 21:21:11,366 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"vij","status":7}
+, status=DELETE_SUCCESS
+2013-12-22 21:21:11,366 INFO  [main] root: Server reply to client query:DELETE_SUCCESS
+2013-12-22 21:21:14,423 INFO  [main] root: ClientConnection::serverNotResponsible() + key=47913278723820268742724701116570808356, Server's start=293665975790736140455366914418740328202, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 21:21:14,423 INFO  [main] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 21:21:14,424 INFO  [main] root: Sending : {"key":"anshul","value":"","status":0}
+2013-12-22 21:21:14,424 INFO  [main] root: Send message:	 '{"key":"anshul","value":"","status":0}'
+2013-12-22 21:21:14,428 INFO  [main] root: KVStore::Starting Receive message =56298
+2013-12-22 21:21:14,428 INFO  [main] root: KVStore::Receive message:	 '{"key":"anshul","value":"","status":1}
+'=56298
+2013-12-22 21:21:14,429 INFO  [main] root: KVStore:: Server response: {"key":"anshul","value":"","status":1}
+, status=GET_ERROR
+2013-12-22 21:21:14,429 INFO  [main] root: Server reply to client query:GET_ERROR
