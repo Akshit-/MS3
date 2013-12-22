@@ -105,7 +105,7 @@ public class ECSClient {
 					try{
 					
 						mNodeCount = Integer.parseInt(tokens[1]);
-						if(mECSServer.getMaxAvailableNodeCount() >= mNodeCount) {
+						if(!mStorageServiceInitiated && mECSServer.getMaxAvailableNodeCount() >= mNodeCount) {
 							boolean result = mECSServer.initService(mNodeCount);
 							if(result) {
 								printNewMessage("Storage service is initiated.");
@@ -114,6 +114,9 @@ public class ECSClient {
 								printError("Unable to initialize storage service due to internal error.");
 							}
 							
+						} else if(mStorageServiceInitiated){
+							printError("Illegal Operation! Service Already initialized.");
+							printError("First shutdown storage service by \"shutDown\" command");
 						} else {
 							printError("Unable to initialize storage service since given number of nodes : "+mNodeCount+" is more than total available nodes : "+ mECSServer.getMaxAvailableNodeCount());
 						}
@@ -199,7 +202,8 @@ public class ECSClient {
 						}
 							
 					} else {
-						printError("Illegal operation!  No storage servers are running. First initialize the storage service by \"initService\" command.");
+						printError("Illegal operation!  No storage servers are running. "
+								+ "First start the storage service by \"start\" command.");
 					}
 					
 				} else {
@@ -208,6 +212,7 @@ public class ECSClient {
 				
 			} else  if (tokens[0].equals("removeNode")) {
 				if(tokens.length == 1) { 
+					if(mStorageServiceRunning) {
 					if(mECSServer.getActivatedNodeCount() > 0) {
 						boolean result = mECSServer.removeNode();
 						if(result) {
@@ -225,7 +230,10 @@ public class ECSClient {
 					} else {
 						printError("Cannot remove node; No node is running.");
 					}
-
+					} else {
+						printError("Illegal operation!  No storage servers are running."
+									+ " First start the storage service by \"start\" command.");
+					}
 				} else {
 					printError("Invalid number of parameters!");
 				}
@@ -269,24 +277,27 @@ public class ECSClient {
 		//TODO 2: Define new help for ECSClient
 		
 		StringBuilder sb = new StringBuilder();
-		sb.append(PROMPT).append("ECS CLIENT HELP (Usage):\n");
-		sb.append(PROMPT);
+		sb.append("ECS CLIENT HELP (Available Commands):\n");
 		sb.append("::::::::::::::::::::::::::::::::");
 		sb.append("::::::::::::::::::::::::::::::::\n");
-		sb.append(PROMPT).append("connect <host> <port>");
-		sb.append("\t establishes a connection to a server\n");
-		sb.append(PROMPT).append("send <text message>");
-		sb.append("\t\t sends a text message to the server \n");
-		sb.append(PROMPT).append("disconnect");
-		sb.append("\t\t\t disconnects from the server \n");
-		
-		sb.append(PROMPT).append("logLevel");
-		sb.append("\t\t\t changes the logLevel \n");
-		sb.append(PROMPT).append("\t\t\t\t ");
-		sb.append("ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF \n");
-		
-		sb.append(PROMPT).append("quit ");
-		sb.append("\t\t\t exits the program");
+		sb.append("\ninitService <number of Nodes>\n");
+		sb.append("Initializes KV Service with given number of nodes.\n");
+		sb.append("\nstart\n");
+		sb.append("Start KV Service for client nodes.\n");
+		sb.append("\nstop\n");
+		sb.append("Stop KV Service for client nodes. \n");
+		sb.append("\naddNode\n");
+		sb.append("Adds one KV Server node to the service and starts it.\n");
+		sb.append("\nremoveNode\n");
+		sb.append("Removes one KV Server node from the service and ends the process running it.\n");
+		sb.append("\nshutdown\n");
+		sb.append("Shutdowns every node and ends all the process running KV Servers.\n");
+		sb.append("\nlogLevel <level>\n");
+		sb.append("Changes the logLevel \n");
+		sb.append("Available levels are : ");
+		sb.append("<ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF> \n");
+		sb.append("\nquit\n");
+		sb.append("Exits the program\n");
 		System.out.println(sb.toString());
 	}
 	

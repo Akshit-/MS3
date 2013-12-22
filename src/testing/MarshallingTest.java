@@ -36,7 +36,6 @@ public class MarshallingTest extends TestCase {
 	public void testPut() {
 		TextMessage txtMsg = JSONSerializer.marshal("host", "localhost",
 				StatusType.PUT);
-		System.out.println(txtMsg.toString());
 		TextMessage expected = new TextMessage(
 				"{\"key\":\"host\",\"value\":\"localhost\",\"status\":3}");
 		

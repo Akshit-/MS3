@@ -33,8 +33,10 @@ public class StorageTest extends TestCase {
 	 */
 	@Test
 	public void testStoreUpdateRetrieve(){
-		testStoreUpdate();
-		testRetrieve();
+		String s = storage.put("key", "v1");
+		s = storage.put("key", "v2");
+		String s2 = storage.get("key");
+		assertTrue(s.equals("v1") && s2.equals("v2"));
 	}
 	
 	@Test
@@ -42,15 +44,15 @@ public class StorageTest extends TestCase {
 		String s = storage.get("key1");
 		assertNull(s);
 	}
-
+	@Test
 	public void testStoreUpdate() {
 		String s = storage.put("key", "v1");
-
-		s = storage.put("key", "abc");
+		s = storage.put("key", "v2");
 		assertTrue(s.equals("v1"));
 	}
-
+	@Test
 	public void testRetrieve() {
+		 storage.put("key", "abc");
 		String s = storage.get("key");
 		assertTrue(s.equals("abc"));
 	}

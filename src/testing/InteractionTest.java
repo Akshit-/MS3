@@ -26,22 +26,16 @@ public class InteractionTest extends TestCase {
 
 	@Before
 	public void setUp() {
-		System.out.println("InteractionTest::setUpECSServer()");
-		mECServer = new ECServer("ecs.config");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		mECServer.initService(1);
-		mECServer.start();
+		
 		try {
 			new LogSetup("logs/testing/InteractionTest.log", Level.DEBUG);
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		mECServer = new ECServer("ecstest.config");
+		mECServer.initService(1);
+		mECServer.start();
 		kvClient = new KVStore("localhost", 50000);
 
 		try {

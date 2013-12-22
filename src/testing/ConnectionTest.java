@@ -30,21 +30,14 @@ public class ConnectionTest extends TestCase {
 	ECServer mECServer;
 	
 	@Before
-	public void setup() {
-		System.out.println("ConnectionTest::setup()");
-		mECServer = new ECServer("ecs.config");
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void setUp() {
+		mECServer = new ECServer("ecstest.config");
 		mECServer.initService(1);
 		mECServer.start();
 	}
 	
 	@After 
-	public void clean() {
+	public void tearDown() {
 		mECServer.shutDown();
 		mECServer=null;
 	}

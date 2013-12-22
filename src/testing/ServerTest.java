@@ -13,6 +13,7 @@ import org.junit.Test;
 import client.KVStore;
 import common.messages.KVMessage;
 import common.messages.KVMessage.StatusType;
+import ecs.ECServer;
 
 public class ServerTest extends TestCase {
 	private KVStore kvStore1;
@@ -22,7 +23,7 @@ public class ServerTest extends TestCase {
 	private KVStore kvStore5;
 	private KVStore kvStore6;
 
-
+	private ECServer mECServer;
 	@Before
 	public void setUp() {
 		try {
@@ -30,6 +31,9 @@ public class ServerTest extends TestCase {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
+		mECServer=new ECServer("ecstest.config");
+		mECServer.initService(1);
+		mECServer.start();
 		initClients();
 	}
 	
@@ -104,5 +108,6 @@ public class ServerTest extends TestCase {
 			 kvStore4.disconnect();
 			 kvStore5.disconnect();
 			 kvStore6.disconnect();
+			 mECServer.shutDown();
 	}
 }
