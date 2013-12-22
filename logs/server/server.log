@@ -665,3 +665,88 @@
 2013-12-20 03:39:50,966 DEBUG [Thread-1] root: run()-->finally: Closing socket and streams
 2013-12-20 03:39:50,968 ERROR [Thread-1] root: Error! Connection lost!
 2013-12-20 03:39:50,969 DEBUG [Thread-1] root: run()-->finally: Closing socket and streams
+2013-12-22 17:28:38,585 DEBUG [main] root: Storage class created
+2013-12-22 17:28:38,614 INFO  [main] root: Initialize server ...
+2013-12-22 17:28:38,620 INFO  [main] root: Server listening on port: 50000
+2013-12-22 17:28:41,182 INFO  [main] root: KVServer:0.0.0.0:50000Connected to 127.0.0.1 on port 50000
+2013-12-22 17:28:44,014 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:44,017 INFO  [Thread-1] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}'=[B@18e4327,
+2013-12-22 17:28:44,018 INFO  [Thread-1] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@dada24
+2013-12-22 17:28:44,143 INFO  [Thread-1] root: ClientConnection:: AdminMessage Received
+2013-12-22 17:28:44,143 INFO  [Thread-1] root: getKVAdminMessage
+2013-12-22 17:28:44,147 INFO  [Thread-1] root: Command=0
+2013-12-22 17:28:44,147 INFO  [Thread-1] root: INIT Command for(50000)
+2013-12-22 17:28:44,148 INFO  [Thread-1] root: initKVServer()
+2013-12-22 17:28:44,148 INFO  [Thread-1] root: Storing MetaData corresponding to this Server: 127.0.0.1:50000 358343938402ebb5110716c6e836f5a3 358343938402ebb5110716c6e836f5a2
+2013-12-22 17:28:44,148 INFO  [Thread-1] root: ClientConnection:: Sending Message to Admin with command:INIT_SUCCESS
+2013-12-22 17:28:44,157 INFO  [Thread-1] root: ClientConnection:: Sending from KVServer:{"command":1}
+2013-12-22 17:28:44,157 INFO  [Thread-1] root: ClientConnection:: SEND 	<127.0.0.1:50000>: '{"command":1}'
+2013-12-22 17:28:44,192 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:44,193 INFO  [Thread-1] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"adminMsg":true,"command":3,"range":"","destination":""}'=[B@57807a,
+2013-12-22 17:28:44,193 INFO  [Thread-1] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@b3cac9
+2013-12-22 17:28:44,193 INFO  [Thread-1] root: ClientConnection:: AdminMessage Received
+2013-12-22 17:28:44,193 INFO  [Thread-1] root: getKVAdminMessage
+2013-12-22 17:28:44,194 INFO  [Thread-1] root: Command=3
+2013-12-22 17:28:44,194 INFO  [Thread-1] root: START Command for(50000)
+2013-12-22 17:28:44,194 INFO  [Thread-1] root: ClientConnection:: Sending Message to Admin with command:START_SUCCESS
+2013-12-22 17:28:44,195 INFO  [Thread-1] root: ClientConnection:: Sending from KVServer:{"command":4}
+2013-12-22 17:28:44,195 INFO  [Thread-1] root: ClientConnection:: SEND 	<127.0.0.1:50000>: '{"command":4}'
+2013-12-22 17:28:44,204 INFO  [main] root: KVServer:0.0.0.0:50000Connected to 127.0.0.1 on port 50000
+2013-12-22 17:28:44,205 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:44,205 INFO  [Thread-1] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"adminMsg":true,"command":9,"range":"","destination":""}'=[B@178dc08,
+2013-12-22 17:28:44,206 INFO  [Thread-1] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@1b5c22f
+2013-12-22 17:28:44,206 INFO  [Thread-1] root: ClientConnection:: AdminMessage Received
+2013-12-22 17:28:44,206 INFO  [Thread-1] root: getKVAdminMessage
+2013-12-22 17:28:44,207 INFO  [Thread-1] root: Command=9
+2013-12-22 17:28:44,207 INFO  [Thread-1] root: SHUTDOWN Command for(50000)
+2013-12-22 17:28:44,212 INFO  [Thread-2] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:47,470 DEBUG [main] root: Storage class created
+2013-12-22 17:28:47,472 INFO  [main] root: Initialize server ...
+2013-12-22 17:28:47,478 INFO  [main] root: Server listening on port: 50000
+2013-12-22 17:28:50,251 INFO  [main] root: KVServer:0.0.0.0:50000Connected to 127.0.0.1 on port 50000
+2013-12-22 17:28:53,234 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:53,236 INFO  [Thread-1] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}'=[B@2e323,
+2013-12-22 17:28:53,236 INFO  [Thread-1] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@18e4327
+2013-12-22 17:28:53,283 INFO  [Thread-1] root: ClientConnection:: AdminMessage Received
+2013-12-22 17:28:53,284 INFO  [Thread-1] root: getKVAdminMessage
+2013-12-22 17:28:53,288 INFO  [Thread-1] root: Command=0
+2013-12-22 17:28:53,288 INFO  [Thread-1] root: INIT Command for(50000)
+2013-12-22 17:28:53,288 INFO  [Thread-1] root: initKVServer()
+2013-12-22 17:28:53,288 INFO  [Thread-1] root: Storing MetaData corresponding to this Server: 127.0.0.1:50000 358343938402ebb5110716c6e836f5a3 358343938402ebb5110716c6e836f5a2
+2013-12-22 17:28:53,288 INFO  [Thread-1] root: ClientConnection:: Sending Message to Admin with command:INIT_SUCCESS
+2013-12-22 17:28:53,296 INFO  [Thread-1] root: ClientConnection:: Sending from KVServer:{"command":1}
+2013-12-22 17:28:53,297 INFO  [Thread-1] root: ClientConnection:: SEND 	<127.0.0.1:50000>: '{"command":1}'
+2013-12-22 17:28:53,301 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:53,301 INFO  [Thread-1] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"adminMsg":true,"command":3,"range":"","destination":""}'=[B@57807a,
+2013-12-22 17:28:53,301 INFO  [Thread-1] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@b3cac9
+2013-12-22 17:28:53,302 INFO  [Thread-1] root: ClientConnection:: AdminMessage Received
+2013-12-22 17:28:53,302 INFO  [Thread-1] root: getKVAdminMessage
+2013-12-22 17:28:53,302 INFO  [Thread-1] root: Command=3
+2013-12-22 17:28:53,302 INFO  [Thread-1] root: START Command for(50000)
+2013-12-22 17:28:53,303 INFO  [Thread-1] root: ClientConnection:: Sending Message to Admin with command:START_SUCCESS
+2013-12-22 17:28:53,303 INFO  [Thread-1] root: ClientConnection:: Sending from KVServer:{"command":4}
+2013-12-22 17:28:53,303 INFO  [Thread-1] root: ClientConnection:: SEND 	<127.0.0.1:50000>: '{"command":4}'
+2013-12-22 17:28:53,315 INFO  [main] root: KVServer:0.0.0.0:50000Connected to 127.0.0.1 on port 50000
+2013-12-22 17:28:53,320 INFO  [Thread-2] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:28:53,320 INFO  [Thread-2] root: ClientConnection:: RECEIVE 	<127.0.0.1:50000>: '{"key":"an unset value","value":"","status":0}'=[B@178dc08,
+2013-12-22 17:28:53,320 INFO  [Thread-2] root: ClientConnection:: run()-->latestMsg =common.messages.TextMessage@1b5c22f
+2013-12-22 17:28:53,321 INFO  [Thread-2] root: ClientConnection:: KVClient message Received.
+2013-12-22 17:28:53,324 INFO  [Thread-2] root: ClientConnection::getKVMessage()
+2013-12-22 17:28:53,335 INFO  [Thread-2] root: ClientConnection::serverNotResponsible() + key=117923653119961706028256181325610152450, Server's start=71130645273907490186283204435894531491, Server's end=71130645273907490186283204435894531490, Maximum =340282366920938463463374607431768211455, Minimum =0
+2013-12-22 17:28:53,335 INFO  [Thread-2] root: ClientConnection::serverNotResponsible(start > end) + return false
+2013-12-22 17:28:53,335 DEBUG [Thread-2] root: Storage ( ::get() + Retrieved kvpair:an unset value,null
+2013-12-22 17:28:53,335 INFO  [Thread-2] root: GET ERROR! Cannot find key=an unset value on Server
+2013-12-22 17:28:56,622 DEBUG [main] root: Storage class created
+2013-12-22 17:28:56,624 INFO  [main] root: Initialize server ...
+2013-12-22 17:28:56,630 ERROR [main] root: Error! Cannot open server socket:
+2013-12-22 17:28:56,630 ERROR [main] root: Port 50000 is already bound!
+2013-12-22 17:28:56,630 INFO  [main] root: Server stopped.
+2013-12-22 17:28:53,336 INFO  [Thread-2] root: ClientConnection:: SEND 	<127.0.0.1:50000>: '{"key":"an unset value","value":"","status":1}'
+2013-12-22 17:31:50,257 INFO  [Thread-2] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:29:02,373 INFO  [Thread-3] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:31:50,264 ERROR [Thread-3] root: Error! Connection lost!
+2013-12-22 17:31:50,264 DEBUG [Thread-3] root: run()-->finally: Closing socket and streams
+2013-12-22 17:28:59,371 INFO  [main] root: KVServer:0.0.0.0:50000Connected to 127.0.0.1 on port 50000
+2013-12-22 17:28:53,344 INFO  [Thread-1] root: ClientConnection:: starting to RECEIVE (50000)
+2013-12-22 17:31:50,270 ERROR [Thread-1] root: Error! Connection lost!
+2013-12-22 17:31:50,270 DEBUG [Thread-1] root: run()-->finally: Closing socket and streams

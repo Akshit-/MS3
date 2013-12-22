@@ -39,7 +39,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 	private Storage storage;
 
-	private Server kvServer;
+	private Server server;
 
 	private static final int BUFFER_SIZE = 1024;
 	private static final int DROP_SIZE = 128 * BUFFER_SIZE;
@@ -56,7 +56,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	public KVServer(int port) {
 		this.port = port;
 		storage = Storage.init();
-		kvServer = Server.getInstance();
+		server = Server.getInstance();
 	}
 
 	/**
@@ -98,14 +98,14 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * Get KVServer current status for Client connection.
 	 */
 	public boolean isActiveForClients() {
-		return kvServer.isActiveForClients();
+		return server.isActiveForClients();
 	}
 
 	/**
 	 * Check whether KVServer has been locked by Admin or not.
 	 */
 	public boolean isLockWrite() {
-		return kvServer.isLockWrite();
+		return server.isLockWrite();
 	}
 
 
@@ -148,15 +148,15 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 */
 	public void initKVServer(List<MetaData> metaDatas){
 
-		kvServer.setServiceMetaData(new ArrayList<MetaData>(metaDatas)); //store service metadata
-		List<MetaData> mMetaDatas = kvServer.getServiceMetaData();
+		server.setServiceMetaData(new ArrayList<MetaData>(metaDatas)); //store service metadata
+		List<MetaData> mMetaDatas = server.getServiceMetaData();
 		logger.info("initKVServer()");
 		for(MetaData meta : mMetaDatas){
 			if(meta.getPort().equals(Integer.toString(port))){
-				kvServer.setNodeMetaData(meta);// store node metadata
+				server.setNodeMetaData(meta);// store node metadata
 			}
 		}
-		MetaData mMetaData = kvServer.getNodeMetaData();
+		MetaData mMetaData = server.getNodeMetaData();
 		logger.info("Storing MetaData corresponding to this Server: "
 				+mMetaData.getIP()
 				+":"+mMetaData.getPort()
@@ -169,7 +169,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * This starts the KVServer, all client requests and all ECS requests are processed.
 	 */
 	public void startKVServer(){
-		kvServer.setIsActiveForClients(true);
+		server.setIsActiveForClients(true);
 	}
 
 	/** 
@@ -177,7 +177,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void stopKVServer(){
-		kvServer.setIsActiveForClients(false);
+		server.setIsActiveForClients(false);
 	}
 
 
@@ -194,7 +194,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void lockWrite(){
-		kvServer.setLockWrite(true);
+		server.setLockWrite(true);
 	}
 
 	/**
@@ -202,17 +202,17 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void unlockWrite(){
-		kvServer.setLockWrite(false);
+		server.setLockWrite(false);
 	}
 
 	@Override
 	public MetaData getNodeMetaData() {
-		return kvServer.getNodeMetaData();
+		return server.getNodeMetaData();
 	}
 
 	@Override
 	public List<MetaData> getServiceMetaData() {
-		return kvServer.getServiceMetaData();
+		return server.getServiceMetaData();
 	}	
 
 

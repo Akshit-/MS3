@@ -167,9 +167,6 @@ public class Storage {
 			}
 
 		}
-
-		//logger.debug("Data to be Moved to new Server:" + dataToBeMoved);
-
 		return dataToBeMoved;
 
 	}
