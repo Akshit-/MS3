@@ -1,0 +1,50 @@
+2013-12-22 19:41:08,600 DEBUG [main] root: Storage class created
+2013-12-22 19:41:08,601 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,624 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,627 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key1,null
+2013-12-22 19:41:08,627 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key1,null
+2013-12-22 19:41:08,631 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 19:41:08,631 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 19:41:08,631 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 19:41:08,633 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 19:41:08,633 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 19:41:08,633 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 19:41:08,637 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,637 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,637 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,637 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,638 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,638 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,638 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,638 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,640 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 19:41:08,640 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 19:41:08,640 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 19:41:08,640 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 19:41:08,763 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,763 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,763 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,763 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 21:02:08,109 DEBUG [main] root: Storage class created
+2013-12-22 21:02:08,141 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key1,null
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,146 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 21:02:08,146 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 21:02:08,146 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 21:02:08,150 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,150 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,150 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,150 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,151 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,151 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,151 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,151 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2

@@ -332,7 +332,7 @@ public class KVClient implements ClientSocketListener{
      */
     public static void main(String[] args) {
     	try {
-			new LogSetup("logs/client/client.log", Level.OFF);
+			new LogSetup("logs/client/client.log", Level.ALL);
 			KVClient app = new KVClient();
 			app.run();
 		} catch (IOException e) {

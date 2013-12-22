@@ -1,0 +1,973 @@
+2013-12-22 17:28:37,747 DEBUG [main] root: New MetaData = [metadata.MetaData@ec6bb1]
+2013-12-22 17:28:44,013 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 17:28:44,013 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@16d4b50'
+2013-12-22 17:28:44,013 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=56110]
+2013-12-22 17:28:44,157 INFO  [main] root: receiveMessage-->after Read
+2013-12-22 17:28:44,158 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@6b93c5,
+2013-12-22 17:28:44,191 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 17:28:44,191 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@9a99eb'
+2013-12-22 17:28:44,191 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=56110]
+2013-12-22 17:28:44,196 INFO  [main] root: receiveMessage-->after Read
+2013-12-22 17:28:44,196 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1ef45e0,
+2013-12-22 17:28:44,198 INFO  [main] root: Connection established
+2013-12-22 17:28:44,199 INFO  [main] root: try to close connection ...
+2013-12-22 17:28:44,199 INFO  [main] root: tearing down the connection ...
+2013-12-22 17:28:44,200 INFO  [main] root: connection closed!
+2013-12-22 17:28:44,200 ERROR [main] root: Not connected to KV Server!
+2013-12-22 17:28:44,200 INFO  [main] root: try to close connection ...
+2013-12-22 17:28:44,201 INFO  [main] root: tearing down the connection ...
+2013-12-22 17:28:44,203 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 17:28:44,203 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1d47f59'
+2013-12-22 17:28:47,206 DEBUG [main] root: New MetaData = [metadata.MetaData@1f4cdd2]
+2013-12-22 17:28:53,233 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 17:28:53,233 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@cbf92'
+2013-12-22 17:28:53,233 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=56112]
+2013-12-22 17:28:53,297 INFO  [main] root: receiveMessage-->after Read
+2013-12-22 17:28:53,297 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@f549de,
+2013-12-22 17:28:53,300 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 17:28:53,300 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1c4a2d3'
+2013-12-22 17:28:53,300 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=56112]
+2013-12-22 17:28:53,303 INFO  [main] root: receiveMessage-->after Read
+2013-12-22 17:28:53,304 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@9e0c2d,
+2013-12-22 17:28:53,308 INFO  [main] root: Connection established
+2013-12-22 17:28:53,313 INFO  [main] root: Sending : {"key":"an unset value","value":"","status":0}
+2013-12-22 17:28:53,314 INFO  [main] root: Send message:	 '{"key":"an unset value","value":"","status":0}'
+2013-12-22 17:28:53,336 INFO  [main] root: KVStore::Starting Receive message =56113
+2013-12-22 17:28:53,337 INFO  [main] root: KVStore::Receive message:	 '{"key":"an unset value","value":"","status":1}
+'=56113
+2013-12-22 17:28:53,338 INFO  [main] root: KVStore:: Server response: {"key":"an unset value","value":"","status":1}
+, status=GET_ERROR
+2013-12-22 17:28:53,341 INFO  [main] root: Server reply to client query:GET_ERROR
+2013-12-22 17:28:53,341 INFO  [main] root: try to close connection ...
+2013-12-22 17:28:53,341 INFO  [main] root: tearing down the connection ...
+2013-12-22 17:28:53,342 INFO  [main] root: connection closed!
+2013-12-22 17:28:53,344 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 17:28:53,344 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@15e3dc4'
+2013-12-22 17:28:56,346 DEBUG [main] root: New MetaData = [metadata.MetaData@e3fd79]
+2013-12-22 17:29:02,372 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 17:29:02,372 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@162f16'
+2013-12-22 17:29:02,373 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=56115]
+2013-12-22 19:41:08,369 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,485 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,488 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,491 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,494 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,497 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,500 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,502 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,504 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,508 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,567 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,570 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,576 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,581 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,585 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:41:08,600 DEBUG [main] root: Storage class created
+2013-12-22 19:41:08,601 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,624 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,627 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key1,null
+2013-12-22 19:41:08,631 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 19:41:08,633 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 19:41:08,637 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 19:41:08,638 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 19:41:08,640 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 19:41:08,763 ERROR [main] root: ECS Config file not fount at : ecstest.config
+2013-12-22 19:42:52,842 DEBUG [main] root: New MetaData = [metadata.MetaData@19fc25, metadata.MetaData@1f8f8c8, metadata.MetaData@952905, metadata.MetaData@b83be0]
+2013-12-22 19:42:54,947 INFO  [main] root: New KVServers count = 4
+2013-12-22 19:42:55,979 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:55,980 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@f01d52'
+2013-12-22 19:42:55,980 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57127]
+2013-12-22 19:42:56,197 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@152643,
+2013-12-22 19:42:56,238 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 19:42:56,244 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:56,244 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@c74910'
+2013-12-22 19:42:56,244 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57128]
+2013-12-22 19:42:56,320 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@18dfa76,
+2013-12-22 19:42:56,321 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 19:42:56,328 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:56,328 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@8a6fc'
+2013-12-22 19:42:56,328 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57129]
+2013-12-22 19:42:56,400 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@b1684,
+2013-12-22 19:42:56,401 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 19:42:56,406 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:56,406 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1f35e30'
+2013-12-22 19:42:56,406 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57130]
+2013-12-22 19:42:56,481 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@accd65,
+2013-12-22 19:42:56,483 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 19:42:56,484 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:42:56,484 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@e0d16b'
+2013-12-22 19:42:56,485 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57127]
+2013-12-22 19:42:56,489 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1d4f355,
+2013-12-22 19:42:56,490 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 19:42:56,491 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:42:56,492 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1b38cdc'
+2013-12-22 19:42:56,492 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57128]
+2013-12-22 19:42:56,497 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@e4d0cd,
+2013-12-22 19:42:56,498 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 19:42:56,499 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:42:56,499 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@484c6b'
+2013-12-22 19:42:56,499 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57129]
+2013-12-22 19:42:56,504 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@913c56,
+2013-12-22 19:42:56,505 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 19:42:56,506 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:42:56,506 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1107304'
+2013-12-22 19:42:56,506 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57130]
+2013-12-22 19:42:56,510 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@ef4599,
+2013-12-22 19:42:56,512 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 19:42:56,514 DEBUG [main] root: New MetaData = [metadata.MetaData@c278b5, metadata.MetaData@182c2d9, metadata.MetaData@1c66ec7, metadata.MetaData@92eb86, metadata.MetaData@1a4ea4f]
+2013-12-22 19:42:56,514 DEBUG [main] root: Old MetaData = [metadata.MetaData@19fc25, metadata.MetaData@1f8f8c8, metadata.MetaData@952905, metadata.MetaData@b83be0]
+2013-12-22 19:42:56,514 DEBUG [main] root: New MetaData = [metadata.MetaData@c278b5, metadata.MetaData@182c2d9, metadata.MetaData@1c66ec7, metadata.MetaData@92eb86, metadata.MetaData@1a4ea4f]
+2013-12-22 19:42:57,037 DEBUG [main] root: Adding new socket for newly added server-127.0.0.1:50004
+2013-12-22 19:42:57,052 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,052 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@1b29f80'
+2013-12-22 19:42:57,052 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57131]
+2013-12-22 19:42:57,126 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":1}
+'=[B@5b24c,
+2013-12-22 19:42:57,127 DEBUG [main] root: initNewNodeMetaData()-->response from KVServer:127.0.0.1:50004 is INIT_SUCCESS
+2013-12-22 19:42:57,129 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:42:57,129 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@1fcd402'
+2013-12-22 19:42:57,129 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57131]
+2013-12-22 19:42:57,133 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":4}
+'=[B@1c2ec05,
+2013-12-22 19:42:57,134 DEBUG [main] root: start(ip,port)-->response from KVServer:127.0.0.1:50004 is START_SUCCESS
+2013-12-22 19:42:57,135 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":12,"range":"","destination":""}
+2013-12-22 19:42:57,135 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1558dc'
+2013-12-22 19:42:57,135 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57130]
+2013-12-22 19:42:57,139 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":13}
+'=[B@17d03c5,
+2013-12-22 19:42:57,140 DEBUG [main] root: setLockWrite()-->response from KVServer:127.0.0.1:50001 is LOCK_WRITE_SUCCESS
+2013-12-22 19:42:57,142 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":18,"range":"b3638a32c297f43aa37e63bbd839fc7f:da850509fc3b88a612b0bcad7a37963b","destination":"127.0.0.1:50004"}
+2013-12-22 19:42:57,142 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@82a13a'
+2013-12-22 19:42:57,142 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57130]
+2013-12-22 19:42:57,153 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":19}
+'=[B@2726b2,
+2013-12-22 19:42:57,154 DEBUG [main] root: moveData()-->response from KVServer:127.0.0.1:50001 is MOVE_DATA_SUCCESS
+2013-12-22 19:42:57,159 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,159 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@5da37c'
+2013-12-22 19:42:57,159 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57127]
+2013-12-22 19:42:57,173 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":22}
+'=[B@19845fb,
+2013-12-22 19:42:57,174 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is UPDATE_SUCCESS
+2013-12-22 19:42:57,179 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,179 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1a791f'
+2013-12-22 19:42:57,179 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57128]
+2013-12-22 19:42:57,194 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":22}
+'=[B@6179e,
+2013-12-22 19:42:57,196 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is UPDATE_SUCCESS
+2013-12-22 19:42:57,200 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,200 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@1f89785'
+2013-12-22 19:42:57,200 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57129]
+2013-12-22 19:42:57,217 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":22}
+'=[B@1a3bc8c,
+2013-12-22 19:42:57,218 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is UPDATE_SUCCESS
+2013-12-22 19:42:57,224 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,224 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@af914c'
+2013-12-22 19:42:57,224 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57130]
+2013-12-22 19:42:57,238 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":22}
+'=[B@6c2a78,
+2013-12-22 19:42:57,239 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is UPDATE_SUCCESS
+2013-12-22 19:42:57,244 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:42:57,244 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@15863e4'
+2013-12-22 19:42:57,244 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57131]
+2013-12-22 19:48:55,454 DEBUG [main] root: New MetaData = [metadata.MetaData@bd93cd, metadata.MetaData@3299f6, metadata.MetaData@19fc25, metadata.MetaData@1f8f8c8]
+2013-12-22 19:48:57,561 INFO  [main] root: New KVServers count = 4
+2013-12-22 19:48:58,592 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:58,592 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@916f80'
+2013-12-22 19:48:58,595 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57183]
+2013-12-22 19:48:58,660 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@2f4813,
+2013-12-22 19:48:58,701 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 19:48:58,707 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:58,707 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@143073a'
+2013-12-22 19:48:58,707 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57184]
+2013-12-22 19:48:58,778 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@18facfb,
+2013-12-22 19:48:58,779 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 19:48:58,786 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:58,787 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@c74910'
+2013-12-22 19:48:58,787 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57185]
+2013-12-22 19:48:58,856 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@18dfa76,
+2013-12-22 19:48:58,858 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 19:48:58,866 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:58,867 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@3680c1'
+2013-12-22 19:48:58,867 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57186]
+2013-12-22 19:48:58,940 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@3f1179,
+2013-12-22 19:48:58,941 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 19:48:58,943 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:48:58,943 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@945b95'
+2013-12-22 19:48:58,943 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57183]
+2013-12-22 19:48:58,948 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@8a6fc,
+2013-12-22 19:48:58,949 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 19:48:58,950 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:48:58,950 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@b1684'
+2013-12-22 19:48:58,950 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57184]
+2013-12-22 19:48:58,954 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@1f35e30,
+2013-12-22 19:48:58,955 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 19:48:58,956 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:48:58,957 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@accd65'
+2013-12-22 19:48:58,957 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57185]
+2013-12-22 19:48:58,962 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@e0d16b,
+2013-12-22 19:48:58,963 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 19:48:58,967 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:48:58,967 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1d4f355'
+2013-12-22 19:48:58,968 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57186]
+2013-12-22 19:48:58,968 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@1b38cdc,
+2013-12-22 19:48:58,969 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 19:48:58,971 DEBUG [main] root: New MetaData = [metadata.MetaData@e4d0cd, metadata.MetaData@484c6b, metadata.MetaData@913c56, metadata.MetaData@1107304, metadata.MetaData@ef4599]
+2013-12-22 19:48:58,971 DEBUG [main] root: Old MetaData = [metadata.MetaData@bd93cd, metadata.MetaData@3299f6, metadata.MetaData@19fc25, metadata.MetaData@1f8f8c8]
+2013-12-22 19:48:58,971 DEBUG [main] root: New MetaData = [metadata.MetaData@e4d0cd, metadata.MetaData@484c6b, metadata.MetaData@913c56, metadata.MetaData@1107304, metadata.MetaData@ef4599]
+2013-12-22 19:48:59,493 DEBUG [main] root: Adding new socket for newly added server-127.0.0.1:50004
+2013-12-22 19:48:59,499 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,500 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@182c2d9'
+2013-12-22 19:48:59,500 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57187]
+2013-12-22 19:48:59,587 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":1}
+'=[B@1c66ec7,
+2013-12-22 19:48:59,588 DEBUG [main] root: initNewNodeMetaData()-->response from KVServer:127.0.0.1:50004 is INIT_SUCCESS
+2013-12-22 19:48:59,589 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 19:48:59,589 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@92eb86'
+2013-12-22 19:48:59,590 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57187]
+2013-12-22 19:48:59,592 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":4}
+'=[B@1a4ea4f,
+2013-12-22 19:48:59,593 DEBUG [main] root: start(ip,port)-->response from KVServer:127.0.0.1:50004 is START_SUCCESS
+2013-12-22 19:48:59,599 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":12,"range":"","destination":""}
+2013-12-22 19:48:59,599 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@12f195'
+2013-12-22 19:48:59,599 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57186]
+2013-12-22 19:48:59,599 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":13}
+'=[B@1b29f80,
+2013-12-22 19:48:59,600 DEBUG [main] root: setLockWrite()-->response from KVServer:127.0.0.1:50001 is LOCK_WRITE_SUCCESS
+2013-12-22 19:48:59,602 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":18,"range":"b3638a32c297f43aa37e63bbd839fc7f:da850509fc3b88a612b0bcad7a37963b","destination":"127.0.0.1:50004"}
+2013-12-22 19:48:59,602 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@5b24c'
+2013-12-22 19:48:59,602 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57186]
+2013-12-22 19:48:59,608 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":19}
+'=[B@1fcd402,
+2013-12-22 19:48:59,609 DEBUG [main] root: moveData()-->response from KVServer:127.0.0.1:50001 is MOVE_DATA_SUCCESS
+2013-12-22 19:48:59,615 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,615 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1c2ec05'
+2013-12-22 19:48:59,615 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=57183]
+2013-12-22 19:48:59,625 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":22}
+'=[B@1558dc,
+2013-12-22 19:48:59,626 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is UPDATE_SUCCESS
+2013-12-22 19:48:59,633 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,633 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@17d03c5'
+2013-12-22 19:48:59,633 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=57184]
+2013-12-22 19:48:59,642 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":22}
+'=[B@82a13a,
+2013-12-22 19:48:59,643 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is UPDATE_SUCCESS
+2013-12-22 19:48:59,650 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,650 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@2726b2'
+2013-12-22 19:48:59,650 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=57185]
+2013-12-22 19:48:59,659 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":22}
+'=[B@5da37c,
+2013-12-22 19:48:59,660 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is UPDATE_SUCCESS
+2013-12-22 19:48:59,666 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,667 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@19845fb'
+2013-12-22 19:48:59,667 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=57186]
+2013-12-22 19:48:59,675 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":22}
+'=[B@1a791f,
+2013-12-22 19:48:59,677 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is UPDATE_SUCCESS
+2013-12-22 19:48:59,685 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 19:48:59,685 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@6179e'
+2013-12-22 19:48:59,685 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=57187]
+2013-12-22 21:01:14,387 DEBUG [main] root: New MetaData = [metadata.MetaData@19fc25, metadata.MetaData@1f8f8c8, metadata.MetaData@952905, metadata.MetaData@b83be0]
+2013-12-22 21:01:17,080 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:18,111 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:18,112 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@24eafa'
+2013-12-22 21:01:18,112 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51476]
+2013-12-22 21:01:18,175 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@1bef987,
+2013-12-22 21:01:18,211 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:18,215 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:18,215 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@187275d'
+2013-12-22 21:01:18,215 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51477]
+2013-12-22 21:01:18,277 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@2982d8,
+2013-12-22 21:01:18,278 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:18,284 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:18,284 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@eccfe7'
+2013-12-22 21:01:18,284 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51478]
+2013-12-22 21:01:18,349 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@14560cf,
+2013-12-22 21:01:18,350 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:18,354 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:18,354 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1d6e3d2'
+2013-12-22 21:01:18,354 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51479]
+2013-12-22 21:01:18,417 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@1071e12,
+2013-12-22 21:01:18,418 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:18,419 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:18,419 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@4745cf'
+2013-12-22 21:01:18,420 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:18,420 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1384a6a'
+2013-12-22 21:01:18,421 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:18,422 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@9daa17'
+2013-12-22 21:01:18,422 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:18,423 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@109dcbb'
+2013-12-22 21:01:19,427 DEBUG [main] root: New MetaData = [metadata.MetaData@1b2b450, metadata.MetaData@15c13ef, metadata.MetaData@20dcb7, metadata.MetaData@17aa2a8]
+2013-12-22 21:01:21,510 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:22,513 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,513 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@4ce427'
+2013-12-22 21:01:22,514 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51480]
+2013-12-22 21:01:22,575 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@16c2c0,
+2013-12-22 21:01:22,576 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:22,579 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,579 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@4bd173'
+2013-12-22 21:01:22,580 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51481]
+2013-12-22 21:01:22,640 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@1a3eab6,
+2013-12-22 21:01:22,641 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:22,644 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,644 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@867fad'
+2013-12-22 21:01:22,645 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,705 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@285d14,
+2013-12-22 21:01:22,706 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:22,709 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,709 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1f6ef01'
+2013-12-22 21:01:22,709 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51483]
+2013-12-22 21:01:22,770 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@c54654,
+2013-12-22 21:01:22,771 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:22,771 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:22,772 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@18c6982'
+2013-12-22 21:01:22,772 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51480]
+2013-12-22 21:01:22,773 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@162e703,
+2013-12-22 21:01:22,774 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:22,775 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:22,775 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@2c7ac5'
+2013-12-22 21:01:22,775 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51481]
+2013-12-22 21:01:22,777 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@303a60,
+2013-12-22 21:01:22,778 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 21:01:22,778 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:22,779 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@487ae0'
+2013-12-22 21:01:22,779 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,781 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@7b21ea,
+2013-12-22 21:01:22,781 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 21:01:22,782 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:22,782 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1efa490'
+2013-12-22 21:01:22,782 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51483]
+2013-12-22 21:01:22,784 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@1d2b8e,
+2013-12-22 21:01:22,785 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 21:01:22,786 DEBUG [main] root: New MetaData = [metadata.MetaData@1169fb2, metadata.MetaData@4e8edc, metadata.MetaData@1854b38]
+2013-12-22 21:01:22,787 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":12,"range":"","destination":""}
+2013-12-22 21:01:22,787 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@d81b4'
+2013-12-22 21:01:22,787 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51481]
+2013-12-22 21:01:22,789 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":13}
+'=[B@be7667,
+2013-12-22 21:01:22,790 DEBUG [main] root: setLockWrite()-->response from KVServer:127.0.0.1:50003 is LOCK_WRITE_SUCCESS
+2013-12-22 21:01:22,790 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":12,"range":"","destination":""}
+2013-12-22 21:01:22,791 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@4f8358'
+2013-12-22 21:01:22,791 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,792 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":13}
+'=[B@38462a,
+2013-12-22 21:01:22,793 DEBUG [main] root: setLockWrite()-->response from KVServer:127.0.0.1:50002 is LOCK_WRITE_SUCCESS
+2013-12-22 21:01:22,796 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,796 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@869470'
+2013-12-22 21:01:22,796 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,802 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":22}
+'=[B@17b79a6,
+2013-12-22 21:01:22,803 DEBUG [main] root: updateKVServerMetaData(ip,port)-->response from KVServer:127.0.0.1:50002 is UPDATE_SUCCESS
+2013-12-22 21:01:22,804 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":18,"range":"358343938402ebb5110716c6e836f5a3:b3638a32c297f43aa37e63bbd839fc7e","destination":"127.0.0.1:50002"}
+2013-12-22 21:01:22,804 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@16f8834'
+2013-12-22 21:01:22,804 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51481]
+2013-12-22 21:01:22,808 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":19}
+'=[B@157211f,
+2013-12-22 21:01:22,809 DEBUG [main] root: moveData()-->response from KVServer:127.0.0.1:50003 is MOVE_DATA_SUCCESS
+2013-12-22 21:01:22,810 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":15,"range":"","destination":""}
+2013-12-22 21:01:22,810 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@13f99af'
+2013-12-22 21:01:22,810 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,812 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":16}
+'=[B@82c23d,
+2013-12-22 21:01:22,813 DEBUG [main] root: releaseLockWrite()-->response from KVServer:127.0.0.1:50002 is UNLOCK_WRITE_SUCCESS
+2013-12-22 21:01:22,813 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:22,814 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@9e4585'
+2013-12-22 21:01:22,817 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,817 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@e62121'
+2013-12-22 21:01:22,818 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51480]
+2013-12-22 21:01:22,822 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":22}
+'=[B@8917a2,
+2013-12-22 21:01:22,823 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is UPDATE_SUCCESS
+2013-12-22 21:01:22,826 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,826 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@6e9e64'
+2013-12-22 21:01:22,827 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51482]
+2013-12-22 21:01:22,833 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":22}
+'=[B@60e390,
+2013-12-22 21:01:22,835 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is UPDATE_SUCCESS
+2013-12-22 21:01:22,838 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50002","start":"358343938402ebb5110716c6e836f5a3","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:22,838 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@fc40ae'
+2013-12-22 21:01:22,838 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51483]
+2013-12-22 21:01:22,843 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":22}
+'=[B@fa706d,
+2013-12-22 21:01:22,844 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is UPDATE_SUCCESS
+2013-12-22 21:01:22,845 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:22,845 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1eb0cd0'
+2013-12-22 21:01:22,846 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:22,846 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@964130'
+2013-12-22 21:01:22,847 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:22,847 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@91b9b0'
+2013-12-22 21:01:23,850 DEBUG [main] root: New MetaData = [metadata.MetaData@173a64a, metadata.MetaData@1aa5882, metadata.MetaData@98cbf7, metadata.MetaData@177060f]
+2013-12-22 21:01:25,943 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:26,947 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:26,947 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1c81ac0'
+2013-12-22 21:01:26,947 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51484]
+2013-12-22 21:01:27,007 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@54570a,
+2013-12-22 21:01:27,008 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:27,011 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:27,011 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@11e7cc6'
+2013-12-22 21:01:27,011 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51485]
+2013-12-22 21:01:27,075 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@91e321,
+2013-12-22 21:01:27,076 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:27,079 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:27,079 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@1d6c336'
+2013-12-22 21:01:27,079 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51486]
+2013-12-22 21:01:27,140 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@aa3e5b,
+2013-12-22 21:01:27,141 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:27,145 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:27,145 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@e3e881'
+2013-12-22 21:01:27,145 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51487]
+2013-12-22 21:01:27,208 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@9a99eb,
+2013-12-22 21:01:27,209 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:27,210 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:27,210 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1ef45e0'
+2013-12-22 21:01:27,210 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51484]
+2013-12-22 21:01:27,212 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1d47f59,
+2013-12-22 21:01:27,213 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:27,213 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:27,213 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1f4cdd2'
+2013-12-22 21:01:27,213 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51485]
+2013-12-22 21:01:27,215 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@f4ca49,
+2013-12-22 21:01:27,216 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 21:01:27,217 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:27,217 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@10c94a7'
+2013-12-22 21:01:27,217 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51486]
+2013-12-22 21:01:27,219 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@f3770c,
+2013-12-22 21:01:27,220 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 21:01:27,221 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:27,221 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@cbf92'
+2013-12-22 21:01:27,221 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51487]
+2013-12-22 21:01:27,223 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@f549de,
+2013-12-22 21:01:27,224 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 21:01:27,224 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":6,"range":"","destination":""}
+2013-12-22 21:01:27,225 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1c4a2d3'
+2013-12-22 21:01:27,225 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51484]
+2013-12-22 21:01:27,226 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":7}
+'=[B@9e0c2d,
+2013-12-22 21:01:27,227 DEBUG [main] root: stop()-->response from KVServer:127.0.0.1:50000 is STOP_SUCCESS
+2013-12-22 21:01:27,228 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":6,"range":"","destination":""}
+2013-12-22 21:01:27,228 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@318293'
+2013-12-22 21:01:27,228 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51485]
+2013-12-22 21:01:27,230 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":7}
+'=[B@739aa3,
+2013-12-22 21:01:27,230 DEBUG [main] root: stop()-->response from KVServer:127.0.0.1:50003 is STOP_SUCCESS
+2013-12-22 21:01:27,231 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":6,"range":"","destination":""}
+2013-12-22 21:01:27,231 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@1ad6c98'
+2013-12-22 21:01:27,231 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51486]
+2013-12-22 21:01:27,233 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":7}
+'=[B@b49b19,
+2013-12-22 21:01:27,234 DEBUG [main] root: stop()-->response from KVServer:127.0.0.1:50002 is STOP_SUCCESS
+2013-12-22 21:01:27,235 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":6,"range":"","destination":""}
+2013-12-22 21:01:27,235 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@132be10'
+2013-12-22 21:01:27,235 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51487]
+2013-12-22 21:01:27,236 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":7}
+'=[B@5c2fee,
+2013-12-22 21:01:27,241 DEBUG [main] root: stop()-->response from KVServer:127.0.0.1:50001 is STOP_SUCCESS
+2013-12-22 21:01:27,243 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:27,243 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@fe30af'
+2013-12-22 21:01:27,245 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:27,245 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@2e34bf'
+2013-12-22 21:01:27,246 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:27,246 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@188f506'
+2013-12-22 21:01:27,247 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:27,247 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@8e85b5'
+2013-12-22 21:01:28,251 DEBUG [main] root: New MetaData = [metadata.MetaData@3508c0, metadata.MetaData@1d183b7, metadata.MetaData@1e937f, metadata.MetaData@165ab39]
+2013-12-22 21:01:30,333 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:31,336 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:31,337 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1f6d2e3'
+2013-12-22 21:01:31,337 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51488]
+2013-12-22 21:01:31,397 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@18f729c,
+2013-12-22 21:01:31,398 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:31,401 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:31,402 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@ad97f5'
+2013-12-22 21:01:31,402 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51489]
+2013-12-22 21:01:31,464 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@d38976,
+2013-12-22 21:01:31,465 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:31,468 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:31,468 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@1e5c339'
+2013-12-22 21:01:31,468 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51490]
+2013-12-22 21:01:31,530 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@17414c8,
+2013-12-22 21:01:31,531 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:31,534 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:31,534 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@7a17'
+2013-12-22 21:01:31,534 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:31,594 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@14fa0ef,
+2013-12-22 21:01:31,595 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:31,595 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:31,596 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@ceb6dd'
+2013-12-22 21:01:31,596 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51488]
+2013-12-22 21:01:31,597 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1479ef9,
+2013-12-22 21:01:31,598 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:31,599 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:31,599 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1162a9c'
+2013-12-22 21:01:31,599 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51489]
+2013-12-22 21:01:31,601 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@47a8f3,
+2013-12-22 21:01:31,601 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 21:01:31,602 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:31,602 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@a4edc4'
+2013-12-22 21:01:31,602 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51490]
+2013-12-22 21:01:31,604 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@1f5eb7f,
+2013-12-22 21:01:31,605 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 21:01:31,605 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:31,606 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@381a53'
+2013-12-22 21:01:31,606 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:31,607 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@1484a8a,
+2013-12-22 21:01:31,608 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 21:01:31,609 DEBUG [main] root: New MetaData = [metadata.MetaData@115c974, metadata.MetaData@15d0a50, metadata.MetaData@1500efd, metadata.MetaData@1082277, metadata.MetaData@10eb535]
+2013-12-22 21:01:31,610 DEBUG [main] root: Old MetaData = [metadata.MetaData@3508c0, metadata.MetaData@1d183b7, metadata.MetaData@1e937f, metadata.MetaData@165ab39]
+2013-12-22 21:01:31,610 DEBUG [main] root: New MetaData = [metadata.MetaData@115c974, metadata.MetaData@15d0a50, metadata.MetaData@1500efd, metadata.MetaData@1082277, metadata.MetaData@10eb535]
+2013-12-22 21:01:32,128 DEBUG [main] root: Adding new socket for newly added server-127.0.0.1:50004
+2013-12-22 21:01:32,133 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,133 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@9ad840'
+2013-12-22 21:01:32,133 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=51492]
+2013-12-22 21:01:32,214 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":1}
+'=[B@1eb7d25,
+2013-12-22 21:01:32,214 DEBUG [main] root: initNewNodeMetaData()-->response from KVServer:127.0.0.1:50004 is INIT_SUCCESS
+2013-12-22 21:01:32,215 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:32,215 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@165091f'
+2013-12-22 21:01:32,215 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=51492]
+2013-12-22 21:01:32,217 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":4}
+'=[B@39d811,
+2013-12-22 21:01:32,218 DEBUG [main] root: start(ip,port)-->response from KVServer:127.0.0.1:50004 is START_SUCCESS
+2013-12-22 21:01:32,219 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":12,"range":"","destination":""}
+2013-12-22 21:01:32,219 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1984f7d'
+2013-12-22 21:01:32,219 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:32,220 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":13}
+'=[B@8aaff4,
+2013-12-22 21:01:32,221 DEBUG [main] root: setLockWrite()-->response from KVServer:127.0.0.1:50001 is LOCK_WRITE_SUCCESS
+2013-12-22 21:01:32,222 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":18,"range":"b3638a32c297f43aa37e63bbd839fc7f:da850509fc3b88a612b0bcad7a37963b","destination":"127.0.0.1:50004"}
+2013-12-22 21:01:32,222 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@125d92c'
+2013-12-22 21:01:32,222 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:32,226 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":19}
+'=[B@1d4e49a,
+2013-12-22 21:01:32,227 DEBUG [main] root: moveData()-->response from KVServer:127.0.0.1:50001 is MOVE_DATA_SUCCESS
+2013-12-22 21:01:32,231 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,231 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1ec3c6d'
+2013-12-22 21:01:32,231 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51488]
+2013-12-22 21:01:32,237 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":22}
+'=[B@731f3f,
+2013-12-22 21:01:32,238 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is UPDATE_SUCCESS
+2013-12-22 21:01:32,242 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,242 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@86988'
+2013-12-22 21:01:32,242 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51489]
+2013-12-22 21:01:32,249 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":22}
+'=[B@489c42,
+2013-12-22 21:01:32,249 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is UPDATE_SUCCESS
+2013-12-22 21:01:32,253 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,254 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@17082d8'
+2013-12-22 21:01:32,254 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51490]
+2013-12-22 21:01:32,260 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":22}
+'=[B@19e733e,
+2013-12-22 21:01:32,261 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is UPDATE_SUCCESS
+2013-12-22 21:01:32,265 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,265 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1a01f91'
+2013-12-22 21:01:32,265 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:32,271 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":22}
+'=[B@1786b79,
+2013-12-22 21:01:32,271 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is UPDATE_SUCCESS
+2013-12-22 21:01:32,275 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":21,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50004","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"da850509fc3b88a612b0bcad7a37963b"},{"ip":"127.0.0.1","port":"50001","start":"da850509fc3b88a612b0bcad7a37963c","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:32,275 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@d7ffbf'
+2013-12-22 21:01:32,275 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50004,localport=51492]
+2013-12-22 21:01:32,281 INFO  [main] root: RECEIVE 	<127.0.0.1:50004>: '{"command":22}
+'=[B@d7581b,
+2013-12-22 21:01:32,282 DEBUG [main] root: updateKVServersMetaData()-->response from KVServer:127.0.0.1:50004 is UPDATE_SUCCESS
+2013-12-22 21:01:32,283 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":15,"range":"","destination":""}
+2013-12-22 21:01:32,283 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1d97d0d'
+2013-12-22 21:01:32,283 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51491]
+2013-12-22 21:01:32,288 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":16}
+'=[B@1a0eec3,
+2013-12-22 21:01:32,289 DEBUG [main] root: releaseLockWrite()-->response from KVServer:127.0.0.1:50001 is UNLOCK_WRITE_SUCCESS
+2013-12-22 21:01:32,289 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:32,289 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@9b774e'
+2013-12-22 21:01:32,290 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:32,290 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@b5d05b'
+2013-12-22 21:01:32,291 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:32,291 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@8210fc'
+2013-12-22 21:01:32,292 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:32,292 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1292738'
+2013-12-22 21:01:32,293 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:32,293 INFO  [main] root: SEND 	<127.0.0.1:50004>: '[B@cdd54e'
+2013-12-22 21:01:33,296 DEBUG [main] root: New MetaData = [metadata.MetaData@b87d31, metadata.MetaData@232697, metadata.MetaData@1bab2c3, metadata.MetaData@2e242b]
+2013-12-22 21:01:35,384 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:36,387 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:36,387 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@148bd9d'
+2013-12-22 21:01:36,387 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51493]
+2013-12-22 21:01:36,450 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@98a8b8,
+2013-12-22 21:01:36,451 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:36,453 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:36,454 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@6cffbb'
+2013-12-22 21:01:36,454 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51494]
+2013-12-22 21:01:36,514 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@95b8a,
+2013-12-22 21:01:36,515 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:36,518 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:36,518 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@58f769'
+2013-12-22 21:01:36,518 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51495]
+2013-12-22 21:01:36,579 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@db14d4,
+2013-12-22 21:01:36,579 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:36,582 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:36,583 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1347d33'
+2013-12-22 21:01:36,583 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51496]
+2013-12-22 21:01:36,643 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@107b56e,
+2013-12-22 21:01:36,644 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:36,645 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:36,645 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1184a4f'
+2013-12-22 21:01:36,646 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:36,646 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@1b6c184'
+2013-12-22 21:01:36,647 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:36,647 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@15ad36d'
+2013-12-22 21:01:36,648 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:36,648 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1eeb372'
+2013-12-22 21:01:37,648 DEBUG [main] root: getActivatedNodeCount()-->mMetaData is NULL!!!
+2013-12-22 21:01:37,651 DEBUG [main] root: New MetaData = [metadata.MetaData@1c3432a, metadata.MetaData@6e96ff, metadata.MetaData@7b7b11, metadata.MetaData@cc9d70]
+2013-12-22 21:01:39,738 INFO  [main] root: New KVServers count = 4
+2013-12-22 21:01:40,776 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:40,776 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@17456bc'
+2013-12-22 21:01:40,776 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51497]
+2013-12-22 21:01:40,808 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@ea85b4,
+2013-12-22 21:01:40,809 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:40,814 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:40,814 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@efeff8'
+2013-12-22 21:01:40,814 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51498]
+2013-12-22 21:01:40,877 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":1}
+'=[B@738a71,
+2013-12-22 21:01:40,878 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50003 is INIT_SUCCESS
+2013-12-22 21:01:40,885 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:40,886 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@186167d'
+2013-12-22 21:01:40,886 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51499]
+2013-12-22 21:01:40,951 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":1}
+'=[B@2e6c66,
+2013-12-22 21:01:40,979 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50002 is INIT_SUCCESS
+2013-12-22 21:01:40,982 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"dcee0277eb13b76434e8dcd31a38770a","end":"358343938402ebb5110716c6e836f5a2"},{"ip":"127.0.0.1","port":"50003","start":"358343938402ebb5110716c6e836f5a3","end":"a98109598267087dfc364fae4cf24578"},{"ip":"127.0.0.1","port":"50002","start":"a98109598267087dfc364fae4cf24579","end":"b3638a32c297f43aa37e63bbd839fc7e"},{"ip":"127.0.0.1","port":"50001","start":"b3638a32c297f43aa37e63bbd839fc7f","end":"dcee0277eb13b76434e8dcd31a387709"}]}
+2013-12-22 21:01:40,982 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@1ced821'
+2013-12-22 21:01:40,982 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51500]
+2013-12-22 21:01:41,049 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":1}
+'=[B@cf68af,
+2013-12-22 21:01:41,050 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50001 is INIT_SUCCESS
+2013-12-22 21:01:41,051 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:41,051 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@e1f305'
+2013-12-22 21:01:41,051 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51497]
+2013-12-22 21:01:41,053 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@19ee8a,
+2013-12-22 21:01:41,056 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:41,057 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:41,057 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@9b601d'
+2013-12-22 21:01:41,057 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50003,localport=51498]
+2013-12-22 21:01:41,059 INFO  [main] root: RECEIVE 	<127.0.0.1:50003>: '{"command":4}
+'=[B@7cb44d,
+2013-12-22 21:01:41,060 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50003 is START_SUCCESS
+2013-12-22 21:01:41,061 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:41,061 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@16cefa8'
+2013-12-22 21:01:41,061 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50002,localport=51499]
+2013-12-22 21:01:41,064 INFO  [main] root: RECEIVE 	<127.0.0.1:50002>: '{"command":4}
+'=[B@ea3cdf,
+2013-12-22 21:01:41,064 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50002 is START_SUCCESS
+2013-12-22 21:01:41,065 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:41,065 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@428527'
+2013-12-22 21:01:41,065 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50001,localport=51500]
+2013-12-22 21:01:41,067 INFO  [main] root: RECEIVE 	<127.0.0.1:50001>: '{"command":4}
+'=[B@133f6dd,
+2013-12-22 21:01:41,068 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50001 is START_SUCCESS
+2013-12-22 21:01:41,068 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:41,068 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@944dbd'
+2013-12-22 21:01:41,069 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:41,069 INFO  [main] root: SEND 	<127.0.0.1:50003>: '[B@7bd46a'
+2013-12-22 21:01:41,070 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:41,070 INFO  [main] root: SEND 	<127.0.0.1:50002>: '[B@1b6a053'
+2013-12-22 21:01:41,071 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:41,076 INFO  [main] root: SEND 	<127.0.0.1:50001>: '[B@d7c6bf'
+2013-12-22 21:01:42,081 DEBUG [main] root: New MetaData = [metadata.MetaData@392814]
+2013-12-22 21:01:42,602 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:43,604 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:43,605 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@a193fe'
+2013-12-22 21:01:43,605 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51501]
+2013-12-22 21:01:43,663 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@1fb2ef9,
+2013-12-22 21:01:43,664 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:43,664 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:43,665 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1c8f91e'
+2013-12-22 21:01:43,665 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51501]
+2013-12-22 21:01:43,667 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@15b6116,
+2013-12-22 21:01:43,668 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:43,684 INFO  [main] root: Connection established
+2013-12-22 21:01:43,685 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:43,686 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1b18235'
+2013-12-22 21:01:44,688 DEBUG [main] root: New MetaData = [metadata.MetaData@3c9616]
+2013-12-22 21:01:45,209 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:46,211 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:46,211 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1a18ee2'
+2013-12-22 21:01:46,211 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51504]
+2013-12-22 21:01:46,273 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@1abcd9b,
+2013-12-22 21:01:46,274 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:46,275 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:46,275 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@47b35d'
+2013-12-22 21:01:46,275 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51504]
+2013-12-22 21:01:46,277 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@150b45a,
+2013-12-22 21:01:46,278 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:48,832 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:48,832 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@170a650'
+2013-12-22 21:01:49,834 DEBUG [main] root: New MetaData = [metadata.MetaData@b6f7f5]
+2013-12-22 21:01:50,355 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:51,357 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:51,357 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@5113f0'
+2013-12-22 21:01:51,357 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51506]
+2013-12-22 21:01:51,414 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@f41393,
+2013-12-22 21:01:51,415 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:51,416 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:51,416 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@314585'
+2013-12-22 21:01:51,416 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51506]
+2013-12-22 21:01:51,418 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@cb1edc,
+2013-12-22 21:01:51,419 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:51,420 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:51,420 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1570f5c'
+2013-12-22 21:01:52,423 DEBUG [main] root: New MetaData = [metadata.MetaData@b18494]
+2013-12-22 21:01:52,942 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:53,952 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:53,952 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@773d03'
+2013-12-22 21:01:53,953 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51507]
+2013-12-22 21:01:54,023 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@46a09b,
+2013-12-22 21:01:54,023 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:54,024 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:54,024 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@da5bc0'
+2013-12-22 21:01:54,024 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51507]
+2013-12-22 21:01:54,027 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1bdbf9d,
+2013-12-22 21:01:54,028 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:54,029 INFO  [main] root: Connection established
+2013-12-22 21:01:54,032 INFO  [main] root: Sending : {"key":"foobar","value":"bar","status":3}
+2013-12-22 21:01:54,033 INFO  [main] root: Send message:	 '{"key":"foobar","value":"bar","status":3}'
+2013-12-22 21:01:54,051 INFO  [main] root: KVStore::Starting Receive message =51508
+2013-12-22 21:01:54,051 INFO  [main] root: KVStore::Receive message:	 '{"key":"foobar","value":"bar","status":4}
+'=51508
+2013-12-22 21:01:54,052 INFO  [main] root: KVStore:: Server response: {"key":"foobar","value":"bar","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:01:54,052 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:01:54,053 INFO  [main] root: Sending : {"key":"foobar","value":"","status":0}
+2013-12-22 21:01:54,053 INFO  [main] root: Send message:	 '{"key":"foobar","value":"","status":0}'
+2013-12-22 21:01:54,055 INFO  [main] root: KVStore::Starting Receive message =51508
+2013-12-22 21:01:54,056 INFO  [main] root: KVStore::Receive message:	 '{"key":"foobar","value":"bar","status":2}
+'=51508
+2013-12-22 21:01:54,057 INFO  [main] root: KVStore:: Server response: {"key":"foobar","value":"bar","status":2}
+, status=GET_SUCCESS
+2013-12-22 21:01:54,057 INFO  [main] root: Server reply to client query:GET_SUCCESS
+2013-12-22 21:01:54,057 INFO  [main] root: try to close connection ...
+2013-12-22 21:01:54,057 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:01:54,057 INFO  [main] root: connection closed!
+2013-12-22 21:01:54,058 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:54,058 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@ce3b62'
+2013-12-22 21:01:55,060 DEBUG [main] root: New MetaData = [metadata.MetaData@19ccb73]
+2013-12-22 21:01:55,580 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:56,582 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:56,582 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@f12b72'
+2013-12-22 21:01:56,582 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51509]
+2013-12-22 21:01:56,640 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@15b6aad,
+2013-12-22 21:01:56,641 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:56,643 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:56,643 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@b890dc'
+2013-12-22 21:01:56,643 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51509]
+2013-12-22 21:01:56,645 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@12e7cb6,
+2013-12-22 21:01:56,646 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:56,647 INFO  [main] root: Connection established
+2013-12-22 21:01:56,647 INFO  [main] root: Sending : {"key":"deleteTestValue","value":"toDelete","status":3}
+2013-12-22 21:01:56,648 INFO  [main] root: Send message:	 '{"key":"deleteTestValue","value":"toDelete","status":3}'
+2013-12-22 21:01:56,662 INFO  [main] root: KVStore::Starting Receive message =51510
+2013-12-22 21:01:56,662 INFO  [main] root: KVStore::Receive message:	 '{"key":"deleteTestValue","value":"toDelete","status":4}
+'=51510
+2013-12-22 21:01:56,663 INFO  [main] root: KVStore:: Server response: {"key":"deleteTestValue","value":"toDelete","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:01:56,663 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:01:56,664 INFO  [main] root: Sending : {"key":"deleteTestValue","value":"","status":3}
+2013-12-22 21:01:56,664 INFO  [main] root: Send message:	 '{"key":"deleteTestValue","value":"","status":3}'
+2013-12-22 21:01:56,667 INFO  [main] root: KVStore::Starting Receive message =51510
+2013-12-22 21:01:56,667 INFO  [main] root: KVStore::Receive message:	 '{"key":"deleteTestValue","value":"toDelete","status":7}
+'=51510
+2013-12-22 21:01:56,668 INFO  [main] root: KVStore:: Server response: {"key":"deleteTestValue","value":"toDelete","status":7}
+, status=DELETE_SUCCESS
+2013-12-22 21:01:56,668 INFO  [main] root: Server reply to client query:DELETE_SUCCESS
+2013-12-22 21:01:56,668 INFO  [main] root: try to close connection ...
+2013-12-22 21:01:56,668 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:01:56,669 INFO  [main] root: connection closed!
+2013-12-22 21:01:56,670 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:56,670 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@fd9b97'
+2013-12-22 21:01:57,672 DEBUG [main] root: New MetaData = [metadata.MetaData@1f1e666]
+2013-12-22 21:01:58,190 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:01:59,193 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:01:59,194 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@4d40df'
+2013-12-22 21:01:59,194 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51511]
+2013-12-22 21:01:59,250 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@1de041e,
+2013-12-22 21:01:59,252 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:01:59,253 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:01:59,253 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@e05ad6'
+2013-12-22 21:01:59,253 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51511]
+2013-12-22 21:01:59,255 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@16bb7d9,
+2013-12-22 21:01:59,256 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:01:59,257 INFO  [main] root: Connection established
+2013-12-22 21:01:59,258 INFO  [main] root: try to close connection ...
+2013-12-22 21:01:59,258 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:01:59,258 INFO  [main] root: connection closed!
+2013-12-22 21:01:59,258 ERROR [main] root: Not connected to KV Server!
+2013-12-22 21:01:59,258 INFO  [main] root: try to close connection ...
+2013-12-22 21:01:59,259 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:01:59,260 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:01:59,260 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@f346dc'
+2013-12-22 21:02:00,262 DEBUG [main] root: New MetaData = [metadata.MetaData@1b14530]
+2013-12-22 21:02:00,781 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:02:01,784 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:02:01,785 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@135877f'
+2013-12-22 21:02:01,785 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51513]
+2013-12-22 21:02:01,844 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@152b6f5,
+2013-12-22 21:02:01,845 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:02:01,846 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:02:01,846 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@169a50b'
+2013-12-22 21:02:01,847 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51513]
+2013-12-22 21:02:01,848 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@d297c0,
+2013-12-22 21:02:01,849 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:02:01,850 INFO  [main] root: Connection established
+2013-12-22 21:02:01,851 INFO  [main] root: Sending : {"key":"an unset value","value":"","status":0}
+2013-12-22 21:02:01,851 INFO  [main] root: Send message:	 '{"key":"an unset value","value":"","status":0}'
+2013-12-22 21:02:01,865 INFO  [main] root: KVStore::Starting Receive message =51514
+2013-12-22 21:02:01,866 INFO  [main] root: KVStore::Receive message:	 '{"key":"an unset value","value":"","status":1}
+'=51514
+2013-12-22 21:02:01,867 INFO  [main] root: KVStore:: Server response: {"key":"an unset value","value":"","status":1}
+, status=GET_ERROR
+2013-12-22 21:02:01,867 INFO  [main] root: Server reply to client query:GET_ERROR
+2013-12-22 21:02:01,867 INFO  [main] root: try to close connection ...
+2013-12-22 21:02:01,867 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:02:01,868 INFO  [main] root: connection closed!
+2013-12-22 21:02:01,869 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:02:01,869 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1e8e5a7'
+2013-12-22 21:02:02,871 DEBUG [main] root: New MetaData = [metadata.MetaData@13d422d]
+2013-12-22 21:02:03,391 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:02:04,393 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:02:04,394 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@c3d062'
+2013-12-22 21:02:04,394 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51515]
+2013-12-22 21:02:04,454 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@1a5fb5a,
+2013-12-22 21:02:04,455 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:02:04,457 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:02:04,457 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@1906df'
+2013-12-22 21:02:04,457 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51515]
+2013-12-22 21:02:04,459 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@1123c5f,
+2013-12-22 21:02:04,460 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:02:04,461 INFO  [main] root: Connection established
+2013-12-22 21:02:04,462 INFO  [main] root: Sending : {"key":"foo","value":"bar","status":3}
+2013-12-22 21:02:04,463 INFO  [main] root: Send message:	 '{"key":"foo","value":"bar","status":3}'
+2013-12-22 21:02:04,477 INFO  [main] root: KVStore::Starting Receive message =51516
+2013-12-22 21:02:04,477 INFO  [main] root: KVStore::Receive message:	 '{"key":"foo","value":"bar","status":4}
+'=51516
+2013-12-22 21:02:04,478 INFO  [main] root: KVStore:: Server response: {"key":"foo","value":"bar","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:02:04,478 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:02:04,479 INFO  [main] root: try to close connection ...
+2013-12-22 21:02:04,479 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:02:04,479 INFO  [main] root: connection closed!
+2013-12-22 21:02:04,480 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:02:04,481 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@39bf12'
+2013-12-22 21:02:05,485 DEBUG [main] root: New MetaData = [metadata.MetaData@69695f]
+2013-12-22 21:02:06,005 INFO  [main] root: New KVServers count = 1
+2013-12-22 21:02:07,007 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":0,"range":"","destination":"","metadata":[{"ip":"127.0.0.1","port":"50000","start":"358343938402ebb5110716c6e836f5a3","end":"358343938402ebb5110716c6e836f5a2"}]}
+2013-12-22 21:02:07,008 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@84de3c'
+2013-12-22 21:02:07,008 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51517]
+2013-12-22 21:02:07,070 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":1}
+'=[B@11a47df,
+2013-12-22 21:02:07,071 DEBUG [main] root: sendKVServersMetaData()-->response from KVServer:127.0.0.1:50000 is INIT_SUCCESS
+2013-12-22 21:02:07,072 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":3,"range":"","destination":""}
+2013-12-22 21:02:07,072 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@648938'
+2013-12-22 21:02:07,073 INFO  [main] root: receiveMessage() for:Socket[addr=/127.0.0.1,port=50000,localport=51517]
+2013-12-22 21:02:07,075 INFO  [main] root: RECEIVE 	<127.0.0.1:50000>: '{"command":4}
+'=[B@6cbecf,
+2013-12-22 21:02:07,076 DEBUG [main] root: start()-->response from KVServer:127.0.0.1:50000 is START_SUCCESS
+2013-12-22 21:02:07,077 INFO  [main] root: Connection established
+2013-12-22 21:02:07,078 INFO  [main] root: Sending : {"key":"updateTestValue","value":"initial","status":3}
+2013-12-22 21:02:07,078 INFO  [main] root: Send message:	 '{"key":"updateTestValue","value":"initial","status":3}'
+2013-12-22 21:02:07,092 INFO  [main] root: KVStore::Starting Receive message =51518
+2013-12-22 21:02:07,093 INFO  [main] root: KVStore::Receive message:	 '{"key":"updateTestValue","value":"initial","status":4}
+'=51518
+2013-12-22 21:02:07,094 INFO  [main] root: KVStore:: Server response: {"key":"updateTestValue","value":"initial","status":4}
+, status=PUT_SUCCESS
+2013-12-22 21:02:07,094 INFO  [main] root: Server reply to client query:PUT_SUCCESS
+2013-12-22 21:02:07,095 INFO  [main] root: Sending : {"key":"updateTestValue","value":"updated","status":3}
+2013-12-22 21:02:07,095 INFO  [main] root: Send message:	 '{"key":"updateTestValue","value":"updated","status":3}'
+2013-12-22 21:02:07,098 INFO  [main] root: KVStore::Starting Receive message =51518
+2013-12-22 21:02:07,098 INFO  [main] root: KVStore::Receive message:	 '{"key":"updateTestValue","value":"updated","status":5}
+'=51518
+2013-12-22 21:02:07,099 INFO  [main] root: KVStore:: Server response: {"key":"updateTestValue","value":"updated","status":5}
+, status=PUT_UPDATE
+2013-12-22 21:02:07,100 INFO  [main] root: Server reply to client query:PUT_UPDATE
+2013-12-22 21:02:07,100 INFO  [main] root: try to close connection ...
+2013-12-22 21:02:07,100 INFO  [main] root: tearing down the connection ...
+2013-12-22 21:02:07,101 INFO  [main] root: connection closed!
+2013-12-22 21:02:07,106 INFO  [main] root: sendMessage() ={"adminMsg":true,"command":9,"range":"","destination":""}
+2013-12-22 21:02:07,106 INFO  [main] root: SEND 	<127.0.0.1:50000>: '[B@16321e6'
+2013-12-22 21:02:08,109 DEBUG [main] root: Storage class created
+2013-12-22 21:02:08,141 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key1,null
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage::put() + Storing kvpair: key,abc
+2013-12-22 21:02:08,143 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,abc
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,145 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
+2013-12-22 21:02:08,146 DEBUG [main] root: Storage ( ::get() + Retrieved kvpair:key,v2
+2013-12-22 21:02:08,150 DEBUG [main] root: Storage::put() + Storing kvpair: key,v1
+2013-12-22 21:02:08,151 DEBUG [main] root: Storage::put() + Storing kvpair: key,v2
