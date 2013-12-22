@@ -182,14 +182,6 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 
 	/**
-	 * Function to Exit KVServer application.
-	 * 
-	 */
-	public void shutDown(){
-		//TODO
-	}
-
-	/**
 	 * This function will Lock the KVServer for write operations.
 	 * 
 	 */

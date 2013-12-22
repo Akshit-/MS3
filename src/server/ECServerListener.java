@@ -35,14 +35,7 @@ public interface ECServerListener {
      * 
      */	
 	public void stopKVServer();
-	
-	/**
-     * Function to Exit KVServer application.
-     * 
-     */
-	public void shutDown();
-	
-	
+		
 	 /**
      * This function will Lock the KVServer for write operations.
      * 
