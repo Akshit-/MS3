@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javax.net.ssl.SSLEngineResult.Status;
+
 import metadata.MetaData;
 
 import org.apache.log4j.Logger;
@@ -196,8 +198,9 @@ public class KVStore extends Thread implements KVCommInterface {
 	 * @param value
 	 * @param reqStatus
 	 * @return
+	 * @throws Exception 
 	 */
-	private boolean isResponsible(String key, String value, StatusType reqStatus) {
+	private boolean isResponsible(String key, String value, StatusType reqStatus) throws Exception {
 		if (this.currentMetaData.getRangeStart().equals(""))
 			return true;// first time
 
@@ -246,10 +249,13 @@ public class KVStore extends Thread implements KVCommInterface {
 						responsibleServerConn.disconnect();
 						return false;
 					} catch (Exception e1) {
-						e1.printStackTrace();
+						//e1.printStackTrace();
 						logger.error("Client unable to connect to "
 								+ meta.getIP() + ":"
 								+ Integer.parseInt(meta.getPort()));
+						
+						throw new Exception("Unable to put value to KV server");
+						
 					}
 
 				}
@@ -330,7 +336,7 @@ public class KVStore extends Thread implements KVCommInterface {
 						break;
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						//e1.printStackTrace();
 						logger.error("Client unable to connect to "
 								+ meta.getIP() + ":"
 								+ Integer.parseInt(meta.getPort()));

@@ -559,7 +559,7 @@ public class ECServer {
 			
 			result = setLockWrite(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
 			if(result) {
-				result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
+				//result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 				if(result) {
 					result = updateKVServerMetaData(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 					if(result) {

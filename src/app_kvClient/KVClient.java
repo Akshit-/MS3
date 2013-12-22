@@ -157,7 +157,7 @@ public class KVClient implements ClientSocketListener{
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						printError("Unable to get value for the given key from KVServer");
-						e.printStackTrace();
+						//e.printStackTrace();
 					}
 				} else if (tokens.length==2 && !tokens[1].isEmpty() && tokens[1].length() > 20){
 					printError("The key size must not exceed 20 characters.");

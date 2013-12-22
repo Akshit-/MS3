@@ -290,6 +290,9 @@ public class ClientConnection implements Runnable {
 			}
 
 		}
+		
+		logger.info("ClientConnection::getKVMessage()+ isLockWrite="+mECServerListener.isLockWrite());
+		
 		//We first check whether this KVServer has been locked for writing by Admin (ECSServer).
 		if (!mECServerListener.isLockWrite() && kvmessage.getStatus().equals(StatusType.PUT)) {
 
@@ -468,11 +471,8 @@ public class ClientConnection implements Runnable {
 
 		}else if(kvAdminMessage.getCommand().equals(Commands.UNLOCK_WRITE)){
 			logger.info("Executing UNLOCK_WRITE Command for("+clientSocket.getLocalPort()+")");
-			try{
-				mECServerListener.unlockWrite();
-			}catch(Exception e){
-				logger.info("Exception in UNLOCK_WRITE Command: e="+e);
-			}
+			
+			mECServerListener.unlockWrite();
 
 			kvAdminMessage = new KVAdminMessageImpl();
 			kvAdminMessage.setCommand(Commands.UNLOCK_WRITE_SUCCESS);
