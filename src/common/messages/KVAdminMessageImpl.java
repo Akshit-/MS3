@@ -89,7 +89,7 @@ public class KVAdminMessageImpl implements KVAdminMessage {
 			case 20: return Commands.MOVE_DATA_FAIL;
 			case 21: return Commands.UPDATE;
 			case 22: return Commands.UPDATE_SUCCESS;
-			case 23: return Commands.UPDATE_FAIL;
+			case 23: return Commands.UPDATE_FAIL;	
 			
 			default:
 				return Commands.UNKNOWN;

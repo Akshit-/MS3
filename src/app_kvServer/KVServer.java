@@ -39,7 +39,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 
 	private Storage storage;
 
-	private Server server;
+	private Server mServerData;
 
 	private static final int BUFFER_SIZE = 1024;
 	private static final int DROP_SIZE = 128 * BUFFER_SIZE;
@@ -56,7 +56,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	public KVServer(int port) {
 		this.port = port;
 		storage = Storage.init();
-		server = Server.getInstance();
+		mServerData = Server.getInstance();
 	}
 
 	/**
@@ -71,6 +71,9 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 			while(isRunning()){
 				try {
 					Socket client = serverSocket.accept();
+					logger.info("KVServer:"+serverSocket.getInetAddress().getHostAddress()+":"+serverSocket.getLocalPort()+"Connected to " 
+							+ client.getInetAddress().getHostName() 
+							+  " on port " + client.getLocalPort());
 					ClientConnection connection = 
 							new ClientConnection(client);
 
@@ -78,9 +81,6 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 					connection.addECServerListener(this);
 					new Thread(connection).start();
 
-					logger.info("KVServer:"+serverSocket.getInetAddress().getHostAddress()+":"+serverSocket.getLocalPort()+"Connected to " 
-							+ client.getInetAddress().getHostName() 
-							+  " on port " + client.getLocalPort());
 				} catch (IOException e) {
 					logger.error("Error! " +
 							"Unable to establish connection. \n", e);
@@ -98,14 +98,14 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * Get KVServer current status for Client connection.
 	 */
 	public boolean isActiveForClients() {
-		return server.isActiveForClients();
+		return mServerData.isActiveForClients();
 	}
 
 	/**
 	 * Check whether KVServer has been locked by Admin or not.
 	 */
 	public boolean isLockWrite() {
-		return server.isLockWrite();
+		return mServerData.isLockWrite();
 	}
 
 
@@ -148,15 +148,15 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 */
 	public void initKVServer(List<MetaData> metaDatas){
 
-		server.setServiceMetaData(new ArrayList<MetaData>(metaDatas)); //store service metadata
-		List<MetaData> mMetaDatas = server.getServiceMetaData();
+		mServerData.setServiceMetaData(new ArrayList<MetaData>(metaDatas)); //store service metadata
+		List<MetaData> mMetaDatas = mServerData.getServiceMetaData();
 		logger.info("initKVServer()");
 		for(MetaData meta : mMetaDatas){
 			if(meta.getPort().equals(Integer.toString(port))){
-				server.setNodeMetaData(meta);// store node metadata
+				mServerData.setNodeMetaData(meta);// store node metadata
 			}
 		}
-		MetaData mMetaData = server.getNodeMetaData();
+		MetaData mMetaData = mServerData.getNodeMetaData();
 		logger.info("Storing MetaData corresponding to this Server: "
 				+mMetaData.getIP()
 				+":"+mMetaData.getPort()
@@ -169,7 +169,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * This starts the KVServer, all client requests and all ECS requests are processed.
 	 */
 	public void startKVServer(){
-		server.setIsActiveForClients(true);
+		mServerData.setIsActiveForClients(true);
 	}
 
 	/** 
@@ -177,7 +177,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void stopKVServer(){
-		server.setIsActiveForClients(false);
+		mServerData.setIsActiveForClients(false);
 	}
 
 
@@ -194,7 +194,7 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void lockWrite(){
-		server.setLockWrite(true);
+		mServerData.setLockWrite(true);
 	}
 
 	/**
@@ -202,17 +202,17 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 	 * 
 	 */
 	public void unlockWrite(){
-		server.setLockWrite(false);
+		mServerData.setLockWrite(false);
 	}
 
 	@Override
 	public MetaData getNodeMetaData() {
-		return server.getNodeMetaData();
+		return mServerData.getNodeMetaData();
 	}
 
 	@Override
 	public List<MetaData> getServiceMetaData() {
-		return server.getServiceMetaData();
+		return mServerData.getServiceMetaData();
 	}	
 
 
@@ -463,11 +463,11 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 			} else {
 				if(args.length==1) {
 					port = Integer.parseInt(args[0]);
-					new KVServer(port).run();	//removing thread
+					new KVServer(port).start();
 				} else if(LogSetup.isValidLevel(args[1])) {
 					port = Integer.parseInt(args[0]);
 					setLevel(args[1]); 
-					new KVServer(port).run(); // removing thread
+					new KVServer(port).start(); 
 				} else {
 					System.out.println("Error! Invalid logLevel");
 					System.out.println("Possible levels <ALL | DEBUG | INFO | WARN | ERROR | FATAL | OFF>");

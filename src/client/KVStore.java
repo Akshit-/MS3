@@ -470,7 +470,7 @@ public class KVStore extends Thread implements KVCommInterface {
 			output.write(msgBytes, 0, msgBytes.length);
 			output.flush();
 		} else {
-			//System.out.println("sendMessage-->output==null");
+			logger.error("sendMessage-->output==null");
 		}
 		logger.info("Send message:\t '" + msg.getMsg() + "'");
 	}

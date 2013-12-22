@@ -181,7 +181,7 @@ public class ClientConnection implements Runnable {
 	 */
 	public void sendMessage(TextMessage msg) throws IOException {
 		byte[] msgBytes = msg.getMsgBytes();
-		output.write(msgBytes, 0, msgBytes.length);
+		output.write(msgBytes);
 		output.flush();
 		logger.info("ClientConnection:: SEND \t<" + clientSocket.getInetAddress().getHostAddress()
 				+ ":" + clientSocket.getLocalPort() + ">: '" + msg.getMsg() + "'");
@@ -248,7 +248,7 @@ public class ClientConnection implements Runnable {
 		TextMessage msg = new TextMessage(msgBytes);
 		logger.info("ClientConnection:: RECEIVE \t<"
 				+ clientSocket.getInetAddress().getHostAddress() + ":"
-				+ clientSocket.getLocalPort() + ">: '" + msg.getMsg().trim() + "'"
+				+ clientSocket.getLocalPort() + ">: '" + msg.getMsg() + "'"
 				+ "=" + msgBytes + ",");
 		return msg;
 	}
