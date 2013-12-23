@@ -441,7 +441,7 @@ public class ECServer {
 
 	}
 
-	private boolean moveData(MetaData sourceMetaData, MetaData destMetaData) {
+	private boolean moveDataForAdd(MetaData sourceMetaData, MetaData destMetaData) {
 		Socket socket = mEcsClientSocketMap.get(sourceMetaData.getIP()+":"+sourceMetaData.getPort());
 		try {
 			TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.MOVE_DATA, 
@@ -451,7 +451,38 @@ public class ECServer {
 			TextMessage responseTxtMsg = receiveMessage(socket);		
 			KVAdminMessage responseKVAdminMsg = JSONSerializer.unmarshalKVAdminMsgForCommand(responseTxtMsg);
 			
-			logger.debug("moveData()-->response from KVServer:"
+			logger.debug("moveDataForAdd()-->response from KVServer:"
+					+socket.getInetAddress().getHostAddress()
+					+":"+socket.getPort()
+					+" is "+responseKVAdminMsg.getCommand().toString());
+
+			if(responseKVAdminMsg.getCommand().equals(Commands.MOVE_DATA_SUCCESS)) {
+				return true;
+			} else {
+				logger.error("Received response  !MOVE_DATA_SUCCESSS from KVServer-"+socket.getInetAddress().getHostAddress()+":"+socket.getPort());
+				return false;
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}		
+	}
+	
+	private boolean moveDataForRemove(MetaData sourceMetaData, MetaData destMetaData) {
+		
+		Socket socket = mEcsClientSocketMap.get(sourceMetaData.getIP()+":"+sourceMetaData.getPort());
+		try {
+			TextMessage txtMsg = JSONSerializer.marshalKVAdminMsg(null, Commands.MOVE_DATA, 
+					destMetaData.getIP()+":"+destMetaData.getPort(),
+					sourceMetaData.getRangeStart()+":"+sourceMetaData.getRangeEnd());
+			
+			sendMessage(socket, txtMsg);
+			TextMessage responseTxtMsg = receiveMessage(socket);		
+			KVAdminMessage responseKVAdminMsg = JSONSerializer.unmarshalKVAdminMsgForCommand(responseTxtMsg);
+			
+			logger.debug("moveDataForRemove()-->response from KVServer:"
 					+socket.getInetAddress().getHostAddress()
 					+":"+socket.getPort()
 					+" is "+responseKVAdminMsg.getCommand().toString());
@@ -515,7 +546,7 @@ public class ECServer {
 			if(result) {
 				result = setLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 				if(result) {
-					result = moveData(successorNodeMetaData, newNodeMetaData);
+					result = moveDataForAdd(successorNodeMetaData, newNodeMetaData);
 					if(result) {
 						result = updateKVServersMetaData();
 						if(result) {
@@ -555,7 +586,10 @@ public class ECServer {
 				oldNodeMetaData = oldMetaData.get(oldMetaData.size()-1);
 				successorNodeMetaData = oldMetaData.get(0);
 			}
-
+			
+			logger.info("removeNode() + oldNode="+oldNodeMetaData.getPort()
+						+", start="+oldNodeMetaData.getRangeStart()
+						+", end="+oldNodeMetaData.getRangeEnd());
 			
 			result = setLockWrite(oldNodeMetaData.getIP(), Integer.parseInt(oldNodeMetaData.getPort()));
 			if(result) {
@@ -563,7 +597,7 @@ public class ECServer {
 				if(result) {
 					result = updateKVServerMetaData(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 					if(result) {
-						result = moveData(oldNodeMetaData, successorNodeMetaData);
+						result = moveDataForRemove(oldNodeMetaData, successorNodeMetaData);
 						if(result) {
 							result = releaseLockWrite(successorNodeMetaData.getIP(), Integer.parseInt(successorNodeMetaData.getPort()));
 							if(result) {
@@ -642,7 +676,11 @@ public class ECServer {
 		BigInteger prevRangeBi = new BigInteger(mMetaData.get(mMetaData.size()-1).getRangeEnd(),16);
 		BigInteger nextRangeBi = prevRangeBi.add(new BigInteger("1"));
 		mMetaData.get(0).setRangeStart(nextRangeBi.toString(16));
-		logger.debug("New MetaData = "+mMetaData);
+		for(MetaData md:mMetaData){
+			logger.debug("New MetaData = "+md.getPort()
+					+", start="+new BigInteger(md.getRangeStart(),16)
+					+", end="+new BigInteger(md.getRangeEnd(),16));
+		}
 	}
 
 	/**
@@ -729,12 +767,12 @@ public class ECServer {
 	}
 
 	private void execSSH(MetaData metaData) throws IOException{
-		String cmd = "java -jar ms3-server.jar "+metaData.getPort();
-//		String cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
+		//String cmd = "java -jar ms3-server.jar "+metaData.getPort();
+		String cmd = "ssh -n "+metaData.getIP()+" nohup java -jar ms3-server.jar "+metaData.getPort()+" ERROR &";
 		Runtime run = Runtime.getRuntime();
 		run.exec(cmd);
 		try {
-			Thread.sleep(500);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			logger.error("InterruptedException after execSSH command for KVServer:"+metaData.getIP()+":"+metaData.getPort());
 			// TODO Auto-generated catch block

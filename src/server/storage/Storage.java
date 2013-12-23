@@ -139,7 +139,22 @@ public class Storage {
 				+", new Server's end="+end
 				+", Maximum ="+maximum
 				+", Minimum ="+minimum);
+		
+		
+		logger.info("Storage::getDataBetweenRange() + Data present currently on this server, size="+data.size());
+		
+		for(Iterator<Entry<String, String>>it=data.entrySet().iterator();it.hasNext();){
+			Entry<String, String> entry = it.next();
+			logger.info("Storage::getDataBetweenRange() + data: "+entry.getKey());
+		}
+		
+		logger.info("Storage::getDataBetweenRange() + keyHash present currently on this server, size="+keyHash.size());
+		
+		for(Iterator<Entry<String, String>>it=keyHash.entrySet().iterator();it.hasNext();){
 
+			Entry<String, String> entry = it.next();
+			logger.info("Storage::getDataBetweenRange() + keyHash: "+entry.getValue());
+		}	
 		
 
 		for(Iterator<Entry<String, String>>it=keyHash.entrySet().iterator();it.hasNext();){
@@ -148,8 +163,10 @@ public class Storage {
 
 			BigInteger keyHash = new BigInteger(entry.getKey(),16);
 
-
+			logger.info("Storage::getDataBetweenRange()+ Checking for keyHash="+keyHash+", value="+entry.getValue());
+			
 			if(start.compareTo(end)<0){
+				logger.info("Storage::getDataBetweenRange()+ start<end case");
 				if (keyHash.compareTo(start) > 0 && 
 						keyHash.compareTo(end) <= 0){
 
@@ -158,10 +175,9 @@ public class Storage {
 
 				}
 			}else{
+				logger.info("Storage::getDataBetweenRange()+ start>end case");
 				//startServer > endServer
 				//TODO keycheck1 = startServer to Maximum && keycheck2 = 0 to end 
-
-				
 				if((keyHash.compareTo(start) > 0 && keyHash.compareTo(maximum) <= 0 )
 						|| (keyHash.compareTo(minimum) >= 0 && keyHash.compareTo(end) <= 0 )){
 
@@ -188,6 +204,8 @@ public class Storage {
 			Entry<String, String> entry = it.next();
 			logger.info("Storage:: deleteDataBetweenRange() + deleting key,value="+entry.getKey()+","+entry.getValue());
 			data.remove(entry.getKey());
+			String md5 = getMD5(entry.getKey());
+			keyHash.remove(md5);
 		}
 
 

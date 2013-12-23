@@ -28,6 +28,7 @@ public class AllTests {
 		clientSuite.addTestSuite(StorageTest.class);
 		clientSuite.addTestSuite(MarshallingTest.class);
 		clientSuite.addTestSuite(ServerTest.class);
+		//clientSuite.addTestSuite(PerformanceTest.class);
 		return clientSuite;
 	}
 

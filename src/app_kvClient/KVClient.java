@@ -214,7 +214,7 @@ public class KVClient implements ClientSocketListener{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			printError("Unable to connect to KVServer: /"+address+":"+port);
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 //		mKVStore.start();
 	}
@@ -337,7 +337,7 @@ public class KVClient implements ClientSocketListener{
 			app.run();
 		} catch (IOException e) {
 			System.out.println("Error! Unable to initialize logger!");
-			e.printStackTrace();
+			//e.printStackTrace();
 			System.exit(1);
 		}
     }

@@ -478,12 +478,14 @@ public class ClientConnection implements Runnable {
 			kvAdminMessage.setCommand(Commands.UNLOCK_WRITE_SUCCESS);
 
 		}else if(kvAdminMessage.getCommand().equals(Commands.MOVE_DATA)){
-
 			logger.info("Executing MOVE_DATA Command for("+clientSocket.getLocalPort()+")");
-
+			
 			String range = kvAdminMessage.getRange();
 			String server = kvAdminMessage.getDestinationAddress();
-
+			
+			logger.info("Executing MOVE_DATA Command for("+clientSocket.getLocalPort()+")"
+			+", rangestart="+new BigInteger(range.split(":")[0],16)
+			+", rangeend="+new BigInteger(range.split(":")[1],16));
 
 			if(mECServerListener.moveData(range,server)){
 				//MOVE_DATA_SUCCESS

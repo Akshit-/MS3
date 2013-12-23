@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLEngineResult.Status;
 
@@ -44,6 +45,7 @@ public class KVStore extends Thread implements KVCommInterface {
 	private MetaData currentMetaData;
 	private boolean firstTime;
 	private KVMessage redirected;
+	private String statistics = "";
 	private static final int BUFFER_SIZE = 1024;
 	private static final int DROP_SIZE = 1024 * BUFFER_SIZE;
 
@@ -163,30 +165,39 @@ public class KVStore extends Thread implements KVCommInterface {
 
 		if (isRunning()) {
 			if (isResponsible(key, value, StatusType.PUT)) {
-			try {
-				if (value!=null && !value.equalsIgnoreCase("null")){
-				    
-				    TextMessage txtMsg = JSONSerializer.marshal(key, value,//error
-                            StatusType.PUT);
+				long start = 0;
+				try {
+					if (value!=null && !value.equalsIgnoreCase("null")){
+
+						TextMessage txtMsg = JSONSerializer.marshal(key, value,//error
+								StatusType.PUT);
 						logger.info("Sending : " + txtMsg.getMsg());
-					sendMessage(txtMsg);
-				} else {
-					TextMessage txtMsg = JSONSerializer.marshal(key, "",
-							StatusType.PUT);
+						start = System.nanoTime();
+						sendMessage(txtMsg);
+					} else {
+						TextMessage txtMsg = JSONSerializer.marshal(key, "",
+								StatusType.PUT);
 						logger.info("Sending : " + txtMsg.getMsg());
-					sendMessage(txtMsg);
+						 start = System.nanoTime();
+						sendMessage(txtMsg);
+					}
+					KVMessage kvmsg = processReply(receiveMessage(), StatusType.PUT);
+
+				    long end = System.nanoTime();
+				    long err = System.nanoTime() - end;
+				    long time = end - start - err;
+				    statistics = statistics + TimeUnit.NANOSECONDS.toSeconds(time)+"\n"; 
+					return kvmsg;
+				} catch (IOException ioe) {
+					tearDownConnection();
+					logger.error("IOException! Unable to put value to KV server");
+					throw new Exception("Unable to put value to KV server");
 				}
-				return processReply(receiveMessage(), StatusType.PUT);
-			} catch (IOException ioe) {
-				tearDownConnection();
-				logger.error("IOException! Unable to put value to KV server");
-				throw new Exception("Unable to put value to KV server");
-			}
-		} else {
+			} else {
 				return this.redirected;
 			}
 		} else {
-		    logger.error("Not connected to KV Server!");
+			logger.error("Not connected to KV Server!");
 			throw new Exception("Not connected to KV Server!");
 		}
 	}
@@ -228,6 +239,8 @@ public class KVStore extends Thread implements KVCommInterface {
 
 								redirected = responsibleServerConn.put(key,
 										value);
+								logger.info("PUT Key-value pair on KVServer:"+meta.getPort()+", key:value="+key+","+value);
+
 							} catch (Exception e) {
 								logger.error("Unable to add Key-value pair on KVServer listening on"
 										+ meta.getPort());
@@ -236,7 +249,10 @@ public class KVStore extends Thread implements KVCommInterface {
 							}
 						} else {
 							try {
+
 								redirected = responsibleServerConn.get(key);
+								logger.info("GET value for key="+key+" on KVServer="+redirected.getValue()+" for "+meta.getPort());
+
 							} catch (Exception e) {
 								logger.error("Unable to get Key-value pair from KVServer listening on"
 										+ meta.getPort());
@@ -253,9 +269,25 @@ public class KVStore extends Thread implements KVCommInterface {
 						logger.error("Client unable to connect to "
 								+ meta.getIP() + ":"
 								+ Integer.parseInt(meta.getPort()));
-						
-						throw new Exception("Unable to put value to KV server");
-						
+
+						KVStore retryDefaultServer = new KVStore("localhost",
+								50000);
+						try {
+							retryDefaultServer.connect();
+
+							if (reqStatus.equals(StatusType.PUT)) {
+								redirected = retryDefaultServer.put(key,
+										value);
+							}else{
+								redirected = retryDefaultServer.get(key);
+							}
+
+						}catch(Exception e){
+							throw new Exception("Unable to put value to KV server");
+						}
+						//continue;
+						//throw new Exception("Unable to put value to KV server");
+
 					}
 
 				}
@@ -293,8 +325,8 @@ public class KVStore extends Thread implements KVCommInterface {
 			for (MetaData meta : this.metadata) {
 
 				if (!serverNotResponsible(meta, key)) { // handles
-														// server_not_responsible
-														// message
+					// server_not_responsible
+					// message
 					logger.info("Client redirect: connecting to "
 							+ meta.getIP() + ":"
 							+ Integer.parseInt(meta.getPort()));
@@ -351,7 +383,7 @@ public class KVStore extends Thread implements KVCommInterface {
 			//System.out.println("Server locked for put, only get possible");
 			logger.info("Server locked for out, only get possible");
 		}
-		
+
 		logger.info("Server reply to client query:"+replyMsg.getStatus().toString());
 		return replyMsg;
 
@@ -444,9 +476,9 @@ public class KVStore extends Thread implements KVCommInterface {
 			if (isResponsible(key, "", StatusType.GET)) {
 				try {
 
-				TextMessage txtMsg = JSONSerializer.marshal(key, "",
-						StatusType.GET);
-				logger.info("Sending : " + txtMsg.getMsg());
+					TextMessage txtMsg = JSONSerializer.marshal(key, "",
+							StatusType.GET);
+					logger.info("Sending(GET) : " + txtMsg.getMsg());
 
 					sendMessage(txtMsg);
 					return processReply(receiveMessage(), StatusType.GET);
@@ -457,7 +489,7 @@ public class KVStore extends Thread implements KVCommInterface {
 			} else
 				return this.redirected;
 		} else {
-		    logger.error("Not connected to KV Server!");
+			logger.error("Not connected to KV Server!");
 			throw new Exception("Not connected to KV Server!");
 		}
 	}
@@ -545,5 +577,8 @@ public class KVStore extends Thread implements KVCommInterface {
 				+ clientSocket.getLocalPort());
 		return msg;
 	}
-
+	public void displayLatencyStatistics(String string) {
+		System.out.println(string+" Latency >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		System.out.println(statistics);
+	}
 }

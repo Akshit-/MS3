@@ -219,7 +219,8 @@ public class KVServer extends Thread implements KVServerListener, ECServerListen
 		String ipPort[] = server.split(":");
 
 		logger.info("KVServer::moveData() + Starting moveData process to new Server="+ipPort[1]);
-
+				
+		
 		HashMap<String, String> dataToBeMoved = storage.getDataBetweenRange(range);
 
 		if(dataToBeMoved.isEmpty()){
